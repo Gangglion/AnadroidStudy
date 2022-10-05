@@ -10,7 +10,7 @@ class NoBindingMainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_nobindingmain)
 
         // ViewModel에 위임(코틀린에는 new 연산자없음)
         noBindingViewModel = NoBindingViewModel(this);
