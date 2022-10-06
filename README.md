@@ -35,7 +35,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 - onCreate 부분을 보면 layout에 정의된 많은 뷰를 가져오는 코드와 버튼을 클릭했을때의 이벤트처리 등 여러가지가 한군데 모여있어 난잡한 모습을 볼 수 있다.
 - 이런 식으로 구현하면 규모가 커질 수록 하나의 액티비티가 복잡하고 비대해져 여러 이슈가 생길 수 있고, 이슈 대응 또한 어려울 것이다.
-- 비즈니스 로직과 화면을 구성하는 로직을 UI로부터 분리하는 디자인패턴을 사용하여 테스트, 유지보수, 재사용성이 쉬워진다.
+- 디자인패턴을 사용하면 비즈니스 로직과 화면을 구성하는 로직을 UI로부터 분리할 수 있고, 테스트, 유지보수, 재사용성이 쉬워진다.
 
 ### MVVM 패턴 - MVVMActivity 참고(바인딩 적용 이전과 후로 나누어짐)
 - 구성요소
@@ -52,9 +52,13 @@ protected void onCreate(Bundle savedInstanceState) {
 - 데이터바인딩 이란?
   - 두 데이터 혹은 정보의 소스를 모두 일치시키는 기법이다. 안드로이드에서는 layout을 구성하는 xml에 Data를 연결하는 작업을 의미한다.
   - findViewById를 사용하지 않아도 되는 장점이 있고, 주로 MVVM 패턴과 함께 사용된다.
-  - 버튼 클릭이벤트를 예로들면, 패턴 적용 이전에는 `setOnClickListener`를 통해 이벤트 처리로 구현되었다.
-    패턴 적용 이후에는 ViewModel에서 `setOnClickListener` 를 통해 이벤트 처리로 구현한다.
-    패턴에 데이터바인딩을 적용하게 되면 xml코드에 `android:onClick="@{ViewModel.실행할함수명()}"` 형태가 된다.
+  - TextView에 값을 바꾸는 것으로 예를 들면, 본인이 기존 사용하던 방식은 `onCreate()` 에서 findViewById를 사용하여 id값을 가져와 `setText()`를 사용하였다
+  - 데이터 바인딩을 사용 할 경우 `android:text = "@{bindingViewModel.data}"` 처럼 사용하여 ViewModel의 값을 직접 넣어 줄 수 있다.
   
 - 직접 작성해보고 느낀 점(바인딩 적용)
-  - 
+  - 데이터바인딩과 라이브데이터를 적용하여 같은 기능을 하게끔 만들었다. 데이터가 변경되면 View에서 데이터변경을 감지하고 적용한다.
+  - 버튼 클릭 이벤트를 구현하는 방식에는 2가지가 있었다. 첫번째는 View에서 `setOnClickListener` 로 클릭 이벤트를 받고, 처리를 ViewModel에 넘겨주는 방식이고
+    두번째는 xml에서 바인딩된 함수를 `android:onclick` 속성을 통해 `android:onClick="@{()->viewmodel.initView()}`와 같이 클릭시 처리를 viewmodel에
+    넘겨주게끔 할 수 있다. ViewModel이 처리한다는 점은 동일하지만 이벤트를 받는 부분이 다르다. 두번째 방법을 사용하게 되면 View의 코드가 간결해지지만 그만큼 ViewModel
+    의 코드가 커질 수 있을것이다.
+  - 구조에 익숙해지고, 규모가 큰 프로젝트에서 적용하면 부분별로 나누어져있어 향후 유지보수에 있어 큰 도움이 될 것이라고 느껴진다.

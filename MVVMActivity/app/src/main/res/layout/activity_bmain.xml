@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
-            name="bindingViewModel"
-            type="com.example.mvvmactivity.ViewModel.BindingViewModel"/>
+            name="viewmodel"
+            type="com.example.mvvmactivity.viewModel.BViewModel" />
     </data>
 
     <LinearLayout
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".View.BindingMainActivity"
+        tools:context=".view.MainActivity"
         android:orientation="vertical">
 
         <Button
@@ -21,15 +20,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Press!!"
-            android:onClick="@{bindingViewModel.getData()}"
-            />
+            android:text="Press!"
+            android:onClick="@{()->viewmodel.initView()}"/>
+
+
 
         <TextView
             android:id="@+id/text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text = "@{bindingViewModel.data}"/>
+            android:text="@{viewmodel.data}"/>
     </LinearLayout>
 </layout>

@@ -1,6 +1,6 @@
-package com.example.mvvmactivity.Model
+package com.example.mvvmactivity.model
 
-class NoBindingModel {
+class BModel {
     fun clickedButton() : String
     {
         return "Welcome to MVVM"
