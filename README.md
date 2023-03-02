@@ -1,4 +1,4 @@
-# AnadroidStudy
+# AndroidStudy
 
 ## 목적
 안드로이드 개발에 필요한 기본기 공부를 위한 레포지토리
