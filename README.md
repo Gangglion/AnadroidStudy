@@ -5,3 +5,4 @@
 
 ## 프로젝트별 설명
 1. MVVMActivity - MVVM패턴 이해를 위한 예제 프로젝트
+2. GreetingCard - Jetpack Compose 사용시 알아야 하는 Android 기본 사향 실습 프로젝트
