@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CalendarActivity">
+    <com.example.practice_and.calendar.widget.CollapsibleCalendar
+        android:id="@+id/collapsibleCalendarView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        app:primaryColor="@color/blue_black_g50"
+        app:textColor="@android:color/black"
+        app:selectedItem_textColor="@color/powder_blue500"
+        app:todayItem_textColor="@color/white"
+        app:todayItem_background="@drawable/circle_white_solid_background"
+        app:selectedItem_background="@drawable/circle_white_stroke_background"
+        app:buttonLeft_drawableTintColor="@color/black"
+        app:buttonRight_drawableTintColor="@color/black"
+        app:expandIconColor="@color/black"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

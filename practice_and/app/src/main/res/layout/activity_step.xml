@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.StepActivity">
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_start_sevice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="서비스 시작"
+        android:layout_marginVertical="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_stop_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+         android:layout_marginVertical="5dp"
+        android:text="서비스 종료"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_start_sevice" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_sensor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/tv_statusTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="센서 작동 상태 :  "
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_statusVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_statusTxt"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cl_sensor"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/tv_stepText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="걸음수 : "
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tv_stepVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text=""
+            android:textSize="25sp"
+            app:layout_constraintStart_toEndOf="@id/tv_stepText"
+            app:layout_constraintTop_toTopOf="@+id/tv_stepText"
+            tools:ignore="MissingConstraints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/cl_time"
+        app:layout_constraintTop_toBottomOf="@+id/cl_step"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/tv_timeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="총 걸은 시간 :  "
+            app:layout_constraintStart_toStartOf="parent"/>
+        <TextView
+            android:id="@+id/tv_timeVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_timeTxt"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_recent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        android:layout_marginBottom="15dp"
+        tools:ignore="MissingConstraints">
+        <TextView
+            android:id="@+id/tv_recentchartTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="최근 본 차트 : "
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tv_recentchartVal" />
+        <TextView
+            android:id="@+id/tv_recentchartVal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            app:layout_constraintStart_toEndOf="@+id/tv_recentchartTxt"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="24dp"
+        android:text="MPAndroidChart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="10dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

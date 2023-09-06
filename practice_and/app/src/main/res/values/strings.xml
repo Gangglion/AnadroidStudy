@@ -1,0 +1,68 @@
+<resources>
+    <string name="app_name">practice_and</string>
+
+    <string name="recognition_permission">android.permission.ACTIVITY_RECOGNITION</string>
+    <string name="post_permission">android.permission.POST_NOTIFICATIONS</string>
+    <string name="default_fcm_channelId">Oddments_and</string>
+    <string name="barchart">BarChart</string>
+    <string name="linechart">LineChart</string>
+    <string name="candlechart">CandleChart</string>
+    <string name="combinechart">CombineChart</string>
+    <string name="webView">Webview</string>
+
+    <string name="temp_title">[%d]</string>
+    <string name="temp_content">항목은 [%d] 입니다</string>
+
+    <string name="btn_main">새로고침</string>
+    <string name="what_can_i_do">확장함수 테스트</string>
+    <string name="close_webview_ready">한번 더 누르시면 메인화면으로 이동합니다.</string>
+    <string name="appwidget_text">걸음수</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">여기는 위젯 설명</string>
+
+    <string name="select_menu">연습한 항목을 선택하세요</string>
+    <string name="step_btn">걸음수 연습</string>
+    <string name="webview_btn">웹뷰 연습</string>
+    <string name="voice_btn">녹음 연습</string>
+    <string name="stt_btn">STT 연습</string>
+    <string name="qr_btn">QR-Zxing 연습</string>
+    <string name="qr_btn2">QR-ML Kit 연습</string>
+    <string name="snackbar_btn">스낵바 연습</string>
+    <string name="stt_recorder">STT 및 녹음 동시</string>
+    <string name="recyclerview_btn">리사이클러뷰 연습</string>
+    <string name="calendar_btn">달력 연습</string>
+    <string name="listview_btn">리스트뷰 연습</string>
+    <string name="linechart_btn">라인차트 테스트</string>
+    <string name="temp_btn">임시</string>
+    <string name="recycler_frag">리사이클러뷰\n프래그먼트</string>
+    <string name="fitness">구글 피트니스</string>
+    <string name="inputsoft">키보드 관련</string>
+
+
+    <string name="close_main_ready">한번 더 누르시면 앱을 종료합니다.</string>
+
+    <string name="recorder_info">녹음을 시작하려면 아래 버튼을 눌러주세요</string>
+    <string name="recorde_start">녹음을 시작합니다.</string>
+    <string name="recorde_end">녹음을 종료합니다.</string>
+
+    <string name="snack_create_toast">토스트!</string>
+
+    <string name="snack_delete_record">기록을 삭제했어요.</string>
+    <string name="snack_undo">실행 취소</string>
+
+    <string name="default_timer">00 : 00</string>
+
+    <string name="stt_info">STT 기능을 시작하려면\n아래 버튼을 누르고 말하세요.</string>
+    <string name="stt_hint">결과가 이곳에 표시됩니다.</string>
+
+    <string name="scan_qrcode">사각형 안에 QR코드를 위치시키세요</string>
+
+    <string name="url_view">Link : %s</string>
+    <string name="open_link">링크 열기</string>
+
+    <string name="algorithm_one">방법 1</string>
+    <string name="algorithm_two">방법 2</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_menu_select"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:text="@string/select_menu"
+            android:textSize="48dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_step"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="50dp"
+            android:text="@string/step_btn"
+            app:layout_constraintEnd_toStartOf="@+id/btn_webview"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_menu_select"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_webview"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/webview_btn"
+            app:layout_constraintEnd_toStartOf="@+id/btn_voice"
+            app:layout_constraintStart_toEndOf="@+id/btn_step"
+            app:layout_constraintTop_toBottomOf="@+id/btn_listview"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_voice"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/voice_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_webview"
+            app:layout_constraintTop_toBottomOf="@+id/btn_linechart"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_stt"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/stt_btn"
+            app:layout_constraintEnd_toStartOf="@+id/btn_snack"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_step"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_snack"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:text="@string/snackbar_btn"
+            app:layout_constraintEnd_toStartOf="@+id/btn_qr"
+            app:layout_constraintStart_toEndOf="@+id/btn_stt"
+            app:layout_constraintTop_toTopOf="@+id/btn_step"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_qr"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:text="@string/qr_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_snack"
+            app:layout_constraintTop_toTopOf="@+id/btn_step"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_qrmlkit"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/qr_btn2"
+            app:layout_constraintEnd_toEndOf="@+id/btn_stt"
+            app:layout_constraintStart_toStartOf="@+id/btn_stt"
+            app:layout_constraintTop_toBottomOf="@+id/btn_stt"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_stt_recorde"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/stt_recorder"
+            app:layout_constraintEnd_toEndOf="@+id/btn_snack"
+            app:layout_constraintStart_toStartOf="@+id/btn_snack"
+            app:layout_constraintTop_toBottomOf="@+id/btn_snack"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/recyclerview_btn"
+            app:layout_constraintEnd_toEndOf="@+id/btn_qr"
+            app:layout_constraintStart_toStartOf="@+id/btn_qr"
+            app:layout_constraintTop_toBottomOf="@+id/btn_qr"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_calendar"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/calendar_btn"
+            app:layout_constraintEnd_toEndOf="@+id/btn_qrmlkit"
+            app:layout_constraintStart_toStartOf="@+id/btn_qrmlkit"
+            app:layout_constraintTop_toBottomOf="@+id/btn_qrmlkit"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_listview"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/listview_btn"
+            app:layout_constraintEnd_toEndOf="@+id/btn_stt_recorde"
+            app:layout_constraintStart_toStartOf="@+id/btn_stt_recorde"
+            app:layout_constraintTop_toBottomOf="@+id/btn_stt_recorde"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_linechart"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/linechart_btn"
+            app:layout_constraintEnd_toEndOf="@+id/btn_recyclerview"
+            app:layout_constraintStart_toStartOf="@+id/btn_recyclerview"
+            app:layout_constraintTop_toBottomOf="@+id/btn_recyclerview"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_rc_frag"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/recycler_frag"
+            app:layout_constraintEnd_toEndOf="@+id/btn_calendar"
+            app:layout_constraintStart_toStartOf="@+id/btn_calendar"
+            app:layout_constraintTop_toBottomOf="@+id/btn_calendar"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_fitness"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/fitness"
+            app:layout_constraintEnd_toEndOf="@+id/btn_webview"
+            app:layout_constraintStart_toStartOf="@+id/btn_webview"
+            app:layout_constraintTop_toBottomOf="@+id/btn_webview"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_input"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/inputsoft"
+            app:layout_constraintEnd_toEndOf="@+id/btn_voice"
+            app:layout_constraintStart_toStartOf="@+id/btn_voice"
+            app:layout_constraintTop_toBottomOf="@+id/btn_voice"
+            style="@style/nanumButton_small"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="140dp"
+        android:src="@drawable/baseline_record_voice_over_off"
+        android:visibility="invisible"
+        app:backgroundTint="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="82.5dp"
+        android:src="@drawable/baseline_refresh_24"
+        android:visibility="invisible"
+        app:backgroundTint="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/icon_settings"
+        app:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frag_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

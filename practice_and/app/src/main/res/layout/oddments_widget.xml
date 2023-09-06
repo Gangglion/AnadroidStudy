@@ -1,0 +1,25 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/Widget.OddmentsProject.AppWidget.Container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:theme="@style/Theme.OddmentsProject.AppWidgetContainer"
+    android:gravity="center"
+    android:id="@+id/rl_widget">
+    <ImageView
+        android:id="@+id/iv_widget"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/baseline_directions_walk_24"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@null" />
+    <TextView
+        android:id="@+id/tv_widget"
+        style="@style/Widget.OddmentsProject.AppWidget.InnerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_widget"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@null"
+        android:text="@string/appwidget_text"
+        android:textSize="15dp" />
+</RelativeLayout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" /> <!-- 오디오 녹음 권한 요청 -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- 녹음된 파일 저장울 위한 권한 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
+
+    <uses-feature android:name="android.hardware.camera" />
+
+    <application
+        android:name=".App"
+        android:allowBackup="false"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.OddmentsProject"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="26">
+        <activity
+            android:name=".activity.LineChartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ListViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RecyclerViewActivity"
+            android:exported="false" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" /> <!-- Zxing을 사용하여 바코드 스캔할 때에 스캔 방향 정해줌. -->
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
+        <activity
+            android:name=".activity.SttRecorderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.QrZxingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.QrMlkitActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.STTActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.RecorderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name=".widget.OddmentsWidget"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/oddments_widget_info" />
+        </receiver>
+
+        <activity
+            android:name=".activity.StepActivity"
+            android:exported="true" /> <!-- 앱이 백그라운드에서도 동작중이지 않을 때 fcm이 오면 나타낼 기본 아이콘 -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/baseline_cloud_24" /> <!-- 기본 fcm 전용 notification channel id -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_fcm_channelId" />
+
+        <service
+            android:name=".service.FCMService"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service
+            android:name=".service.StepService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <activity
+            android:name=".activity.ChartActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.WebviewActivity"
+            android:exported="false" />
+
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- shhan(230725) : 그래프 마커 레이아웃 -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bubble"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="5dp">
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/blue_black_900" />
+    <TextView
+        android:id="@+id/tv_marker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="13dp"
+        android:paddingBottom="5dp"/>
+
+</LinearLayout>
