@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "928036934880",
+    "project_id": "oddmentsproject",
+    "storage_bucket": "oddmentsproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928036934880:android:61cc37f517cdd77f6cec85",
+        "android_client_info": {
+          "package_name": "com.example.practice_and"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928036934880-p4r5nso5t1qolsbh8iqqq2pm1s8i58ln.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.practice_and",
+            "certificate_hash": "05600404096e150f1e8f31faabca844ae4211f38"
+          }
+        },
+        {
+          "client_id": "928036934880-ggdth4lmt9jt2eot18tg9hrn2quqmra9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAu8NM1m35OY9-AufVaXvWqS5t4eCooYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "928036934880-ggdth4lmt9jt2eot18tg9hrn2quqmra9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
