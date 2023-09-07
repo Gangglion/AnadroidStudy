@@ -9,30 +9,47 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practice_and.App
 import com.example.practice_and.R
+import com.example.practice_and.adapter.BasicRecyclerViewAdapter
 import com.example.practice_and.adapter.BottomRecyclerViewAdapter
 import com.example.practice_and.adapter.TopRecyclerViewAdapter
-import com.example.practice_and.data.ExampleList
+import com.example.practice_and.data.ExampleData
 
 class RecyclerViewActivity : AppCompatActivity() {
     private lateinit var mRecyclerViewTop: RecyclerView
     private lateinit var mRecyclerViewBottom: RecyclerView
-    private lateinit var mTopItemList: ArrayList<ExampleList>
-    private lateinit var mBottomItemList: ArrayList<ExampleList>
+    private lateinit var mRecyclerViewBasic: RecyclerView
+    private lateinit var mTopItemList: ArrayList<ExampleData>
+    private lateinit var mBottomItemList: ArrayList<ExampleData>
+    private lateinit var mBasicItemList: ArrayList<ExampleData>
     private lateinit var mContext: Context
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_recycler_view)
         mContext = this
+        mRecyclerViewBasic = findViewById(R.id.rc_basic)
         mRecyclerViewTop = findViewById(R.id.rv_temp)
         mRecyclerViewBottom = findViewById(R.id.rv_temp2)
+
+        // 리사이클러뷰 준비
+        mRecyclerViewBasic.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        mBasicItemList = ArrayList()
+        for(i: Int in 1..100){
+            mBasicItemList.add(ExampleData(i, false))
+        }
+        mRecyclerViewBasic.adapter = BasicRecyclerViewAdapter(mContext, mBasicItemList, object : BasicRecyclerViewAdapter.OnItemClick{
+            override fun onClick(pos: Int) {
+                Toast.makeText(mContext, "항목 ${pos+1} 선택", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         // 리사이클러뷰 준비
         mRecyclerViewTop.setHasFixedSize(true)
         mRecyclerViewTop.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         // 아이템 준비
         mTopItemList = ArrayList()
         for(i:Int in 1..100)
-            mTopItemList.add(ExampleList(i,false))
+            mTopItemList.add(ExampleData(i,false))
 
         mRecyclerViewTop.adapter = TopRecyclerViewAdapter(mTopItemList, this, object: TopRecyclerViewAdapter.OnItemClick{
             @SuppressLint("NotifyDataSetChanged")
@@ -45,7 +62,7 @@ class RecyclerViewActivity : AppCompatActivity() {
         mRecyclerViewBottom.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         mBottomItemList = ArrayList()
         for(i: Int in 1..100){
-            mBottomItemList.add(ExampleList(i,false))
+            mBottomItemList.add(ExampleData(i,false))
         }
         mRecyclerViewBottom.adapter = BottomRecyclerViewAdapter(mBottomItemList, this, object: BottomRecyclerViewAdapter.OnItemClickListener{
             override fun onClick(position: Int) {

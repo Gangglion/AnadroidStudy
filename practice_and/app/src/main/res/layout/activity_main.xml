@@ -165,25 +165,14 @@
             style="@style/nanumButton_small"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_rc_frag"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/recycler_frag"
-            app:layout_constraintEnd_toEndOf="@+id/btn_calendar"
-            app:layout_constraintStart_toStartOf="@+id/btn_calendar"
-            app:layout_constraintTop_toBottomOf="@+id/btn_calendar"
-            style="@style/nanumButton_small"/>
-
-        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_fitness"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:text="@string/fitness"
-            app:layout_constraintEnd_toEndOf="@+id/btn_webview"
-            app:layout_constraintStart_toStartOf="@+id/btn_webview"
-            app:layout_constraintTop_toBottomOf="@+id/btn_webview"
+            app:layout_constraintEnd_toEndOf="@+id/btn_calendar"
+            app:layout_constraintStart_toStartOf="@+id/btn_calendar"
+            app:layout_constraintTop_toBottomOf="@+id/btn_calendar"
             style="@style/nanumButton_small"/>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -192,10 +181,16 @@
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:text="@string/inputsoft"
-            app:layout_constraintEnd_toEndOf="@+id/btn_voice"
-            app:layout_constraintStart_toStartOf="@+id/btn_voice"
-            app:layout_constraintTop_toBottomOf="@+id/btn_voice"
+            app:layout_constraintEnd_toEndOf="@+id/btn_webview"
+            app:layout_constraintStart_toStartOf="@+id/btn_webview"
+            app:layout_constraintTop_toBottomOf="@+id/btn_webview"
             style="@style/nanumButton_small"/>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/frag_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="3dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -232,14 +227,5 @@
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/frag_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

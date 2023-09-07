@@ -8,9 +8,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practice_and.R
-import com.example.practice_and.data.ExampleList
+import com.example.practice_and.data.ExampleData
 
-class TopRecyclerViewAdapter(private val itemList: ArrayList<ExampleList>, val mContext: Context, private val mListener: OnItemClick): RecyclerView.Adapter<TopRecyclerViewAdapter.ViewHolder>() {
+class TopRecyclerViewAdapter(private val itemList: ArrayList<ExampleData>, val mContext: Context, private val mListener: OnItemClick): RecyclerView.Adapter<TopRecyclerViewAdapter.ViewHolder>() {
     private var oldPosition = -1
     // 클릭 인터페이스 생성 - 클릭 처리에 대해 MainActivity에서 구현할 수 있음.
     // 아이템 클릭 이벤트에 생성한 OnItemClick을 넣어주어 아이템 클릭 이벤트시에 어댑터에서 수행해야 하는 기능 실행, 이후 Main에서 기능 수행할 수 있음

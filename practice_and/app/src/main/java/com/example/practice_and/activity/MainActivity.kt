@@ -25,7 +25,6 @@ import com.example.practice_and.component.CustomSnackBar
 import com.example.practice_and.data.AppTempData
 import com.example.practice_and.fragment.FitnessFragment
 import com.example.practice_and.fragment.InputProcessFragment
-import com.example.practice_and.fragment.RcBlogFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlin.system.exitProcess
@@ -87,7 +86,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_calendar).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_listview).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_linechart).setOnClickListener(this)
-        findViewById<AppCompatButton>(R.id.btn_rc_frag).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_fitness).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_input).setOnClickListener(this)
 
@@ -163,11 +161,6 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             R.id.btn_linechart ->{
                 val intent = Intent(this, LineChartActivity::class.java)
                 startActivity(intent)
-            }
-            R.id.btn_rc_frag ->{
-                mActivityArea.visibility = GONE
-                val fragment = RcBlogFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.frag_view, fragment).commit()
             }
             R.id.btn_fitness ->{
                 mActivityArea.visibility = GONE
