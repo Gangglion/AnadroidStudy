@@ -38,6 +38,10 @@
     <string name="recycler_frag">리사이클러뷰\n프래그먼트</string>
     <string name="fitness">구글 피트니스</string>
     <string name="inputsoft">키보드 관련</string>
+    <string name="webtoon">네이버웹툰 앱\n따라하기</string>
+    <string name="async">비동기</string>
+    <string name="async_thread">스레드</string>
+    <string name="async_coroutines">코루틴</string>
 
 
     <string name="close_main_ready">한번 더 누르시면 앱을 종료합니다.</string>

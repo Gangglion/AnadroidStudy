@@ -25,6 +25,7 @@ import com.example.practice_and.component.CustomSnackBar
 import com.example.practice_and.data.AppTempData
 import com.example.practice_and.fragment.FitnessFragment
 import com.example.practice_and.fragment.InputProcessFragment
+import com.example.practice_and.fragment.ThreadFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlin.system.exitProcess
@@ -88,6 +89,8 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_linechart).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_fitness).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_input).setOnClickListener(this)
+        findViewById<AppCompatButton>(R.id.btn_webtoon).setOnClickListener(this)
+        findViewById<AppCompatButton>(R.id.btn_async).setOnClickListener(this)
 
         // Enum Class 사용 테스트
         Log.d(App.TAG, "Enum parameter : ${AppTempData.FIRST.parameter} / Enum name : ${AppTempData.FIRST.name} / Enum constant : ${AppTempData.FIRST}")
@@ -170,6 +173,14 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             R.id.btn_input ->{
                 mActivityArea.visibility = GONE
                 val fragment = InputProcessFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.frag_view, fragment).commit()
+            }
+            R.id.btn_webtoon ->{
+                startActivity(Intent(mContext, CopyWebtoonActivity::class.java))
+            }
+            R.id.btn_async ->{
+                mActivityArea.visibility = GONE
+                val fragment = ThreadFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.frag_view, fragment).commit()
             }
 

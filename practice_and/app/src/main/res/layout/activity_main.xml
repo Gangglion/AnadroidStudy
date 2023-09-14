@@ -186,12 +186,38 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_webview"
             style="@style/nanumButton_small"/>
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/frag_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout_editor_absoluteX="3dp" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_webtoon"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/webtoon"
+            app:layout_constraintEnd_toEndOf="@+id/btn_voice"
+            app:layout_constraintStart_toStartOf="@+id/btn_voice"
+            app:layout_constraintTop_toBottomOf="@+id/btn_voice"
+            style="@style/nanumButton_small"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_async"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/async"
+            app:layout_constraintEnd_toEndOf="@+id/btn_fitness"
+            app:layout_constraintStart_toStartOf="@+id/btn_fitness"
+            app:layout_constraintTop_toBottomOf="@+id/btn_fitness"
+            style="@style/nanumButton_small"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frag_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab2"
