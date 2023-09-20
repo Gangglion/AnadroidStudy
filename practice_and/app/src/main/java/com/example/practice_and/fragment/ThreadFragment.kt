@@ -55,7 +55,7 @@ class ThreadFragment : Fragment() {
         override fun run() {
             Log.i("shhan", "$seq 번째 스레드 시작")
             try{
-                sleep(500)
+                sleep(1000)
             } catch(e: Exception){
                 e.printStackTrace()
             }
@@ -96,7 +96,7 @@ class ThreadFragment : Fragment() {
         //  3. 메인메소드(클릭리스너) 의 종료는 스레드의 종료와 무관하게 동작한다.(스레드의 종료에 영향을 받지 않는다)
         root.findViewById<AppCompatButton>(R.id.btn_start_thread2).apply{
             setOnClickListener{
-                for(i in 1..4){
+                for(i in 1..10){
                     val exThread = ExThread(i)
                     exThread.start()
                 }

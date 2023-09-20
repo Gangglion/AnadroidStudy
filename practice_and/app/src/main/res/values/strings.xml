@@ -42,6 +42,7 @@
     <string name="async">비동기</string>
     <string name="async_thread">스레드</string>
     <string name="async_coroutines">코루틴</string>
+    <string name="inflate">Inflate</string>
 
 
     <string name="close_main_ready">한번 더 누르시면 앱을 종료합니다.</string>

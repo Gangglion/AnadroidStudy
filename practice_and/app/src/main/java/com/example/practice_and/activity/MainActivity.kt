@@ -91,6 +91,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_input).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_webtoon).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_async).setOnClickListener(this)
+        findViewById<AppCompatButton>(R.id.btn_inflate).setOnClickListener(this)
 
         // Enum Class 사용 테스트
         Log.d(App.TAG, "Enum parameter : ${AppTempData.FIRST.parameter} / Enum name : ${AppTempData.FIRST.name} / Enum constant : ${AppTempData.FIRST}")
@@ -182,6 +183,9 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 mActivityArea.visibility = GONE
                 val fragment = ThreadFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.frag_view, fragment).commit()
+            }
+            R.id.btn_inflate ->{
+                startActivity(Intent(mContext, InflateActivity::class.java))
             }
 
             // Floating Action Button
