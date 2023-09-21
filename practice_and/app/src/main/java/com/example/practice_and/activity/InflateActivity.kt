@@ -3,13 +3,16 @@ package com.example.practice_and.activity
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import android.widget.ListView
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.example.practice_and.App
 import com.example.practice_and.R
 
 class InflateActivity : AppCompatActivity() {
@@ -18,9 +21,10 @@ class InflateActivity : AppCompatActivity() {
         setContentView(R.layout.activity_inflate)
 
         val frContainer = findViewById<FrameLayout>(R.id.fr_layout)
-        val llContainter = findViewById<LinearLayoutCompat>(R.id.ll_layout)
-        val rlContainter = findViewById<RelativeLayout>(R.id.rl_layout)
-        val clContainter = findViewById<ConstraintLayout>(R.id.cl_layout)
+        val llContainer = findViewById<LinearLayoutCompat>(R.id.ll_layout)
+        val rlContainer = findViewById<RelativeLayout>(R.id.rl_layout)
+        val clContainer = findViewById<ConstraintLayout>(R.id.cl_layout)
+        val lvContainer = findViewById<ListView>(R.id.lv_layout)
         val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
         findViewById<AppCompatButton>(R.id.btn_go_main).apply{
@@ -38,19 +42,29 @@ class InflateActivity : AppCompatActivity() {
 
         findViewById<AppCompatButton>(R.id.btn_linearlayout).apply{
             setOnClickListener {
-                inflater.inflate(R.layout.layout_inflate, llContainter, true).findViewById<AppCompatTextView>(R.id.inflate_string).text = "리니어레이아웃 inflate"
+                inflater.inflate(R.layout.layout_inflate, llContainer, true).findViewById<AppCompatTextView>(R.id.inflate_string).text = "리니어레이아웃 inflate"
             }
         }
         
         findViewById<AppCompatButton>(R.id.btn_relativelayout).apply{
             setOnClickListener {
-                inflater.inflate(R.layout.layout_inflate, rlContainter, true).findViewById<AppCompatTextView>(R.id.inflate_string).text = "렐러티브레이아웃 inflate"
+                inflater.inflate(R.layout.layout_inflate, rlContainer, true).findViewById<AppCompatTextView>(R.id.inflate_string).text = "렐러티브레이아웃 inflate"
             }
         }
 
         findViewById<AppCompatButton>(R.id.btn_constraint).apply{
             setOnClickListener {
-                inflater.inflate(R.layout.layout_inflate, clContainter, true).findViewById<AppCompatTextView>(R.id.inflate_string).text = "ConstraintLayout inflate"
+                inflater.inflate(R.layout.layout_inflate, clContainer, true).findViewById<AppCompatTextView>(R.id.inflate_string).text = "ConstraintLayout inflate"
+            }
+        }
+
+        findViewById<AppCompatButton>(R.id.btn_listview_inflate).apply{
+            setOnClickListener {
+                try{
+                    inflater.inflate(R.layout.layout_inflate, lvContainer, true).findViewById<AppCompatTextView>(R.id.inflate_string).text = "ListView inflate"
+                } catch(e: Exception){
+                    Log.e(App.TAG, "ListView는 ViewGroup 여도 inflate 의 root가 될 수 없다.", e)
+                }
             }
         }
     }

@@ -8,7 +8,7 @@ import com.example.practice_and.common.RealmClass
 
 class App : Application(){
     companion object{
-        const val TAG = "tmdguq"
+        const val TAG = "shhan"
         const val DATE_FORMAT = "yyyy-MM-dd"
         const val FILE_DATE_FORMAT = "yyyyMMddHHmmss"
 
