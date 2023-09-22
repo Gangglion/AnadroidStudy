@@ -3,7 +3,6 @@ package com.example.practice_and
 import android.content.Context
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
-import com.example.practice_and.activity.MainActivity
 
 abstract class BaseFragment(fragment: Fragment) : Fragment() {
 

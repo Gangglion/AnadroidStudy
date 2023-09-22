@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.QrZxingActivity">
+    tools:context=".qrzxing.QrZxingActivity">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_qr"

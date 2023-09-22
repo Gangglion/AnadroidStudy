@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.StepActivity">
+    tools:context=".pedometer_and_chart.StepActivity">
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_start_sevice"
         android:layout_width="wrap_content"

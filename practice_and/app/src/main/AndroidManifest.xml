@@ -31,22 +31,25 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
-            android:name=".activity.InflateActivity"
+            android:name=".unscramble.UnscrambleActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.CopyWebtoonActivity"
+            android:name=".inflate.InflateActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LineChartActivity"
+            android:name=".copywebtoon.CopyWebtoonActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ListViewActivity"
+            android:name=".linechart_prac.LineChartActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.CalendarActivity"
+            android:name=".listview.ListViewActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RecyclerViewActivity"
+            android:name=".calendar.CalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".recyclerview.RecyclerViewActivity"
             android:exported="false" />
 
         <meta-data
@@ -57,22 +60,22 @@
             android:screenOrientation="fullSensor"
             tools:replace="screenOrientation" />
         <activity
-            android:name=".activity.SttRecorderActivity"
+            android:name=".stt_record.SttRecorderActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.QrZxingActivity"
+            android:name=".qrzxing.QrZxingActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.QrMlkitActivity"
+            android:name=".qrmlkit.QrMlkitActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.STTActivity"
+            android:name=".stt.STTActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RecorderActivity"
+            android:name=".recorder.RecorderActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -82,7 +85,7 @@
         </activity>
 
         <receiver
-            android:name=".widget.OddmentsWidget"
+            android:name=".pedometer_and_chart.widget.OddmentsWidget"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -94,7 +97,7 @@
         </receiver>
 
         <activity
-            android:name=".activity.StepActivity"
+            android:name=".pedometer_and_chart.StepActivity"
             android:exported="true" /> <!-- 앱이 백그라운드에서도 동작중이지 않을 때 fcm이 오면 나타낼 기본 아이콘 -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
@@ -104,7 +107,7 @@
             android:value="@string/default_fcm_channelId" />
 
         <service
-            android:name=".service.FCMService"
+            android:name=".FCMService"
             android:enabled="true"
             android:exported="false">
             <intent-filter>
@@ -112,19 +115,19 @@
             </intent-filter>
         </service>
         <service
-            android:name=".service.StepService"
+            android:name=".pedometer_and_chart.StepService"
             android:enabled="true"
             android:exported="false" />
 
         <activity
-            android:name=".activity.ChartActivity"
+            android:name=".pedometer_and_chart.ChartActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.WebviewActivity"
+            android:name=".webview.WebviewActivity"
             android:exported="false" />
 
         <receiver
-            android:name=".receiver.BootReceiver"
+            android:name=".pedometer_and_chart.receiver.BootReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.DATE_CHANGED" />

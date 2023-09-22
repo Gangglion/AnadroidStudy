@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activity.ChartActivity">
+    tools:context=".pedometer_and_chart.ChartActivity">
     <FrameLayout
         android:id="@+id/fl_chart"
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_menu"/>
-    <com.example.practice_and.component.BottomMenu
+    <com.example.practice_and.pedometer_and_chart.BottomMenu
         android:id="@+id/bottom_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

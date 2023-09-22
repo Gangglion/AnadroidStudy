@@ -4,7 +4,7 @@ import android.app.Application
 import android.util.Log
 import android.widget.Toast
 import com.chibatching.kotpref.Kotpref
-import com.example.practice_and.common.RealmClass
+import com.example.practice_and.pedometer_and_chart.RealmClass
 
 class App : Application(){
     companion object{
