@@ -31,6 +31,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
+            android:name=".saveinstance.SaveInstanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".unscramble.UnscrambleActivity"
             android:exported="false" />
         <activity

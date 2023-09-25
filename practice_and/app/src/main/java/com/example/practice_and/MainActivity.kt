@@ -33,6 +33,7 @@ import com.example.practice_and.thread.ThreadFragment
 import com.example.practice_and.pedometer_and_chart.StepActivity
 import com.example.practice_and.qrzxing.QrZxingActivity
 import com.example.practice_and.recorder.RecorderActivity
+import com.example.practice_and.saveinstance.SaveInstanceActivity
 import com.example.practice_and.stt.STTActivity
 import com.example.practice_and.stt_record.SttRecorderActivity
 import com.example.practice_and.unscramble.UnscrambleActivity
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_async).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_inflate).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_viewmodel).setOnClickListener(this)
+        findViewById<AppCompatButton>(R.id.btn_saveinstance).setOnClickListener(this)
 
         // Enum Class 사용 테스트
         Log.d(App.TAG, "Enum parameter : ${AppTempData.FIRST.parameter} / Enum name : ${AppTempData.FIRST.name} / Enum constant : ${AppTempData.FIRST}")
@@ -200,6 +202,9 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             }
             R.id.btn_viewmodel ->{
                 startActivity(Intent(mContext, UnscrambleActivity::class.java))
+            }
+            R.id.btn_saveinstance ->{
+                startActivity(Intent(mContext, SaveInstanceActivity::class.java))
             }
 
             // Floating Action Button
