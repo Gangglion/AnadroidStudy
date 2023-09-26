@@ -18,6 +18,23 @@
         <item name="android:buttonStyle">@style/nanumButton</item>
     </style>
 
+    <!-- Base application theme. -->
+    <style name="Theme.Unscramble" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/indigo_500</item>
+        <item name="colorPrimaryVariant">@color/indigo_800</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/light_blue_200</item>
+        <item name="colorSecondaryVariant">@color/light_blue_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textColor">@color/black</item>
+
+    </style>
+
     <!-- TextView에 적용될 스타일 생성 -->
     <style name="nanumTextView" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/nanum_dahang</item>
