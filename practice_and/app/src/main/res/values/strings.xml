@@ -45,6 +45,7 @@
     <string name="inflate">Inflate</string>
     <string name="viewmodel">ViewModel</string>
     <string name="saveinstance">saveInstance\nState</string>
+    <string name="rotate">화면회전</string>
 
 
     <string name="close_main_ready">한번 더 누르시면 앱을 종료합니다.</string>
@@ -97,4 +98,6 @@
     <string name="exit">Exit</string>
     <string name="play_again">Play Again</string>
     <string name="try_again">Try again!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

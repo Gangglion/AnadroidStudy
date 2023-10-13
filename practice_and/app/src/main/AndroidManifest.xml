@@ -31,12 +31,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
+            android:name=".ScreenRotate.LandscapeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ScreenRotate.DefaultActivity"
+            android:exported="false" />
+        <activity
             android:name=".saveinstance.SaveInstanceActivity"
             android:exported="false" />
         <activity
             android:name=".unscramble.UnscrambleActivity"
-            android:theme="@style/Theme.Unscramble"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.Unscramble" />
         <activity
             android:name=".inflate.InflateActivity"
             android:exported="false" />

@@ -19,6 +19,7 @@ import androidx.appcompat.widget.AppCompatButton
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.example.practice_and.ScreenRotate.DefaultActivity
 import com.example.practice_and.calendar.CalendarActivity
 import com.example.practice_and.copywebtoon.CopyWebtoonActivity
 import com.example.practice_and.inflate.InflateActivity
@@ -105,6 +106,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_inflate).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_viewmodel).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_saveinstance).setOnClickListener(this)
+        findViewById<AppCompatButton>(R.id.btn_screen).setOnClickListener(this)
 
         // Enum Class 사용 테스트
         Log.d(App.TAG, "Enum parameter : ${AppTempData.FIRST.parameter} / Enum name : ${AppTempData.FIRST.name} / Enum constant : ${AppTempData.FIRST}")
@@ -205,6 +207,9 @@ class MainActivity : AppCompatActivity(), OnClickListener {
             }
             R.id.btn_saveinstance ->{
                 startActivity(Intent(mContext, SaveInstanceActivity::class.java))
+            }
+            R.id.btn_screen ->{
+                startActivity(Intent(mContext, DefaultActivity::class.java))
             }
 
             // Floating Action Button
