@@ -31,10 +31,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
-            android:name=".ScreenRotate.LandscapeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ScreenRotate.DefaultActivity"
+            android:name=".null_test.NullTestActivity"
             android:exported="false" />
         <activity
             android:name=".saveinstance.SaveInstanceActivity"
