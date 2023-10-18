@@ -27,59 +27,8 @@ import com.example.practice_and.R
  * Creates an Activity that hosts the Game fragment in the app
  */
 class UnscrambleActivity : AppCompatActivity() {
-    var test = 3
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_unscramble)
-        // 방법 2
-        if(savedInstanceState != null){
-            test = savedInstanceState.getInt("TEST_VALUE")
-        }
-        Log.d(App.TAG, "Call onCreate  // test = $test")
-    }
-
-    override fun onStart() {
-        super.onStart()
-        Log.d(App.TAG, "Call onStart")
-    }
-
-    // 방법 1
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        Log.d(App.TAG, "Call onRestoreInstanceState")
-//        test = savedInstanceState.getInt("TEST_VALUE")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        test += 3
-        Log.d(App.TAG, "Call onResume // test : $test")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(App.TAG, "Call onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(App.TAG, "Call onStop")
-    }
-
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-        Log.d(App.TAG, "Call onSaveInstanceState")
-        outState.putInt("TEST_VALUE", test)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.d(App.TAG, "Call onDestroy")
-    }
-
-    override fun onRestart() {
-        super.onRestart()
-        Log.d(App.TAG, "Call onRestart")
     }
 }

@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'org.jetbrains.kotlin.kapt'
+    id 'org.jetbrains.kotlin.kapt' // dataBinding을 위해 kotlin.kapt 플러그인 적용이 필요하다
     id 'com.google.gms.google-services'
     id "realm-android"
 }
@@ -36,6 +36,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        dataBinding = true
     }
 }
 def core_version = "1.6.0"
