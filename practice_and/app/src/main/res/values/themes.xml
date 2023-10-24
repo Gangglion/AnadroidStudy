@@ -45,7 +45,6 @@
     <style name="nanumTextView_big" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/nanum_dahang</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#3073BA</item>
         <item name="android:textSize">50sp</item>
     </style>
     <!-- Button 에 적용될 스타일 생성 -->

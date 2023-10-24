@@ -31,7 +31,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
-            android:name=".null_test.NullTestActivity"
+            android:name=".null_safety.NullSafetyActivity"
             android:exported="false" />
         <activity
             android:name=".saveinstance.SaveInstanceActivity"

@@ -45,7 +45,7 @@
     <string name="inflate">Inflate</string>
     <string name="viewmodel">ViewModel</string>
     <string name="saveinstance">saveInstance\nState</string>
-    <string name="null_test">Null 테스트</string>
+    <string name="null_safety">Null-Safety</string>
 
 
     <string name="close_main_ready">한번 더 누르시면 앱을 종료합니다.</string>

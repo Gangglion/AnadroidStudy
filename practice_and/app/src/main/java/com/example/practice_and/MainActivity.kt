@@ -29,7 +29,7 @@ import com.example.practice_and.recyclerview.RecyclerViewActivity
 import com.example.practice_and.webview.WebviewActivity
 import com.example.practice_and.googlefitness.FitnessFragment
 import com.example.practice_and.hidekeyboard.InputProcessFragment
-import com.example.practice_and.null_test.NullTestActivity
+import com.example.practice_and.null_safety.NullSafetyActivity
 import com.example.practice_and.thread.ThreadFragment
 import com.example.practice_and.pedometer_and_chart.StepActivity
 import com.example.practice_and.qrzxing.QrZxingActivity
@@ -209,7 +209,7 @@ class MainActivity : AppCompatActivity(), OnClickListener {
                 startActivity(Intent(mContext, SaveInstanceActivity::class.java))
             }
             R.id.btn_null ->{
-                startActivity(Intent(mContext, NullTestActivity::class.java))
+                startActivity(Intent(mContext, NullSafetyActivity::class.java))
             }
 
             // Floating Action Button

@@ -259,7 +259,7 @@
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
-                    android:text="@string/null_test"
+                    android:text="@string/null_safety"
                     app:layout_constraintEnd_toEndOf="@+id/btn_inflate"
                     app:layout_constraintStart_toStartOf="@+id/btn_inflate"
                     app:layout_constraintTop_toBottomOf="@+id/btn_inflate" />
