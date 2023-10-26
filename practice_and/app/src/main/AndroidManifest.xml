@@ -31,6 +31,17 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
+            android:name=".screen_landscape.LandscapeActivity"
+            android:theme="@style/FullScreenTheme"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="false" />
+        <activity
+            android:name=".screen_landscape.PortraitActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustNothing"
+            tools:ignore="LockedOrientationActivity"
+            android:exported="false" />
+        <activity
             android:name=".null_safety.NullSafetyActivity"
             android:exported="false" />
         <activity
