@@ -16,17 +16,17 @@
 
 package com.example.practice_and.unscramble
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
 import com.example.practice_and.App
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 
 /**
  * Creates an Activity that hosts the Game fragment in the app
  */
-class UnscrambleActivity : AppCompatActivity() {
+class UnscrambleActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_unscramble)

@@ -1,7 +1,6 @@
 package com.example.practice_and.inflate
 
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,8 +13,9 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.practice_and.App
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 
-class InflateActivity : AppCompatActivity() {
+class InflateActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inflate)

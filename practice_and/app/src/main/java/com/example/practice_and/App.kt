@@ -1,6 +1,8 @@
 package com.example.practice_and
 
 import android.app.Application
+import android.content.res.Configuration
+import android.util.DisplayMetrics
 import android.util.Log
 import android.widget.Toast
 import com.chibatching.kotpref.Kotpref

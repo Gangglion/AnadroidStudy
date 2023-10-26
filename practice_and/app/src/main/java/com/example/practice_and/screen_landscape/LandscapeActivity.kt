@@ -2,7 +2,6 @@ package com.example.practice_and.screen_landscape
 
 import android.content.pm.ActivityInfo
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,7 +11,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.example.practice_and.App
 import com.example.practice_and.R
 
-class LandscapeActivity : AppCompatActivity() {
+class LandscapeActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landscape)

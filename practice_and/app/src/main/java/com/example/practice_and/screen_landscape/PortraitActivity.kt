@@ -1,6 +1,5 @@
 package com.example.practice_and.screen_landscape
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.example.practice_and.App
 import com.example.practice_and.R
 
-class PortraitActivity : AppCompatActivity(), OnClickListener {
+class PortraitActivity : BaseActivity(), OnClickListener {
     companion object{
         const val A = 0
         const val B = 1
@@ -18,7 +17,6 @@ class PortraitActivity : AppCompatActivity(), OnClickListener {
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.PortraitTheme)
         setContentView(R.layout.activity_portrait)
 
         findViewById<AppCompatButton>(R.id.btn_a).setOnClickListener(this)

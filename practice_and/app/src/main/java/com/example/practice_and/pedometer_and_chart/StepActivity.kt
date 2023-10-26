@@ -12,7 +12,6 @@ import android.content.IntentFilter
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PowerManager
 import android.provider.Settings
@@ -29,6 +28,7 @@ import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.practice_and.App
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 import com.example.practice_and.toString
 import com.example.practice_and.toTimestamp
 import com.google.android.gms.tasks.OnCompleteListener
@@ -36,7 +36,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import java.time.LocalDateTime
 
 @RequiresApi(Build.VERSION_CODES.O)
-class StepActivity : AppCompatActivity(), View.OnClickListener {
+class StepActivity : BaseActivity(), View.OnClickListener {
 
     companion object {
         private const val REQUEST_CODE_PERMISSION = 100

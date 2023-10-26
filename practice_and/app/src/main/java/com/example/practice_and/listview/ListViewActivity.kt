@@ -1,11 +1,11 @@
 package com.example.practice_and.listview
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 
-class ListViewActivity : AppCompatActivity() {
+class ListViewActivity : BaseActivity() {
     companion object{
         const val SAMPLE_TEXT = "리스트뷰 %d 번째 항목"
     }

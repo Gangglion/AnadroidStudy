@@ -2,7 +2,6 @@ package com.example.practice_and
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -35,6 +34,7 @@ import com.example.practice_and.pedometer_and_chart.StepActivity
 import com.example.practice_and.qrzxing.QrZxingActivity
 import com.example.practice_and.recorder.RecorderActivity
 import com.example.practice_and.saveinstance.SaveInstanceActivity
+import com.example.practice_and.screen_landscape.BaseActivity
 import com.example.practice_and.screen_landscape.PortraitActivity
 import com.example.practice_and.stt.STTActivity
 import com.example.practice_and.stt_record.SttRecorderActivity
@@ -43,7 +43,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlin.system.exitProcess
 
-class MainActivity : AppCompatActivity(), OnClickListener {
+class MainActivity : BaseActivity(), OnClickListener {
     private lateinit var mBackPressed: OnBackPressedCallback
     private var isDoubleBackPressed: Boolean = false
     private var mContext = this

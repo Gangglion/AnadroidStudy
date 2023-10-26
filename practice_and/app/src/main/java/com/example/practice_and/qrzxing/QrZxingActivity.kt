@@ -3,19 +3,19 @@ package com.example.practice_and.qrzxing
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.practice_and.CustomSnackBar
 import com.example.practice_and.databinding.ActivityQrzxingBinding
+import com.example.practice_and.screen_landscape.BaseActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class QrZxingActivity : AppCompatActivity() {
+class QrZxingActivity : BaseActivity() {
     companion object {
         const val CAMERA_PERMISSION = 2
     }

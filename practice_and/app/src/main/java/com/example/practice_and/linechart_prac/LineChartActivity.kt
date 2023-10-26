@@ -6,10 +6,10 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
@@ -19,7 +19,7 @@ import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import java.io.File
 import java.io.FileOutputStream
 
-class LineChartActivity : AppCompatActivity() {
+class LineChartActivity : BaseActivity() {
     private lateinit var mChart: LineChart
     private lateinit var mContext: Context
     // MEMO : 예시데이터

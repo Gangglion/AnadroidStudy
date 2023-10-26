@@ -2,15 +2,15 @@ package com.example.practice_and.recyclerview
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practice_and.App
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 
-class RecyclerViewActivity : AppCompatActivity() {
+class RecyclerViewActivity : BaseActivity() {
     private lateinit var mRecyclerViewTop: RecyclerView
     private lateinit var mRecyclerViewBottom: RecyclerView
     private lateinit var mRecyclerViewBasic: RecyclerView

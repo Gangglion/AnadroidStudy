@@ -5,7 +5,6 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
@@ -15,10 +14,11 @@ import com.example.practice_and.App
 import com.example.practice_and.CustomSnackBar
 import com.example.practice_and.databinding.ActivityQrmlkitBinding
 import com.example.practice_and.qrzxing.QrZxingActivity
+import com.example.practice_and.screen_landscape.BaseActivity
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
-class QrMlkitActivity : AppCompatActivity() {
+class QrMlkitActivity : BaseActivity() {
     companion object {
         const val CAMERA_PERMISSION = 2
     }

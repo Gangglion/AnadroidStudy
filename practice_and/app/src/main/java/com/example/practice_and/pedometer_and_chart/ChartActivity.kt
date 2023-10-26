@@ -4,11 +4,11 @@ import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 
 @RequiresApi(Build.VERSION_CODES.O)
-class ChartActivity : AppCompatActivity() {
+class ChartActivity : BaseActivity() {
 
     private var mBottomMenu : BottomMenu? = null
     private var mContext : Context? = null

@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
@@ -17,8 +16,9 @@ import com.example.practice_and.App
 import com.example.practice_and.R
 import com.example.practice_and.CustomSnackBar
 import com.example.practice_and.databinding.ActivitySttactivityBinding
+import com.example.practice_and.screen_landscape.BaseActivity
 
-class STTActivity : AppCompatActivity() {
+class STTActivity : BaseActivity() {
     companion object{
         private const val PERMISSION_CODE = 1
     }

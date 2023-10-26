@@ -1,14 +1,14 @@
 package com.example.practice_and.saveinstance
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
 import com.example.practice_and.App
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 import com.google.android.material.textfield.TextInputEditText
 
-class SaveInstanceActivity : AppCompatActivity() {
+class SaveInstanceActivity : BaseActivity() {
     private var userInput: String? = null
     private lateinit var etInput : TextInputEditText
     override fun onCreate(savedInstanceState: Bundle?) {

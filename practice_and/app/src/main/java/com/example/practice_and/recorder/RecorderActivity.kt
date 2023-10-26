@@ -12,20 +12,20 @@ import android.os.Environment.DIRECTORY_MUSIC
 import android.util.Log
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.practice_and.App
 import com.example.practice_and.R
 import com.example.practice_and.toString
 import com.example.practice_and.databinding.ActivityRecorderBinding
+import com.example.practice_and.screen_landscape.BaseActivity
 import java.io.File
 import java.time.LocalDateTime
 import java.util.*
 
 
 @RequiresApi(Build.VERSION_CODES.S)
-class RecorderActivity : AppCompatActivity() {
+class RecorderActivity : BaseActivity() {
     companion object{
         private const val REQUEST_RECORD_AUDIO_PERMISSION = 200
     }

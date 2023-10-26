@@ -8,7 +8,6 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.commit
@@ -16,10 +15,11 @@ import androidx.fragment.app.replace
 import com.example.practice_and.App
 import com.example.practice_and.MainActivity
 import com.example.practice_and.R
+import com.example.practice_and.screen_landscape.BaseActivity
 
 @RequiresApi(Build.VERSION_CODES.S)
 @SuppressLint("CommitTransaction")
-class WebviewActivity : AppCompatActivity() {
+class WebviewActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
