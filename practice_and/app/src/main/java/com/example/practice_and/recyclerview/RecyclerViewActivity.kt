@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practice_and.App
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.R
 
 class RecyclerViewActivity : BaseActivity() {

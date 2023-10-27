@@ -3,6 +3,7 @@ package com.example.practice_and.null_safety
 import android.os.Bundle
 import android.util.Log
 import com.example.practice_and.App
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.R
 
 class NullSafetyActivity : BaseActivity() {

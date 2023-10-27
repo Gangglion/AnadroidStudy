@@ -13,6 +13,7 @@ import android.util.Log
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.practice_and.App
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.R
 import com.example.practice_and.CustomSnackBar
 import com.example.practice_and.databinding.ActivitySttactivityBinding

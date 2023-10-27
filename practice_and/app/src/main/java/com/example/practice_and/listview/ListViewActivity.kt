@@ -2,6 +2,7 @@ package com.example.practice_and.listview
 
 import android.os.Bundle
 import android.widget.ListView
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.R
 
 class ListViewActivity : BaseActivity() {

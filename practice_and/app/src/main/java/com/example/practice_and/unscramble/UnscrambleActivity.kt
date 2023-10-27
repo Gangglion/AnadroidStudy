@@ -17,6 +17,7 @@
 package com.example.practice_and.unscramble
 
 import android.os.Bundle
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.R
 
 /**

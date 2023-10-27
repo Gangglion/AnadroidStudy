@@ -1,6 +1,7 @@
 package com.example.practice_and.stt_record
 
 import android.os.Bundle
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.R
 
 class SttRecorderActivity : BaseActivity() {

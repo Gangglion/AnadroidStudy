@@ -12,6 +12,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.practice_and.App
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.R
 
 class InflateActivity : BaseActivity() {

@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.practice_and.App
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.MainActivity
 import com.example.practice_and.R
 

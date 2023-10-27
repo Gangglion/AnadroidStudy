@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import com.example.practice_and.BaseActivity
 import com.example.practice_and.CustomSnackBar
 import com.example.practice_and.databinding.ActivityQrzxingBinding
 import com.journeyapps.barcodescanner.ScanContract
