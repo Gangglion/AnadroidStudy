@@ -28,7 +28,6 @@ import androidx.core.content.ContextCompat
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.practice_and.App
 import com.example.practice_and.R
-import com.example.practice_and.screen_landscape.BaseActivity
 import com.example.practice_and.toString
 import com.example.practice_and.toTimestamp
 import com.google.android.gms.tasks.OnCompleteListener

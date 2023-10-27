@@ -5,7 +5,6 @@ import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
 import com.example.practice_and.R
-import com.example.practice_and.screen_landscape.BaseActivity
 
 @RequiresApi(Build.VERSION_CODES.O)
 class ChartActivity : BaseActivity() {

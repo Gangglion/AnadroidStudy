@@ -18,7 +18,6 @@ import com.example.practice_and.App
 import com.example.practice_and.R
 import com.example.practice_and.toString
 import com.example.practice_and.databinding.ActivityRecorderBinding
-import com.example.practice_and.screen_landscape.BaseActivity
 import java.io.File
 import java.time.LocalDateTime
 import java.util.*

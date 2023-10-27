@@ -1,11 +1,9 @@
 package com.example.practice_and.saveinstance
 
 import android.os.Bundle
-import android.text.Editable
 import android.util.Log
 import com.example.practice_and.App
 import com.example.practice_and.R
-import com.example.practice_and.screen_landscape.BaseActivity
 import com.google.android.material.textfield.TextInputEditText
 
 class SaveInstanceActivity : BaseActivity() {

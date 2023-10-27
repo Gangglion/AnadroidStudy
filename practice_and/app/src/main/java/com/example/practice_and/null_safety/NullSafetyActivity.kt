@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.util.Log
 import com.example.practice_and.App
 import com.example.practice_and.R
-import com.example.practice_and.screen_landscape.BaseActivity
 
 class NullSafetyActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

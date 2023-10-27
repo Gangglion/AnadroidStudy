@@ -15,7 +15,6 @@ import androidx.fragment.app.replace
 import com.example.practice_and.App
 import com.example.practice_and.MainActivity
 import com.example.practice_and.R
-import com.example.practice_and.screen_landscape.BaseActivity
 
 @RequiresApi(Build.VERSION_CODES.S)
 @SuppressLint("CommitTransaction")

@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.practice_and.App
 import com.example.practice_and.R
-import com.example.practice_and.screen_landscape.BaseActivity
 
 class RecyclerViewActivity : BaseActivity() {
     private lateinit var mRecyclerViewTop: RecyclerView

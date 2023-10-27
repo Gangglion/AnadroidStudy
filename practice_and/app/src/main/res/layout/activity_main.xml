@@ -42,7 +42,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_step"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="24dp"
@@ -54,7 +53,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_webview"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="24dp"
@@ -66,7 +64,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_voice"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="24dp"
@@ -78,7 +75,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_stt"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="24dp"
@@ -90,7 +86,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_snack"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="24dp"
@@ -101,7 +96,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_qr"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginHorizontal="24dp"
@@ -112,7 +106,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_qrmlkit"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -123,7 +116,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_stt_recorde"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -134,7 +126,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_recyclerview"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -145,7 +136,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_calendar"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -156,7 +146,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_listview"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -167,7 +156,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_linechart"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -178,7 +166,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_fitness"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -189,7 +176,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_input"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -200,7 +186,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_webtoon"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -211,7 +196,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_async"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -222,7 +206,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_inflate"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -233,7 +216,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_viewmodel"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -244,7 +226,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_saveinstance"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -255,7 +236,6 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_null"
-                    style="@style/nanumButton_small"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
@@ -263,17 +243,6 @@
                     app:layout_constraintEnd_toEndOf="@+id/btn_inflate"
                     app:layout_constraintStart_toStartOf="@+id/btn_inflate"
                     app:layout_constraintTop_toBottomOf="@+id/btn_inflate" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_landscape"
-                    style="@style/nanumButton_small"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/landscape"
-                    app:layout_constraintEnd_toEndOf="@+id/btn_viewmodel"
-                    app:layout_constraintStart_toStartOf="@+id/btn_viewmodel"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_viewmodel" />
 
                 <!-- 공간차지용 비어있는 레이아웃 -->
                 <androidx.appcompat.widget.AppCompatTextView

@@ -34,8 +34,6 @@ import com.example.practice_and.pedometer_and_chart.StepActivity
 import com.example.practice_and.qrzxing.QrZxingActivity
 import com.example.practice_and.recorder.RecorderActivity
 import com.example.practice_and.saveinstance.SaveInstanceActivity
-import com.example.practice_and.screen_landscape.BaseActivity
-import com.example.practice_and.screen_landscape.PortraitActivity
 import com.example.practice_and.stt.STTActivity
 import com.example.practice_and.stt_record.SttRecorderActivity
 import com.example.practice_and.unscramble.UnscrambleActivity
@@ -108,7 +106,6 @@ class MainActivity : BaseActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_viewmodel).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_saveinstance).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_null).setOnClickListener(this)
-        findViewById<AppCompatButton>(R.id.btn_landscape).setOnClickListener(this)
 
         // Enum Class 사용 테스트
         Log.d(App.TAG, "Enum parameter : ${AppTempData.FIRST.parameter} / Enum name : ${AppTempData.FIRST.name} / Enum constant : ${AppTempData.FIRST}")
@@ -131,7 +128,13 @@ class MainActivity : BaseActivity(), OnClickListener {
         mFab2 = findViewById<FloatingActionButton>(R.id.fab2).apply{
             setOnClickListener(this@MainActivity)
         }
+        Log.d(App.TAG, "onCreate")
+        Log.d(App.TAG, "MainActivity : ${resources.configuration.densityDpi}")
+    }
 
+    override fun onDestroy() {
+        Log.d(App.TAG, "onDestroy")
+        super.onDestroy()
     }
 
     @RequiresApi(Build.VERSION_CODES.S)
@@ -213,9 +216,6 @@ class MainActivity : BaseActivity(), OnClickListener {
             R.id.btn_null ->{
                 startActivity(Intent(mContext, NullSafetyActivity::class.java))
             }
-            R.id.btn_landscape ->{
-                startActivity(Intent(mContext, PortraitActivity::class.java))
-            }
 
             // Floating Action Button
             R.id.fab->{
@@ -247,6 +247,11 @@ class MainActivity : BaseActivity(), OnClickListener {
             mFab2.isClickable = true;
             true;
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(App.TAG, "MainActivity : ${resources.configuration.densityDpi}")
     }
 
     fun exitFragment(fragment: Fragment) {

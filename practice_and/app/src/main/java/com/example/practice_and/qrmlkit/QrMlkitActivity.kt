@@ -14,7 +14,6 @@ import com.example.practice_and.App
 import com.example.practice_and.CustomSnackBar
 import com.example.practice_and.databinding.ActivityQrmlkitBinding
 import com.example.practice_and.qrzxing.QrZxingActivity
-import com.example.practice_and.screen_landscape.BaseActivity
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 

@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import com.example.practice_and.CustomSnackBar
 import com.example.practice_and.databinding.ActivityQrzxingBinding
-import com.example.practice_and.screen_landscape.BaseActivity
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
 import com.journeyapps.barcodescanner.ScanOptions

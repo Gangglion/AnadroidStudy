@@ -16,7 +16,6 @@ import com.example.practice_and.App
 import com.example.practice_and.R
 import com.example.practice_and.CustomSnackBar
 import com.example.practice_and.databinding.ActivitySttactivityBinding
-import com.example.practice_and.screen_landscape.BaseActivity
 
 class STTActivity : BaseActivity() {
     companion object{
