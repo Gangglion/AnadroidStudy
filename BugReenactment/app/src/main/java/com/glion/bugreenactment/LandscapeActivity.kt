@@ -1,6 +1,7 @@
 package com.glion.bugreenactment
 
 import android.content.Context
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Build
@@ -11,6 +12,7 @@ import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
+import android.widget.ProgressBar
 import androidx.appcompat.widget.AppCompatTextView
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ForwardingPlayer
@@ -29,6 +31,7 @@ class LandscapeActivity : BaseActivity() {
     private lateinit var mContext: Context
     private lateinit var mHandler: Handler
     private lateinit var mForwardingPlayer: ForwardingPlayer
+    private lateinit var mProgressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,16 +71,22 @@ class LandscapeActivity : BaseActivity() {
                 }
             }
         })
-        playVideo()
+        mProgressBar = findViewById(R.id.pv_wait)
+        mProgressBar.visibility = View.GONE
+        setFullScreen()
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+        mProgressBar.apply{
+            Handler(Looper.getMainLooper()).postDelayed({
+                mProgressBar.visibility = View.VISIBLE
+                playVideo()
+            }, 300L)
+        }
         Log.v(TAG, "LandscapeActivity - onCreate")
 
         Log.d(TAG, "LandscapeActivity : ${resources.configuration.densityDpi}")
     }
 
     private fun playVideo(){
-        setFullScreen()
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-
         val uri = Uri.parse("android.resource://com.example.practice_and/${R.raw.test_video}")
         val mediaSource = ProgressiveMediaSource.Factory(DefaultDataSource.Factory(mContext)).createMediaSource(MediaItem.fromUri(uri))
         mPlayer.setMediaSource(mediaSource)
@@ -103,7 +112,6 @@ class LandscapeActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
-        mPlayer.play()
         Log.v(TAG, "LandscapeActivity - onResume")
     }
 
@@ -119,6 +127,7 @@ class LandscapeActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
+//        startActivity(Intent(mContext, MainActivity::class.java))
         mPlayer.release()
         mHandler.removeCallbacks(updateProgressAction)
         Log.v(TAG, "LandscapeActivity - onDestroy")

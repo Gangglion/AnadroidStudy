@@ -55,7 +55,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onDestroy() {
-        startActivity(Intent(mContext, MainActivity::class.java))
         super.onDestroy()
         Log.w(TAG, "MainActivity - onDestroy")
     }

@@ -31,6 +31,7 @@ class BFragment : Fragment() {
         view.findViewById<AppCompatButton>(R.id.btn_movie).apply{
             setOnClickListener {
                 startActivity(Intent(mContext, LandscapeActivity::class.java))
+//                (activity as MainActivity).finish()
             }
         }
         return view
