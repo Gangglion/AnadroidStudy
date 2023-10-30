@@ -3,6 +3,7 @@ package com.glion.bugreenactment
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -32,6 +33,10 @@ class LandscapeActivity : BaseActivity() {
     private lateinit var mHandler: Handler
     private lateinit var mForwardingPlayer: ForwardingPlayer
     private lateinit var mProgressBar: ProgressBar
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(fixConfiguration(newBase!!))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,14 +77,14 @@ class LandscapeActivity : BaseActivity() {
             }
         })
         mProgressBar = findViewById(R.id.pv_wait)
-        mProgressBar.visibility = View.GONE
+        mProgressBar.visibility = View.VISIBLE
         setFullScreen()
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
         mProgressBar.apply{
             Handler(Looper.getMainLooper()).postDelayed({
-                mProgressBar.visibility = View.VISIBLE
+                mProgressBar.visibility = View.GONE
                 playVideo()
-            }, 300L)
+            }, 1000L)
         }
         Log.v(TAG, "LandscapeActivity - onCreate")
 
@@ -123,6 +128,11 @@ class LandscapeActivity : BaseActivity() {
     override fun onStop() {
         super.onStop()
         Log.v(TAG, "LandscapeActivity - onStop")
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.d(TAG, "newConfig in LandscapeActivity : ${newConfig.densityDpi}")
     }
 
     override fun onDestroy() {

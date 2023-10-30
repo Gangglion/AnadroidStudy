@@ -3,6 +3,7 @@ package com.glion.bugreenactment
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +18,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         const val B = 1
         const val C = 2
     }
+
+    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(fixConfiguration(newBase!!))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -57,6 +63,11 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onDestroy() {
         super.onDestroy()
         Log.w(TAG, "MainActivity - onDestroy")
+    }
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.d(TAG, "new Config in MainActivity : ${newConfig.densityDpi}")
     }
 
     override fun onClick(v: View?) {
