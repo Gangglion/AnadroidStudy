@@ -37,6 +37,7 @@ import com.example.practice_and.saveinstance.SaveInstanceActivity
 import com.example.practice_and.stt.STTActivity
 import com.example.practice_and.stt_record.SttRecorderActivity
 import com.example.practice_and.unscramble.UnscrambleActivity
+import com.example.practice_and.viewbinding.ExViewBindingActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlin.system.exitProcess
@@ -106,6 +107,7 @@ class MainActivity : BaseActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_viewmodel).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_saveinstance).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_null).setOnClickListener(this)
+        findViewById<AppCompatButton>(R.id.btn_viewbinding).setOnClickListener(this)
 
         // Enum Class 사용 테스트
         Log.d(App.TAG, "Enum parameter : ${AppTempData.FIRST.parameter} / Enum name : ${AppTempData.FIRST.name} / Enum constant : ${AppTempData.FIRST}")
@@ -215,6 +217,9 @@ class MainActivity : BaseActivity(), OnClickListener {
             }
             R.id.btn_null ->{
                 startActivity(Intent(mContext, NullSafetyActivity::class.java))
+            }
+            R.id.btn_viewbinding ->{
+                startActivity(Intent(mContext, ExViewBindingActivity::class.java))
             }
 
             // Floating Action Button

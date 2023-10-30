@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".viewbinding.ExViewBindingActivity"
+    android:orientation="vertical"
+    tools:viewBindingIgnore="">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_ex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="클릭하면 바뀝니다."/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_ex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="클릭하면 프래그먼트가 열립니다."/>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/frag_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

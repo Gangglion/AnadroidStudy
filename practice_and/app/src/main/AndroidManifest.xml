@@ -31,6 +31,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
+            android:name=".viewbinding.ExViewBindingActivity"
+            android:exported="false" />
+        <activity
             android:name=".null_safety.NullSafetyActivity"
             android:exported="false" />
         <activity
@@ -83,8 +86,8 @@
             android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"
             android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true"
             android:windowSoftInputMode="adjustNothing"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>

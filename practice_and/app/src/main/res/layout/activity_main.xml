@@ -244,6 +244,16 @@
                     app:layout_constraintStart_toStartOf="@+id/btn_inflate"
                     app:layout_constraintTop_toBottomOf="@+id/btn_inflate" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_viewbinding"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/view_binding"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_viewmodel"
+                    app:layout_constraintStart_toStartOf="@+id/btn_viewmodel"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_viewmodel" />
+
                 <!-- 공간차지용 비어있는 레이아웃 -->
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
