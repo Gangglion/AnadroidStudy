@@ -19,10 +19,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         const val C = 2
     }
 
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(fixConfiguration(newBase!!))
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

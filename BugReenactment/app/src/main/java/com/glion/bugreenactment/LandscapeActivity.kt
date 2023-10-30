@@ -34,10 +34,6 @@ class LandscapeActivity : BaseActivity() {
     private lateinit var mForwardingPlayer: ForwardingPlayer
     private lateinit var mProgressBar: ProgressBar
 
-    override fun attachBaseContext(newBase: Context?) {
-        super.attachBaseContext(fixConfiguration(newBase!!))
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landscape)
