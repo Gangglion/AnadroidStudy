@@ -1,7 +1,6 @@
 package com.glion.bugreenactment
 
 import android.content.Context
-import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.net.Uri
@@ -14,35 +13,37 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.ProgressBar
-import androidx.appcompat.widget.AppCompatTextView
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.ForwardingPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
-import com.google.android.exoplayer2.SimpleExoPlayer
-import com.google.android.exoplayer2.source.DefaultMediaSourceFactory
 import com.google.android.exoplayer2.source.ProgressiveMediaSource
 import com.google.android.exoplayer2.ui.PlayerView
 import com.google.android.exoplayer2.upstream.DefaultDataSource
-import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 
-class LandscapeActivity : BaseActivity() {
+class VideoActivity : BaseActivity() {
     private lateinit var mPlayer: ExoPlayer
     private lateinit var mPlayerView: PlayerView
     private lateinit var mContext: Context
     private lateinit var mHandler: Handler
     private lateinit var mForwardingPlayer: ForwardingPlayer
     private lateinit var mProgressBar: ProgressBar
+    private var mIsPlaying = false
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.d("shhan", "onConfigurationChanged : ${newConfig.densityDpi}")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_landscape)
+        setContentView(R.layout.activity_video)
         mContext = this
 
         mHandler = Handler(Looper.getMainLooper())
 
         mPlayerView = findViewById(R.id.player_view)
-        mPlayer = ExoPlayer.Builder(mContext).setSeekBackIncrementMs(100000L).build()
+        mPlayer = ExoPlayer.Builder(mContext).setSeekBackIncrementMs(1000L).build()
         mForwardingPlayer = object : ForwardingPlayer(mPlayer){
             override fun isCommandAvailable(command: Int): Boolean {
                 return if(command == COMMAND_SEEK_IN_CURRENT_MEDIA_ITEM){
@@ -65,26 +66,30 @@ class LandscapeActivity : BaseActivity() {
 
         mPlayer.addListener(object : Player.Listener{
             override fun onPlaybackStateChanged(playbackState: Int) {
-                if(mPlayer.playWhenReady){
-                    onProgress()
-                } else{
+                when(playbackState){
+                    2 ->{ // 버퍼링
+                        Log.d(TAG, "playbackState : $playbackState")
+                        Log.d(TAG, "$playbackState : ${mContext.resources.configuration.densityDpi}")
+                    }
+                    3 ->{ // Ready
+                        Log.d(TAG, "playbackState : $playbackState")
+                        Log.d(TAG, "$playbackState : ${mContext.resources.configuration.densityDpi}")
+                    }
+                }
+                if(!mPlayer.playWhenReady){
                     mHandler.removeCallbacks(updateProgressAction)
+                } else{
+                    onProgress()
                 }
             }
         })
         mProgressBar = findViewById(R.id.pv_wait)
         mProgressBar.visibility = View.VISIBLE
-        setFullScreen()
-        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
-        mProgressBar.apply{
-            Handler(Looper.getMainLooper()).postDelayed({
-                mProgressBar.visibility = View.GONE
-                playVideo()
-            }, 1000L)
-        }
-        Log.v(TAG, "LandscapeActivity - onCreate")
 
-        Log.d(TAG, "LandscapeActivity : ${resources.configuration.densityDpi}")
+        val thread = InsteadNetworkThread()
+        thread.start()
+
+        Log.v(TAG, "VideoActivity - onCreate : ${mContext.resources.configuration.densityDpi}")
     }
 
     private fun playVideo(){
@@ -93,7 +98,9 @@ class LandscapeActivity : BaseActivity() {
         mPlayer.setMediaSource(mediaSource)
         mPlayer.prepare()
         mPlayerView.useController = true
+        mProgressBar.visibility = View.GONE
         mPlayer.play()
+        mIsPlaying = true
     }
 
     private val updateProgressAction = Runnable {
@@ -101,45 +108,53 @@ class LandscapeActivity : BaseActivity() {
     }
 
     private fun onProgress(){
+        Log.d(TAG, "ExoPlayer State onProgress : ${mContext.resources.configuration.densityDpi}")
+        val player = mPlayer
         mHandler.removeCallbacks(updateProgressAction)
-        Log.d(TAG, "ExoPlayer State Playing : ${resources.configuration.densityDpi}")
+        val playbackState = player.playbackState
+        if(playbackState == Player.STATE_ENDED){
+            mHandler.removeCallbacks(updateProgressAction)
+            DialogTextOneButton(mContext, object : DialogTextOneButton.OnConfirmClick{
+                override fun clickConfirm() {
+                    finish()
+                }
+            }).show()
+        } else if(playbackState != Player.STATE_IDLE){
+
+        }
         mHandler.postDelayed(updateProgressAction, 1000)
     }
 
     override fun onStart() {
         super.onStart()
-        Log.v(TAG, "LandscapeActivity - onStart")
+        Log.v(TAG, "VideoActivity - onStart : ${mContext.resources.configuration.densityDpi}")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.v(TAG, "LandscapeActivity - onResume")
+        if(mIsPlaying){
+            Log.d(TAG, "VideoActivity - onCreate : ${mContext.resources.configuration.densityDpi}")
+            mPlayer.prepare()
+            mPlayer.play()
+        }
     }
 
     override fun onPause() {
         super.onPause()
-        Log.v(TAG, "LandscapeActivity - onPause")
+        Log.v(TAG, "VideoActivity - onPause : ${mContext.resources.configuration.densityDpi}")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.v(TAG, "LandscapeActivity - onStop")
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        Log.d(TAG, "newConfig in LandscapeActivity : ${newConfig.densityDpi}")
+        Log.v(TAG, "VideoActivity - onStop : ${mContext.resources.configuration.densityDpi}")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-//        startActivity(Intent(mContext, MainActivity::class.java))
         mPlayer.release()
         mHandler.removeCallbacks(updateProgressAction)
-        Log.v(TAG, "LandscapeActivity - onDestroy")
+        Log.v(TAG, "VideoActivity - onDestroy : ${mContext.resources.configuration.densityDpi}")
     }
-
-    @Suppress("DEPRECATION")
     private fun setFullScreen(){
         supportActionBar?.hide()
         setTheme(R.style.Theme_FullScreenTheme)
@@ -159,5 +174,17 @@ class LandscapeActivity : BaseActivity() {
     private fun setDefaultScreen(){
         supportActionBar?.show()
         setTheme(R.style.Theme_BugReenactment)
+    }
+
+    inner class InsteadNetworkThread: Thread(){
+        override fun run() {
+            Handler(Looper.getMainLooper()).post{
+                setFullScreen()
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+                sleep(100)
+                // 다운로드 이미 완료되어 동영상을 재생한다고 가정
+                playVideo()
+            }
+        }
     }
 }

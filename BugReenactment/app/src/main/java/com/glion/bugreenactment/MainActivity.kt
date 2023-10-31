@@ -1,9 +1,11 @@
 package com.glion.bugreenactment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +21,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         const val C = 2
     }
 
+    @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,40 +33,34 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_b).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_c).setOnClickListener(this)
 
-        Log.w(TAG, "MainActivity - onCreate")
+        Log.w(TAG, "MainActivity - onCreate : ${mContext.resources.configuration.densityDpi}")
 
-        changeFragment(1)
+        changeFragment(B)
     }
 
     override fun onStart() {
         super.onStart()
-        Log.w(TAG, "MainActivity - onStart")
+        Log.w(TAG, "MainActivity - onStart : ${mContext.resources.configuration.densityDpi}")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.w(TAG, "MainActivity - onResume")
-        Log.d(TAG, "MainActivity : ${resources.configuration.densityDpi}")
+        Log.w(TAG, "MainActivity - onResume : ${mContext.resources.configuration.densityDpi}")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.w(TAG, "MainActivity - onPause")
+        Log.w(TAG, "MainActivity - onPause : ${mContext.resources.configuration.densityDpi}")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.w(TAG, "MainActivity - onStop")
+        Log.w(TAG, "MainActivity - onStop : ${mContext.resources.configuration.densityDpi}")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.w(TAG, "MainActivity - onDestroy")
-    }
-
-    override fun onConfigurationChanged(newConfig: Configuration) {
-        super.onConfigurationChanged(newConfig)
-        Log.d(TAG, "new Config in MainActivity : ${newConfig.densityDpi}")
+        Log.w(TAG, "MainActivity - onDestroy : ${mContext.resources.configuration.densityDpi}")
     }
 
     override fun onClick(v: View?) {

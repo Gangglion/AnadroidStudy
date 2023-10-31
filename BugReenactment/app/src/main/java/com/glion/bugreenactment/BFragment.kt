@@ -3,6 +3,7 @@ package com.glion.bugreenactment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -27,11 +28,11 @@ class BFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_b, container, false)
+        Log.d((activity as MainActivity).TAG, "BFragment configuration : ${mContext.resources.configuration.densityDpi}")
 
         view.findViewById<AppCompatButton>(R.id.btn_movie).apply{
             setOnClickListener {
-                startActivity(Intent(mContext, LandscapeActivity::class.java))
-//                (activity as MainActivity).finish()
+                startActivity(Intent(mContext, VideoActivity::class.java))
             }
         }
         return view
