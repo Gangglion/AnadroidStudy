@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.NotFixDPBug" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/royal_blue_50</item>
+        <item name="colorPrimaryVariant">@color/royal_blue_50</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/royal_blue_50</item>
+        <item name="colorSecondaryVariant">@color/royal_blue_50</item>
+        <item name="colorOnSecondary">@color/royal_blue_50</item>
+
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="Theme.NotFixDPBug" parent="Base.Theme.NotFixDPBug" />
+
+    <style name="Theme.FullScreenTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:ignore="NewApi">shortEdges</item>
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+</resources>
