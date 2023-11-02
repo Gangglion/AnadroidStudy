@@ -28,7 +28,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     // MEMO : deprecated 된 부분 수정할 수 있는 방법
-//    override fun attachBaseContext(newBase: Context?) {
-//        super.attachBaseContext(FixConfiguration.wrap(newBase!!))
-//    }
+/*    override fun attachBaseContext(newBase: Context?) {
+        super.attachBaseContext(FixConfiguration.wrap(newBase!!))
+    }*/
 }

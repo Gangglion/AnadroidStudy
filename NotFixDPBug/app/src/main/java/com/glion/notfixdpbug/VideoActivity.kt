@@ -87,6 +87,11 @@ class VideoActivity : BaseActivity() {
         Log.v(TAG, "VideoActivity - onCreate : ${resources.configuration.densityDpi}")
     }
 
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        Log.d("shhan", "VideoActivity onConfigurationChanged : ${resources.configuration.densityDpi}")
+    }
+
     override fun onBackPressed() {
         exitVideo()
     }

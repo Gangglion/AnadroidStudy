@@ -50,7 +50,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun onStop() {
-        Log.w(TAG, "MainActivity - onStop : ${resources.configuration.densityDpi}")
         super.onStop()
         Log.w(TAG, "MainActivity - onStop : ${resources.configuration.densityDpi}")
     }
