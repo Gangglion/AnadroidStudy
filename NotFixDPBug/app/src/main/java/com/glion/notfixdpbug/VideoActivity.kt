@@ -64,11 +64,11 @@ class VideoActivity : BaseActivity() {
                 when(playbackState){
                     2 ->{ // 버퍼링
                         Log.d(TAG, "playbackState : $playbackState")
-                        Log.d(TAG, "$playbackState : ${mContext.resources.configuration.densityDpi}")
+                        Log.d(TAG, "$playbackState : ${resources.configuration.densityDpi}")
                     }
                     3 ->{ // Ready
                         Log.d(TAG, "playbackState : $playbackState")
-                        Log.d(TAG, "$playbackState : ${mContext.resources.configuration.densityDpi}")
+                        Log.d(TAG, "$playbackState : ${resources.configuration.densityDpi}")
                     }
                 }
                 if(!mPlayer.playWhenReady){
@@ -84,7 +84,11 @@ class VideoActivity : BaseActivity() {
         val thread = InsteadNetworkThread()
         thread.start()
 
-        Log.v(TAG, "VideoActivity - onCreate : ${mContext.resources.configuration.densityDpi}")
+        Log.v(TAG, "VideoActivity - onCreate : ${resources.configuration.densityDpi}")
+    }
+
+    override fun onBackPressed() {
+        exitVideo()
     }
 
     private fun playVideo(){
@@ -103,7 +107,7 @@ class VideoActivity : BaseActivity() {
     }
 
     private fun onProgress(){
-        Log.d(TAG, "ExoPlayer State onProgress : ${mContext.resources.configuration.densityDpi}")
+        Log.d(TAG, "ExoPlayer State onProgress : ${resources.configuration.densityDpi}")
         val player = mPlayer
         mHandler.removeCallbacks(updateProgressAction)
         val playbackState = player.playbackState
@@ -122,13 +126,13 @@ class VideoActivity : BaseActivity() {
 
     override fun onStart() {
         super.onStart()
-        Log.v(TAG, "VideoActivity - onStart : ${mContext.resources.configuration.densityDpi}")
+        Log.v(TAG, "VideoActivity - onStart : ${resources.configuration.densityDpi}")
     }
 
     override fun onResume() {
         super.onResume()
         if(mIsPlaying){
-            Log.d(TAG, "VideoActivity - onCreate : ${mContext.resources.configuration.densityDpi}")
+            Log.d(TAG, "VideoActivity - onCreate : ${resources.configuration.densityDpi}")
             mPlayer.prepare()
             mPlayer.play()
         }
@@ -136,19 +140,19 @@ class VideoActivity : BaseActivity() {
 
     override fun onPause() {
         super.onPause()
-        Log.v(TAG, "VideoActivity - onPause : ${mContext.resources.configuration.densityDpi}")
+        Log.v(TAG, "VideoActivity - onPause : ${resources.configuration.densityDpi}")
     }
 
     override fun onStop() {
         super.onStop()
-        Log.v(TAG, "VideoActivity - onStop : ${mContext.resources.configuration.densityDpi}")
+        Log.v(TAG, "VideoActivity - onStop : ${resources.configuration.densityDpi}")
     }
 
     override fun onDestroy() {
         super.onDestroy()
         mPlayer.release()
         mHandler.removeCallbacks(updateProgressAction)
-        Log.v(TAG, "VideoActivity - onDestroy : ${mContext.resources.configuration.densityDpi}")
+        Log.v(TAG, "VideoActivity - onDestroy : ${resources.configuration.densityDpi}")
     }
     private fun setFullScreen(){
         supportActionBar?.hide()
@@ -169,6 +173,16 @@ class VideoActivity : BaseActivity() {
     private fun setDefaultScreen(){
         supportActionBar?.show()
         setTheme(R.style.Theme_NotFixDPBug)
+    }
+
+    private fun exitVideo(){
+        DialogTextOneButton(mContext, object : DialogTextOneButton.OnConfirmClick{
+            override fun clickConfirm() {
+                mPlayer.stop()
+                mHandler.removeCallbacks(updateProgressAction)
+                finish()
+            }
+        }).show()
     }
 
     inner class InsteadNetworkThread: Thread(){

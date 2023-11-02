@@ -29,34 +29,35 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_b).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_c).setOnClickListener(this)
 
-        Log.w(TAG, "MainActivity - onCreate : ${mContext.resources.configuration.densityDpi}")
+        Log.w(TAG, "MainActivity - onCreate : ${resources.configuration.densityDpi}")
 
         changeFragment(B)
     }
 
     override fun onStart() {
         super.onStart()
-        Log.w(TAG, "MainActivity - onStart : ${mContext.resources.configuration.densityDpi}")
+        Log.w(TAG, "MainActivity - onStart : ${resources.configuration.densityDpi}")
     }
 
     override fun onResume() {
         super.onResume()
-        Log.w(TAG, "MainActivity - onResume : ${mContext.resources.configuration.densityDpi}")
+        Log.w(TAG, "MainActivity - onResume : ${resources.configuration.densityDpi}")
     }
 
     override fun onPause() {
         super.onPause()
-        Log.w(TAG, "MainActivity - onPause : ${mContext.resources.configuration.densityDpi}")
+        Log.w(TAG, "MainActivity - onPause : ${resources.configuration.densityDpi}")
     }
 
     override fun onStop() {
+        Log.w(TAG, "MainActivity - onStop : ${resources.configuration.densityDpi}")
         super.onStop()
-        Log.w(TAG, "MainActivity - onStop : ${mContext.resources.configuration.densityDpi}")
+        Log.w(TAG, "MainActivity - onStop : ${resources.configuration.densityDpi}")
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.w(TAG, "MainActivity - onDestroy : ${mContext.resources.configuration.densityDpi}")
+        Log.w(TAG, "MainActivity - onDestroy : ${resources.configuration.densityDpi}")
     }
 
     override fun onClick(v: View?) {
