@@ -185,11 +185,11 @@
                     app:layout_constraintTop_toBottomOf="@+id/btn_webview" />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_webtoon"
+                    android:id="@+id/btn_bluetooth"
                     android:layout_width="0dp"
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
-                    android:text="@string/webtoon"
+                    android:text="@string/bluetooth"
                     app:layout_constraintEnd_toEndOf="@+id/btn_voice"
                     app:layout_constraintStart_toStartOf="@+id/btn_voice"
                     app:layout_constraintTop_toBottomOf="@+id/btn_voice" />
@@ -220,9 +220,9 @@
                     android:layout_height="50dp"
                     android:layout_marginTop="15dp"
                     android:text="@string/viewmodel"
-                    app:layout_constraintEnd_toEndOf="@+id/btn_webtoon"
-                    app:layout_constraintStart_toStartOf="@+id/btn_webtoon"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_webtoon" />
+                    app:layout_constraintEnd_toEndOf="@+id/btn_bluetooth"
+                    app:layout_constraintStart_toStartOf="@+id/btn_bluetooth"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_bluetooth" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/btn_saveinstance"

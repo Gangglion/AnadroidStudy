@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_bluetooth"
+        android:title="Bluetooth"
+        android:icon="@drawable/icon_bluetooth"
+        android:checked="true"/>
+    <item android:id="@+id/menu_ble"
+        android:title="BLE"
+        android:icon="@drawable/icon_ble"/>
+</menu>

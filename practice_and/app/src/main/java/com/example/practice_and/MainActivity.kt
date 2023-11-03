@@ -19,7 +19,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.example.practice_and.calendar.CalendarActivity
-import com.example.practice_and.copywebtoon.CopyWebtoonActivity
+import com.example.practice_and.bluetooth.BluetoothActivity
 import com.example.practice_and.inflate.InflateActivity
 import com.example.practice_and.linechart_prac.LineChartActivity
 import com.example.practice_and.listview.ListViewActivity
@@ -29,7 +29,7 @@ import com.example.practice_and.webview.WebviewActivity
 import com.example.practice_and.googlefitness.FitnessFragment
 import com.example.practice_and.hidekeyboard.InputProcessFragment
 import com.example.practice_and.null_safety.NullSafetyActivity
-import com.example.practice_and.thread.ThreadFragment
+import com.example.practice_and.asynchronism.ThreadFragment
 import com.example.practice_and.pedometer_and_chart.StepActivity
 import com.example.practice_and.qrzxing.QrZxingActivity
 import com.example.practice_and.recorder.RecorderActivity
@@ -101,7 +101,7 @@ class MainActivity : BaseActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_linechart).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_fitness).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_input).setOnClickListener(this)
-        findViewById<AppCompatButton>(R.id.btn_webtoon).setOnClickListener(this)
+        findViewById<AppCompatButton>(R.id.btn_bluetooth).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_async).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_inflate).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_viewmodel).setOnClickListener(this)
@@ -198,8 +198,8 @@ class MainActivity : BaseActivity(), OnClickListener {
                 val fragment = InputProcessFragment()
                 supportFragmentManager.beginTransaction().replace(R.id.frag_view, fragment).commit()
             }
-            R.id.btn_webtoon ->{
-                startActivity(Intent(mContext, CopyWebtoonActivity::class.java))
+            R.id.btn_bluetooth ->{
+                startActivity(Intent(mContext, BluetoothActivity::class.java))
             }
             R.id.btn_async ->{
                 mActivityArea.visibility = GONE

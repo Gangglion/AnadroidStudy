@@ -1,4 +1,4 @@
-package com.example.practice_and.thread
+package com.example.practice_and.asynchronism
 
 import android.os.Bundle
 import android.util.Log
