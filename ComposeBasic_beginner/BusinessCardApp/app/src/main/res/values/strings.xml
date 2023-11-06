@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Business Card App</string>
+    <string name="user_name">SeungHyeob Han</string>
+    <string name="explain">Android Developer Extraordinaire</string>
+    <string name="phone_num">010\-7328\-8841</string>
+    <string name="share">\@AndroidDev</string>
+    <string name="email">tmdguq0628@naver.com</string>
+</resources>
