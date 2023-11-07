@@ -48,13 +48,15 @@ fun MainLogo(modifier: Modifier = Modifier) {
     Column(
         modifier
             .fillMaxSize()
-            .background(Color(0xFF00283F))
+            .background(Color(0xFF00283F)),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Row(Modifier.weight(0.7f)) {
+        Row(modifier.weight(0.7f)) {
             TopCard(
                 painterResource(id = R.drawable.android_logo),
                 stringResource(id = R.string.user_name),
                 stringResource(id = R.string.explain),
+                modifier = modifier
             )
         }
         Row(
@@ -90,17 +92,17 @@ fun TopCard(
     modifier: Modifier = Modifier
 ) {
     Column(
-        Modifier.fillMaxSize(),
+        modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        Image(painter = image, contentDescription = null, Modifier.height(100.dp).width(150.dp))
+        Image(painter = image, contentDescription = null, modifier.height(100.dp).width(150.dp))
         Text(name, color = Color.White, fontSize = 40.sp)
         Text(
             explain,
             color = Color(0xFF3ddc84),
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(10.dp)
+            modifier = modifier.padding(10.dp)
         )
     }
 }
@@ -112,7 +114,7 @@ fun BottomCard(
     modifier: Modifier = Modifier
 ) {
     Column{
-        Divider(modifier = Modifier.fillMaxWidth(), thickness = 2.dp, color = Color(0xFF526E7B))
+        Divider(modifier = modifier.fillMaxWidth(), thickness = 2.dp, color = Color(0xFF526E7B))
         Row(
             Modifier.padding(start = 40.dp ,top=5.dp, bottom = 5.dp),
         ) {
