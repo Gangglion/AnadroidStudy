@@ -25,6 +25,7 @@ android {
   compileSdk = libs.versions.compileSdk.get().toInt()
   buildFeatures {
     dataBinding = true
+    buildConfig = true
   }
   defaultConfig {
     applicationId = "com.google.samples.apps.sunflower"
