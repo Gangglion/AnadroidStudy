@@ -8,6 +8,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
+import androidx.annotation.VisibleForTesting
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -179,7 +180,8 @@ fun RoundSwitchRow(
 }
 
 // MEMO : 팁 금액을 표시하는 함수 - 지불한 금액에 15퍼센트만큼이 팁으로 지정됨
-private fun calculateTip(amount: Double, tipPercent: Double = 15.0, isRoundUp: Boolean): String {
+@VisibleForTesting // MEMO : calculateTip 메서드가 같은 모듈에서는 공개되지만, @VisibleForTesting 을 추가하여 테스트목적으로 공개됨을 알림
+internal fun calculateTip(amount: Double, tipPercent: Double = 15.0, isRoundUp: Boolean): String {
     var tip = tipPercent / 100 * amount
     if(isRoundUp) tip = kotlin.math.ceil(tip)
     return NumberFormat.getCurrencyInstance(Locale.US).format(tip) // MEMO : NumberFormat 형식으로 팁 형식을 통화로 표시한다.
