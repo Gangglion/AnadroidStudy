@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lemonade</string>
+
+    <string name="lemon_step_1">Tap the lemon three to select a lemon</string>
+    <string name="lemon_step_2">Keep tapping the lemon the squeeze it</string>
+    <string name="lemon_step_3">Tap the lemonade to drink it</string>
+    <string name="lemon_step_4">Tap the empty glass to start again</string>
+</resources>
