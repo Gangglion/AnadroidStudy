@@ -3,4 +3,7 @@
 
     <string name="previous">Previous</string>
     <string name="next">Next</string>
+
+    <string name="title_temp">Arkwork Title</string>
+    <string name="artist_temp">Arkwork Artist (Year)</string>
 </resources>
