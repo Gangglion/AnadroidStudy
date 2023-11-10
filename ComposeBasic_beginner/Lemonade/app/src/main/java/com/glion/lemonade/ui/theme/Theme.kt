@@ -59,8 +59,9 @@ fun LemonadeTheme(
         SideEffect {
             val window = (view.context as Activity).window
 //            window.statusBarColor = colorScheme.primary.toArgb() // 원래 코드
-            window.statusBarColor = Color.YELLOW
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            window.statusBarColor = Yellow.toArgb()
+            // MEMO : true면 다크모드이므로 statusBar의 기본 아이콘들을 어둡게함. 원래는 위의 darkTheme 를 사용하여 모드에 따라 변경되게 하지만, 여기서는 강제적으로 true값을 주어 어둡게 함
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = true
         }
     }
 
