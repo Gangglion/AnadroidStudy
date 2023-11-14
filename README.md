@@ -7,8 +7,8 @@
 <h3>MVVMActivity - MVVM패턴 이해를 위한 예제 프로젝트</h3>
 
 <h3>Android developer Training (교육과정 - 초보자용) - ComposeBasic_beginner</h3>
-<h4>https://developer.android.com/courses 훈련 코스 ReadMe 정리 - 각 프로젝트 주석 참고</h4>
-[README 바로가기](https://github.com/Gangglion/AndroidStudy/tree/main/ComposeBasic_beginner/)
+<h4>[바로가기](https://developer.android.com/courses/android-basics-compose/course?hl=ko) 훈련 코스 ReadMe 정리 - 각 프로젝트 주석 참고</h4>
+[README](https://github.com/Gangglion/AndroidStudy/blob/main/ComposeBasic_beginner/README.md)
 
 <h3>Android developer Training (교육과정 - 중급자용)</h3>
 <h4>https://developer.android.com/courses 훈련 코스 중 중급자용</h4>
