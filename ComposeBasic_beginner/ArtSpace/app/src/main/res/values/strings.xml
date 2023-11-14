@@ -6,4 +6,19 @@
 
     <string name="title_temp">Arkwork Title</string>
     <string name="artist_temp">Arkwork Artist (Year)</string>
+
+    <string name = "title_1">Iron Man1</string>
+    <string name = "title_2">Iron Man2</string>
+    <string name = "title_3">Iron Man3</string>
+    <string name = "title_4">Avengers</string>
+
+    <string name = "artist_1">Robert Downey Jr.</string>
+    <string name = "artist_2">Robert Downey Jr.</string>
+    <string name = "artist_3">Robert Downey Jr.</string>
+    <string name = "artist_4">Robert Downey Jr.</string>
+
+    <string name = "year1">(2008)</string>
+    <string name = "year2">(2010)</string>
+    <string name = "year3">(2013)</string>
+    <string name = "year4">(2012)</string>
 </resources>
