@@ -268,7 +268,7 @@ Column 컴포저블은 화면 가로 전체를 차지하게끔 Modifier.fillMaxW
       <br><b>wrapContentHeight</b> == android:layout_height="wrap_content"
       <br><b>wrapContentSize</b> == android:layout_width="wrap_content"; android:layout_height="wrap_content"
 * Alignment / Arrangement : Column, Row, Box 등의 인자로 verticalAlignment, verticalArrangement, horizontalAlignment, horizontalArrangement 값에 들어가 하위 요소를 정렬한다.<br>
-<br>[참고링크]https://nosorae.tistory.com/entry/AndroidCompose-%ED%97%B7%EA%B0%88%EB%A0%A4%EC%84%9C-%EB%94%B1-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-Compose-%EC%A0%95%EB%A0%ACAlignment%EA%B3%BC-%EB%B0%B0%EC%B9%98Arrangement#google_vignette<br>
+<br>[참고링크](https://nosorae.tistory.com/entry/AndroidCompose-%ED%97%B7%EA%B0%88%EB%A0%A4%EC%84%9C-%EB%94%B1-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-Compose-%EC%A0%95%EB%A0%ACAlignment%EA%B3%BC-%EB%B0%B0%EC%B9%98Arrangement#google_vignette)<br>
     - Alignment : 레이아웃 내에서의 수직 방향 정렬 방식, Modifier.align 을 추가하여 하위 요소의 동작을 따로따로 재정의 할 수 있음
         - Column 에서 Alignment : Start, CenterHorizontally, End
         - Row 에서 Alignment : Top, CenterVertically, Bottom
