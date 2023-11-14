@@ -8,10 +8,10 @@
 
 <h3>Android developer Training (교육과정 - 초보자용) - ComposeBasic_beginner</h3>
 <h4>https://developer.android.com/courses 훈련 코스 중 초보자용</h4>
-  1. [GreetingCard](https://github.com/Gangglion/AndroidStudy/tree/main/GreetingCard) - Jetpack Compose 사용시 알아야 하는 Android 기본 사향 실습 프로젝트(첫번째 Android 앱 만들기)</br>
-  2. [HappyBirthday](https://github.com/Gangglion/AndroidStudy/tree/main/HappyBirthday) - Jetpack Compose 사용시 알아야 하는 Android 기본 사향 실습 프로젝트(생일카드 앱 만들기)</br>
-  3. [ComposePractice](https://github.com/Gangglion/AndroidStudy/tree/main/ComposePractice) - Jetpack Compose 사용시 알아야 하는 Android 기본 사항 실습의 기본 레이아웃 만들기 과정. Compose 기본사항에 대한 3가지 예제 풀이한 프로젝트</br>
-  4. [BusinessCardApp](https://github.com/Gangglion/AndroidStudy/tree/main/BusinessCardApp) - 명함 앱 만들기 프로젝트 실습</br>
+  1. [GreetingCard](https://github.com/Gangglion/AndroidStudy/tree/main/ComposeBasic_beginner/GreetingCard) - Jetpack Compose 사용시 알아야 하는 Android 기본 사향 실습 프로젝트(첫번째 Android 앱 만들기)</br>
+  2. [HappyBirthday](https://github.com/Gangglion/AndroidStudy/tree/main/ComposeBasic_beginner/HappyBirthday) - Jetpack Compose 사용시 알아야 하는 Android 기본 사향 실습 프로젝트(생일카드 앱 만들기)</br>
+  3. [ComposePractice](https://github.com/Gangglion/AndroidStudy/tree/main/ComposeBasic_beginner/ComposePractice) - Jetpack Compose 사용시 알아야 하는 Android 기본 사항 실습의 기본 레이아웃 만들기 과정. Compose 기본사항에 대한 3가지 예제 풀이한 프로젝트</br>
+  4. [BusinessCardApp](https://github.com/Gangglion/AndroidStudy/tree/main/ComposeBasic_beginner/BusinessCardApp) - 명함 앱 만들기 프로젝트 실습</br>
 
 <h3>Android developer Training (교육과정 - 중급자용)</h3>
 <h4>https://developer.android.com/courses 훈련 코스 중 중급자용</h4>
