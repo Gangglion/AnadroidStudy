@@ -1,7 +1,10 @@
 package com.glion.artspace
 
+import androidx.annotation.VisibleForTesting
+
 // MEMO : MainActivity의 ArtSpaceLayout의 step 에 따라 다른 resource 리턴해주는 함수 모음
-class Utility {
+@VisibleForTesting
+internal class Utility {
     fun getImageResource(step: Int): Int{
         return when(step){
             0 -> R.drawable.iron_man_1

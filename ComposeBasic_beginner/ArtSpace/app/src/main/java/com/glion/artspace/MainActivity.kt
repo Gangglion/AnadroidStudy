@@ -32,8 +32,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.SemanticsPropertyKey
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -43,11 +47,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.glion.artspace.ui.theme.ArtSpaceTheme
 
-private lateinit var utility: Utility
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        utility = Utility() // MEMO : Utility 객체 초기화
         setContent { // MEMO : 앱 시작점
             ArtSpaceTheme { // MEMO : ui/theme/Theme.kt 에 정의된 스타일을 따르는 ArtSpaceLayout() 컴포저블 생성. ArtSpaceTheme 는 패키지명+Theme 로 자동생성됨
                 ArtSpaceLayout()
@@ -58,6 +60,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceLayout(modifier: Modifier = Modifier) { // MEMO : modifier 가 인자로 안들어오면 기본 Modifier사용
+    val utility = Utility()
     var step: Int by remember { mutableStateOf(0) } // MEMO : 상태 저장 변수. remember로 저장되어 recomposable 시에도 값이 유지됨. mutableStateOf 로 변경가능한 값을 지정하고, 추적/관찰할 수 있음
     Column(
         modifier = modifier
@@ -113,12 +116,14 @@ fun PosterArea( // MEMO : 이미지영역에 대한 Composable 함수
             )
             .shadow(8.dp) // MEMO : Surface의 그림자를 지정함.
     ){
+        val drawableId = SemanticsPropertyKey<Int>("DrawableResId")
         Image(
             painter = painterResource(id = image),
             contentScale = ContentScale.FillHeight, // MEMO : 이미지의 크기 조절. 세로로 꽉 차게끔 지정함.
             contentDescription = null,
             modifier = Modifier // MEMO : 이미지의 padding 지정. 굳이 넣어준 이유는, surface의 border 영역만큼 이미지가 잘리기 때문에, border 영역만큼 떨어뜨려서 이미지를 그리기 위함
                 .padding(40.dp)
+                .testTag("posterImg")
         )
     }
 }
@@ -138,7 +143,8 @@ fun InfoArea(
         Text(
             text = stringResource(id = info.title),
             textAlign = TextAlign.Center,
-            style = MaterialTheme.typography.bodyLarge // MEMO : MaterialTheme.typography 의 글자스타일 중, 원하는 것을 사용함. ui/Type.kt 에서 오버라이딩 해서 재구성 가능
+            style = MaterialTheme.typography.bodyLarge, // MEMO : MaterialTheme.typography 의 글자스타일 중, 원하는 것을 사용함. ui/Type.kt 에서 오버라이딩 해서 재구성 가능
+            modifier = modifier.testTag("title")
         )
         Text(
             text = buildAnnotatedString { // MEMO : 1개의 Text에 원하는 글자에만 스타일을 적용할 수 있음. 사용법은 아래와 같음
@@ -149,7 +155,8 @@ fun InfoArea(
                 }
                 append(stringResource(id = info.year)) // MEMO : withStyle구문 바깥에서 원래 스타일대로 지정될 Text를 Append 함
             },
-            style = MaterialTheme.typography.bodyMedium // MEMO : 전체(InfoArea의) 글자 스타일 지정
+            style = MaterialTheme.typography.bodyMedium, // MEMO : 전체(InfoArea의) 글자 스타일 지정
+            modifier = modifier.testTag("artist")
         )
     }
 }
@@ -199,7 +206,6 @@ fun ControllerArea(
 )
 @Composable
 fun GreetingPreview() {
-    utility = Utility()
     ArtSpaceTheme {
         ArtSpaceLayout()
     }
