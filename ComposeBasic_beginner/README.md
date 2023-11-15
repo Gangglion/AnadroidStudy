@@ -251,7 +251,7 @@ Column 컴포저블은 화면 가로 전체를 차지하게끔 Modifier.fillMaxW
 # Compose 사용시 알아야 하는 Android 기본 사항 ( 4 )
 
 ## 단원 2 정리
-이 파트는 단원 1의 BusinessCardApp과 단원 2의 내용을 학습하고 정리하는 부분임.<br><br>
+### 이 파트는 단원 1의 BusinessCardApp과 단원 2의 내용을 학습하고 정리하는 부분임.<br><br>
 * Android Compose 의 기본 Layout - Column, Row, Box, BoxWithConstraints
 * Modifier
     - 역할 : Composable의 크기, 레이아웃, 동작, 모양 변경, 접근성 라벨과 같은 정보추가, 사용자 입력 처리, 클릭, 스크롤, 드래그, 확대, 축소 등 높은 수준의 상호작용을 추가
@@ -268,7 +268,7 @@ Column 컴포저블은 화면 가로 전체를 차지하게끔 Modifier.fillMaxW
       <br><b>wrapContentHeight</b> == android:layout_height="wrap_content"
       <br><b>wrapContentSize</b> == android:layout_width="wrap_content"; android:layout_height="wrap_content"
 * Alignment / Arrangement : Column, Row, Box 등의 인자로 verticalAlignment, verticalArrangement, horizontalAlignment, horizontalArrangement 값에 들어가 하위 요소를 정렬한다.<br>
-<br>[참고링크](https://nosorae.tistory.com/entry/AndroidCompose-%ED%97%B7%EA%B0%88%EB%A0%A4%EC%84%9C-%EB%94%B1-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-Compose-%EC%A0%95%EB%A0%ACAlignment%EA%B3%BC-%EB%B0%B0%EC%B9%98Arrangement#google_vignette)<br>
+[참고링크](https://nosorae.tistory.com/entry/AndroidCompose-%ED%97%B7%EA%B0%88%EB%A0%A4%EC%84%9C-%EB%94%B1-%EC%A0%95%EB%A6%AC%ED%95%98%EB%8A%94-Compose-%EC%A0%95%EB%A0%ACAlignment%EA%B3%BC-%EB%B0%B0%EC%B9%98Arrangement#google_vignette)<br>
     - Alignment : 레이아웃 내에서의 수직 방향 정렬 방식, Modifier.align 을 추가하여 하위 요소의 동작을 따로따로 재정의 할 수 있음
         - Column 에서 Alignment : Start, CenterHorizontally, End
         - Row 에서 Alignment : Top, CenterVertically, Bottom
@@ -278,3 +278,9 @@ Column 컴포저블은 화면 가로 전체를 차지하게끔 Modifier.fillMaxW
         - Column 에서 Arrangement : Equal Weight, Space Between, Space Around, Space Evenly, Top, Center, Botton
         - spaceBy() : 하위 Composable 간의 간격 설정 가능.
 * Composable 은 UI 구성요소를 위에서부터 작성된대로 순차적으로 배치한다. 만약 Text(...); Button(...); TextField(...) 라면 작성된 순서대로 배치된다.
+* @Composable 함수의 표기법은 파스칼케이스(대문자 시작, 단어 시작마다 대문자), 명사구로 한다.
+* 선언형 UI - UI 의 모양을 코드로 나타낸 것으로서 개발자가 UI 동작에 대해 선언함으로서 정확하게 통제할 수 있다.
+    - Compose는 initial composition 을 통해 생성되고 recomposition 을 통해 업데이트 된다.
+    - 업데이트를 위해 추적할 상태를 알아야 하고, 이는 State 또는 MutableState를 사용하여 
+
+
