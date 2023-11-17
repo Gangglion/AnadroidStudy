@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Woof</string>
+
+    <string name="koda">Koda</string>
+    <string name="lola">Lola</string>
+    <string name="frankie">Frankie</string>
+    <string name="nox">Nox</string>
+    <string name="faye">Faye</string>
+    <string name="bella">Bella</string>
+    <string name="moana">Moana</string>
+    <string name="tzeitel">Tzeitel</string>
+    <string name="leroy">Leroy</string>
+
+    <string name="dog_age">%d years old</string>
+
+    <string name="about">About:</string>
+    <string name="dog_hobby_1">Eating treats on the terrace</string>
+    <string name="dog_hobby_2">Barking at Daddy</string>
+    <string name="dog_hobby_3">Stealing socks</string>
+    <string name="dog_hobby_4">Meeting new animals</string>
+    <string name="dog_hobby_5">Digging in the garden</string>
+    <string name="dog_hobby_6">Chasing sea foam</string>
+    <string name="dog_hobby_7">Bothering her paw-rents</string>
+    <string name="dog_hobby_8">Sunbathing</string>
+    <string name="dog_hobby_9">Sleeping in dangerous places</string>
+</resources>
