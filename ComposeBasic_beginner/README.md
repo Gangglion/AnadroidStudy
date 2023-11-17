@@ -1,4 +1,9 @@
-# Compose 사용시 알아야 하는 Android 기본 사항 ( 1 )
+# 목차
+1. [단원 1 정리](#단원-1-정리)
+2. [단원 2 정리](#단원-2-정리)
+3. [단원 3 정리](#단원-3-정리)
+
+## 단원 1 정리
 
 ## Jetpack Compose 란?
 네이티브 Android UI를 빌드하기 위한 최신 도구 키트이다.
@@ -67,8 +72,6 @@ fun DefaultPreview() {
 - showBackground 매개변수가 true 로 설정되면 앱 미리보기에 배경이 추가된다.
 
 - 미리보기 위해서는 Composable 함수를 호출하여 UI를 그려야 하므로 @Composable 어노테이션을 추가한 모습을 확인할 수 있으며, `onCreate()` 함수와 마찬가지로 `GreetingCardTheme` 내부에 `Greeting()`이라는 Composable함수를 호출하는 모습을 볼 수 있다.
-
-# Compose 사용시 알아야 하는 Android 기본 사항 ( 2 )
 
 ## Jetpack Compose 에 대해 다시 짚고 넘어가자
 Jetpack Compose 는 Android에서 UI를 빌드하기 위해 사용하는 최신 툴킷이다. 적은 양의 코드, 강력한 도구 및 직관적은 Kotlin의 기능으로 UI 개발을 간소화하고, 가속화 시킨다.
@@ -153,8 +156,6 @@ px = dp * (dpi / 160)<br>
       <br><br>
       해당 코드에서는 `Column` 전체에 대해 수평으로 사용가능한 공간에서 수직기준 상단 정렬을 하였다.<br>
       또한, `Text` 에 top과 end에 16.dp만큼 패딩을 주었고, `Alignment.End`를 하여 text를 가로 끝에 붙이도록 정렬해준 모습이다.
-
-# Compose 사용시 알아야 하는 Android 기본 사항 ( 3 )
 
 ## 연습 : Compose 기본 사항
 
@@ -248,10 +249,8 @@ Column 컴포저블은 화면 가로 전체를 차지하게끔 Modifier.fillMaxW
 여기서 컨테이너란, jetpack compose에서 다른 구성요소를 보관하고 배열하는데 사용되는 레이아웃 구성요소이다. 컨테이너는 레이아웃 내에서 하위 구성요소의 위치 및 크기를 제어하는 역할을 한다.<br>
 우리가 알고있는 Column, Row, Box 등이 컨테이너이다. Composable은 @Composable 함수를 말하는 것이 아닌 Text, Image와 같은 UI요소를 의미한다.
 
-# Compose 사용시 알아야 하는 Android 기본 사항 ( 4 )
-
 ## 단원 2 정리
-### 이 파트는 단원 1의 BusinessCardApp과 단원 2의 내용을 학습하고 정리하는 부분임.<br><br>
+### 이 파트는 단원 2의 내용을 학습하고 정리하는 부분임.
 * #### Android Compose 의 기본 Layout - Column, Row, Box, BoxWithConstraints
 * #### Modifier
     - 역할 : Composable의 크기, 레이아웃, 동작, 모양 변경, 접근성 라벨과 같은 정보추가, 사용자 입력 처리, 클릭, 스크롤, 드래그, 확대, 축소 등 높은 수준의 상호작용을 추가
@@ -296,6 +295,107 @@ Column 컴포저블은 화면 가로 전체를 차지하게끔 Modifier.fillMaxW
         Row(modifier = modifier) // ImageLayout을 호출했을때 전달된 Modifier를 이용한다.
     }
     ```
+* #### 상태 호이스팅
+  * 컴포저블을 stateless 하게 만드는 것(stateless 컴포저블은 자체 상태를 저장하지 않는 컴포저블임)
+  * 상태가 없는 컴포저블(새 상태를 보유하거나 정의, 수정하지 않음)
+  * 호이스팅 - 컴포저블의 상태를 끌어올려 stateless로 만드는것.
+  * 구성요소를 stateless로 만들기 위해 상태를 호출자로 이동시키는 것을 말함
+    ```
+    // 상태 호이스팅 전 - TextField 예시
+    @Composable
+    fun TextFieldLayout(){
+        Column{
+            EditTextField(value = "Test")
+            Text(
+                text = inputValue, // 텍스트에 텍스트필드에서 입력한 값을 띄워주고 싶지만, EditTextField 내에 선언한 변수이므로 접근 불가능. 
+                // EditTextField 의 상태 호이스팅 필요
+                modifier = Modifier
+            )
+        }
+    }
+    
+    @Composable
+    fun EditTextField(
+        modifier: Modifier = Modifier
+    ){
+        var inputValue by remember { mutableStateOf("") }
+        TextField(
+            value = inputValue,
+            onValueChange = { inputValue = it } // 텍스트 상자에 텍스트를 입력할 때 트리거되는 람다 콜백 함수, 여기서는 입력된 값을 inputValue 에 저장한다.
+        )
+    }
+    
+    // 상태 호이스팅 했을떄(상태를 끌어올렸을때)
+    @Composable
+    fun TextFieldLayout(){
+        var inputValue by remember { mutableStateOf("") } // EditTextField에서 선언되 있던 상태를 호출자영역으로 올림
+        Column{
+            EditTextField(
+                value = inputValue,
+                onValueChange = { inputValue = it } // onValueChange 동작인 람다함수를 EditTextField 인자로 전달해줌
+            )
+            Text(
+                text = inputValue, // 기존에 접근할 수 없었던 inputValue가 TextFieldLayout 영역으로 올라왔기 때문에 접근 가능.
+                modifier = Modifier
+            )
+        }
+    }
+    
+    @Composable
+    fun EditTextField(
+        value: String, // TextField 의 value를 나타낼 값을 매개변수로 받음
+        onValueChange: (String) -> Unit, // onValueChange 에서 실행할 람다함수를 매개변수로 받음. String을 입력받고 아무것도 리턴하지 않는 람다함수를 받을 것임.
+        modifier: Modifier = Modifier
+    ){
+        TextField(
+            value = value,
+            onValueChange = onValueChange // EditTextField 는 매개변수로 받은 onValueChange를 실행하는, 상태에 따라 바뀌지않는 stateless가 됨
+            // onValueChange 에서 수행할 동작은 호출자에서 전달해주기 때문에, 여기서는 전달받은 동작만 수행하게 된다.
+        )
+    }
+    ```
+  * TextField 에서 KeyBoardOptions 클래스를 사용하여 키보드 유형을 설정할 수 있다. 또한 작업버튼(검색, 보내기, 다음으로 이동 등)을 설정할 수 있다.
+* #### 요약
+  * 앱의 State는 시간이 지남에 따라 변할 수 있는 값이다.
+  * 컴포지션은 Compose가 @Composable을 실행할 때 빌드한 UI에 관한 설명이다. Compose 앱은 구성가능한 함수(@Composable로 선언한 함수)를 호출하여 데이터를 UI 로 변환한다.
+  * 초기 컴포지션은 Compose 가 @Composable 함수를 처음 실행할 때 UI 가 생성된 것이다.
+  * 리컴포지션은 동일한 컴포저블을 다시 실행하여 데이터가 변경될 때 트리를 업데이트하는 프로세스이다.
+  * 상태 호이스팅이란 구성요소를 stateless 하게 만들기 위해 상태를 호출자로 이동하는 패턴을 말한다.
+* #### 자동테스트
+  * ##### [실습한 프로젝트의 테스트코드 바로가기](https://github.com/Gangglion/AndroidStudy/tree/main/ComposeBasic_beginner/Calculator/app/src)
+  * 수동테스트 - 사람이 직접 테스트함
+  * 자동테스트 - 소프트웨어에서 실행됨
+    * 로컬테스트 : 함수, 클래스, 속성을 테스트 할 수 있다. 코드를 테스트하여 제대로 작동하는지 확인한다.
+    * 계측테스트(UI 테스트) : 안드로이드 개발에서 UI 테스트에 속하며, 앱이나 앱의 일부를 실행하고, 사용자 상호작용을 시뮬레이션 한다.
+      실제 기기나 애뮬레이터에서 동작하며 테스트 APK 가 설치된다. API 버전별로 테스트도 가능하다.
+    * 테스트 디렉토리 구조는 Main 의 디렉토리 구조와 동일해야 한다.
+  * 로컬테스트 에 대해 좀더 자세히
+    * 로컬테스트에서는 테스트하려는 함수를 직접 호출하고, 인자와 리턴값을 비교하여 예상값과 일치하는지 확인한다.
+      이를 위해 실제 Main의 함수의 접근지정자를 변경해야 할 수도 있다. @VisibleForTesting 어노테이션을 붙여 테스트목적으로 공개됨을 알릴 수 있다.
+    * 로컬 테스트 작성은 메소드 형태로 작성하며 @Test 를 달아준다. 컴파일러가 테스트 메소드임을 인지할 수 있다.
+    * 일반 앱 메소드와 동일한 로직을 사용하지 않는다.
+    * 테스트는 특정 조건이 충족되었는지 확인하는데 사용되는 assertion 으로 끝난다. 이는 테스트메소드 앞에 assert가 있는 메소드 호출의 형태이다.\
+      ex) assertTrue()
+  * 계측테스트(UI 테스트) 에 대해 좀더 자세히
+    * 앱과 UI 의 실제 인스턴스를 테스트 하기 때문에 MainActivity의 onCreate메소드에서 콘텐츠를 설정하는 방식과 유사해야 한다.
+    * UI와 상호작용 하는 명령을 작성하여 UI를 통해 테스트 되도록 한다.
+      ``` 
+      @get:Rule
+      val composeTestRule = createComposeRule() // Compose로 빌드된 앱의 모든 계측테스트를 작성하기 전에 무조건 해야함. 이걸 사용해서 UI구성요소에 액세스 할 수 있다
+      
+      @Test // 컴파일러는 로컬테스트, 계측테스트에 동일한 @Test를 달아주어도, 어떤 테스트인지 인식한다.
+      fun exampleTest(){
+        cmposeTestRule.setContent {
+            ExampleTheme{ // 이 부분은 Main과 동일하게 작성해준다.
+                Surface(modifier = Modifier.fillMaxSize()){
+                    ExampleLayout()
+                }
+            }
+        }
+      }
+      ```
+      
+## 단원 3 정리
   
 
 
