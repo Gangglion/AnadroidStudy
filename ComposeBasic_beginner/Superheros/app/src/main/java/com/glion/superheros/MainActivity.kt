@@ -147,8 +147,21 @@ fun HeroInfo(
 
 @Preview
 @Composable
-fun PreviewHeroApp(){
-    SuperherosTheme {
+fun PreviewHeroAppLight(){
+    SuperherosTheme(darkTheme = false) {
+        // A surface container using the 'background' color from the theme
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            HeroApp()
+        }
+    }
+}
+@Preview
+@Composable
+fun PreviewHeroAppDark(){
+    SuperherosTheme(darkTheme = true) {
         // A surface container using the 'background' color from the theme
         Surface(
             modifier = Modifier.fillMaxSize(),
