@@ -15,8 +15,8 @@ val Cabin = FontFamily(
 val Typography = Typography(
     displayLarge = TextStyle(
         fontFamily = Cabin,
-        fontWeight = FontWeight.Bold,
-        fontSize = 24.sp
+        fontWeight = FontWeight.Normal,
+        fontSize = 30.sp
     ),
     titleSmall = TextStyle(
         fontFamily = FontFamily.Default,
@@ -27,5 +27,24 @@ val Typography = Typography(
         fontFamily = Cabin,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp
+    ),
+
+    // 솔루션에서 사용한 Typography
+    bodyLarge = TextStyle(
+        fontFamily = Cabin,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp,
+        lineHeight = 24.sp,
+        letterSpacing = 0.5.sp
+    ),
+    displayMedium = TextStyle(
+        fontFamily = Cabin,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
+    ),
+    displaySmall = TextStyle(
+        fontFamily = Cabin,
+        fontWeight = FontWeight.Bold,
+        fontSize = 20.sp
     )
 )
