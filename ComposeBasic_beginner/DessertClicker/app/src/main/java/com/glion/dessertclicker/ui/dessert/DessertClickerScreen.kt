@@ -61,7 +61,7 @@ fun DessertClickerApp(
         DessertClickerScreen(
             revenue = dessertUiState.revenue,
             dessertsSold = dessertUiState.dessertSold,
-            dessertImageId = dessertUiState.currentDessert.imageId,
+            dessertImageId = dessertUiState.imageRes,
             onDessertClicked = {
                 dessertClickerViewModel.clickDessertImage()
             },
