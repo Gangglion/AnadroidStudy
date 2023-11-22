@@ -33,6 +33,8 @@ import com.glion.cupcake.ui.theme.CupcakeTheme
 @Composable
 fun OrderSummaryScreen(
     orderUiState: OrderUiState,
+    onSendButtonClick: (String, String) -> Unit = { _,_ -> },
+    onCancelButtonClick: () -> Unit = {},
     modifier: Modifier = Modifier
 ){
     val resources = LocalContext.current.resources
@@ -90,13 +92,13 @@ fun OrderSummaryScreen(
             ) {
                 Button(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = {}
+                    onClick = { onSendButtonClick(newOrder, orderSummary) }
                 ) {
                     Text(stringResource(R.string.send))
                 }
                 OutlinedButton(
                     modifier = Modifier.fillMaxWidth(),
-                    onClick = {}
+                    onClick = onCancelButtonClick
                 ) {
                     Text(stringResource(R.string.cancel))
                 }
