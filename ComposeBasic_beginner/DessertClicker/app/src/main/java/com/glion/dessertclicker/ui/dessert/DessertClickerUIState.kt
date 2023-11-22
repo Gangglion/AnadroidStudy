@@ -10,6 +10,5 @@ data class DessertClickerUIState(
     val dessertIndex: Int = 0,
     val revenue: Int = 0,
     val dessertSold: Int = 0,
-    @DrawableRes val imageRes: Int = dessertList[dessertIndex].imageId,
-    val currentPrice: Int = dessertList[dessertIndex].price
+    @DrawableRes val imageRes: Int = dessertList[dessertIndex].imageId
 )

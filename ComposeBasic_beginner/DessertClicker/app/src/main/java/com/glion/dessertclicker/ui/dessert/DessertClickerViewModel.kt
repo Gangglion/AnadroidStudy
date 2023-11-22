@@ -78,13 +78,11 @@ class DessertClickerViewModel : ViewModel() {
     fun clickDessertImage(){
         _uiState.update { currentState-> // 상태 업데이트 해줌
             val updateIndex = determineDessertToShow(currentState.dessertSold)
-            Log.d("shhan", updateIndex.toString())
             currentState.copy(
                 dessertIndex = updateIndex,
-                revenue = currentState.revenue + currentState.currentPrice,
+                revenue = currentState.revenue + dessertList[currentState.dessertIndex].price,
                 dessertSold = currentState.dessertSold.inc(),
-                imageRes = dessertList[updateIndex].imageId,
-                currentPrice = dessertList[updateIndex].price
+                imageRes = dessertList[updateIndex].imageId
             )
         }
     }
