@@ -144,7 +144,7 @@ private fun cancelOrderAndNavigateToStart(
     navController: NavHostController
 ){
     viewModel.resetOrder()
-    navController.popBackStack(CupcakeScreen.Start.name, false)
+    navController.popBackStack(CupcakeScreen.Start.name, false) // MEMO : inclusive 가 true일 경우에는 지정한 route까지 모두 삭제하고, false 일 경우에는 route위의 경로를 제거하고 route를 최상단으로 둔다.
 }
 
 private fun shareOrder(context: Context, subject: String, summary: String){
