@@ -73,9 +73,9 @@ fun CupcakeAppBar(
 @Composable
 fun CupcakeApp(
     viewModel: OrderViewModel = OrderViewModel(),
-    mofieir: Modifier = Modifier
+    navController: NavHostController = rememberNavController(),
+    modifier: Modifier = Modifier
 ) {
-    val navController: NavHostController = rememberNavController()
     val backStackEntry by navController.currentBackStackEntryAsState()
 
     Scaffold(
