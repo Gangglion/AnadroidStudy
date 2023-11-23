@@ -126,7 +126,7 @@ fun OrderSubCost(
     )
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun CheckoutScreenPreview() {
     CheckoutScreen(

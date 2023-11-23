@@ -36,7 +36,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import com.glion.lunchtray.model.MenuItem
+import com.glion.lunchtray.model.MenuItem.EntreeItem
 import com.glion.lunchtray.R
 
 @Composable
@@ -74,7 +76,9 @@ fun BaseMenuScreen(
                 // Assert not null bc next button is not enabled unless selectedItem is not null.
                 onNextButtonClicked()
             },
-            modifier = Modifier.fillMaxWidth().padding(dimensionResource(R.dimen.padding_medium))
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(dimensionResource(R.dimen.padding_medium))
         )
     }
 }
@@ -140,5 +144,16 @@ fun MenuScreenButtonGroup(
             Text(stringResource(R.string.next).uppercase())
         }
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewBasicMenuScreen(){
+    val fakeEntreeMenuItem: List<EntreeItem> = listOf(
+        EntreeItem("Example1", "example1", 1.00),
+        EntreeItem("Example2", "example2", 2.00),
+        EntreeItem("Example3", "example3", 3.00),
+    )
+    BaseMenuScreen(options = fakeEntreeMenuItem, onSelectionChanged = {})
 }
 
