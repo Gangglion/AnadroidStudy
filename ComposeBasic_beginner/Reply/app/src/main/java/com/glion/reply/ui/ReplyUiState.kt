@@ -23,7 +23,7 @@ data class ReplyUiState(
     val mailboxes: Map<MailboxType, List<Email>> = emptyMap(),
     val currentMailbox: MailboxType = MailboxType.Inbox,
     val currentSelectedEmail: Email = LocalEmailsDataProvider.defaultEmail,
-    val isShowingHomepage: Boolean = true
+    val isShowingHomepage: Boolean = true // 객체 상태임. 변경되면 ReplyHomeScreen 컴포저블 재구성
 ) {
     val currentMailboxEmails: List<Email> by lazy { mailboxes[currentMailbox]!! }
 }

@@ -1,5 +1,6 @@
 package com.glion.dessertclicker.ui.dessert
 
+import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -58,10 +59,11 @@ fun DessertClickerApp(
             )
         }
     ) { contentPadding ->
+        Log.d("shhan", "${dessertUiState.currentDessert} //  ${dessertUiState.currentIndex}")
         DessertClickerScreen(
             revenue = dessertUiState.revenue,
             dessertsSold = dessertUiState.dessertSold,
-            dessertImageId = dessertUiState.imageRes,
+            dessertImageId = dessertUiState.currentDessert.imageId,
             onDessertClicked = {
                 dessertClickerViewModel.clickDessertImage()
             },

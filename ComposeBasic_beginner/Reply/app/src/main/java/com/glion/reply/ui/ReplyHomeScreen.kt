@@ -83,6 +83,22 @@ fun ReplyHomeScreen(
             text = stringResource(id = R.string.tab_spam)
         )
     )
+    // isShowingHomepage 는 객체 상태이므로, 변경되면 컴포저블을 다시 그린다. flag에 따라 화면을 다시 그리게 하였으므로 NavHost없이 화면 전환이 가능하지만, 백스택에 저장이 안되므로 뒤로버튼을 수동으로 처리해야한다.
+    if(replyUiState.isShowingHomepage){ // 사용자가 홈 화면일때 ReplyAppContent를 그림
+        ReplyAppContent(
+            replyUiState = replyUiState,
+            onTabPressed = onTabPressed,
+            onEmailCardPressed = onEmailCardPressed,
+            navigationItemContentList = navigationItemContentList,
+            modifier = modifier
+        )
+    } else{ // 사용자가 홈 화면에 있지 않을때
+        ReplyDetailsScreen(
+            replyUiState = replyUiState,
+            onBackPressed = onDetailScreenBackPressed,
+            modifier = modifier
+        )
+    }
 }
 
 @Composable
@@ -110,7 +126,8 @@ private fun ReplyAppContent(
             ReplyListOnlyContent(
                 replyUiState = replyUiState,
                 onEmailCardPressed = onEmailCardPressed,
-                modifier = Modifier.weight(1f)
+                modifier = Modifier
+                    .weight(1f)
                     .padding(
                         horizontal = dimensionResource(R.dimen.email_list_only_horizontal_padding)
                     )

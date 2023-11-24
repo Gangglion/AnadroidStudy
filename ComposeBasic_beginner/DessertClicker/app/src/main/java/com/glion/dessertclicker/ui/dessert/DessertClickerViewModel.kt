@@ -5,15 +5,10 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModel
 import com.glion.dessertclicker.R
-import com.glion.dessertclicker.data.Datasource
 import com.glion.dessertclicker.data.Datasource.dessertList
-import com.glion.dessertclicker.model.Dessert
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -78,11 +73,12 @@ class DessertClickerViewModel : ViewModel() {
     fun clickDessertImage(){
         _uiState.update { currentState-> // 상태 업데이트 해줌
             val updateIndex = determineDessertToShow(currentState.dessertSold)
+            Log.d("shhan", updateIndex.toString())
             currentState.copy(
-                dessertIndex = updateIndex,
-                revenue = currentState.revenue + dessertList[currentState.dessertIndex].price,
+                currentIndex = updateIndex,
+                revenue = currentState.revenue + currentState.currentDessert.price,
                 dessertSold = currentState.dessertSold.inc(),
-                imageRes = dessertList[updateIndex].imageId
+                currentDessert = dessertList[updateIndex]
             )
         }
     }
