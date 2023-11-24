@@ -1,4 +1,4 @@
-package com.glion.dessertclicker.ui.dessert
+package com.glion.dessertclicker.data
 
 import com.glion.dessertclicker.data.Datasource.dessertList
 import com.glion.dessertclicker.model.Dessert

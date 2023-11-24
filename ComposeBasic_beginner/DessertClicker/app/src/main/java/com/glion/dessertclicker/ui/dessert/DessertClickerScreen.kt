@@ -33,15 +33,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.glion.dessertclicker.R
 import com.glion.dessertclicker.ui.theme.DessertClickerTheme
 
 @Composable
 fun DessertClickerApp(
-    dessertClickerViewModel: DessertClickerViewModel = DessertClickerViewModel()
+    dessertClickerViewModel: DessertClickerViewModel = viewModel()
 ) {
     val dessertUiState by dessertClickerViewModel.uiState.collectAsState()
-
     Scaffold(
         topBar = {
             val intentContext = LocalContext.current
@@ -59,7 +59,6 @@ fun DessertClickerApp(
             )
         }
     ) { contentPadding ->
-        Log.d("shhan", "${dessertUiState.currentDessert} //  ${dessertUiState.currentIndex}")
         DessertClickerScreen(
             revenue = dessertUiState.revenue,
             dessertsSold = dessertUiState.dessertSold,
