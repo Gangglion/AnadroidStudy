@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.glion.reply.data.Email
 import com.glion.reply.data.MailboxType
+import com.glion.reply.ui.util.ReplyContentType
 import com.glion.reply.ui.util.ReplyNavigationType
 
 @Composable
@@ -32,21 +33,28 @@ fun ReplyApp(
 ) {
     val viewModel: ReplyViewModel = viewModel()
     val replyUiState = viewModel.uiState.collectAsState().value
+    val navigationType: ReplyNavigationType
+    val contentType: ReplyContentType // 화면 크기에 따른 적절한 콘텐츠 유형을 설정하기 위해 받는 변수
     // MainActivity에서 전달받은 windowSize에 따라 다른 레이아웃 구성하기 위함
-    val navigationType = when(windowSize){
+    when(windowSize){
         WindowWidthSizeClass.Compact ->{ // 일반 핸드폰
-            ReplyNavigationType.BOTTOM_NAVIGATION
+            navigationType= ReplyNavigationType.BOTTOM_NAVIGATION
+            contentType = ReplyContentType.LIST_ONLY
         }
         WindowWidthSizeClass.Medium ->{ // 폴더블 확장
-            ReplyNavigationType.NAVIGATION_RAIL
+            navigationType = ReplyNavigationType.NAVIGATION_RAIL
+            contentType = ReplyContentType.LIST_ONLY
         }
         WindowWidthSizeClass.Expanded ->{ // 테블릿
-            ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER
+            navigationType = ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER
+            contentType = ReplyContentType.LIST_AND_DETAIL
         }
         else ->{
-            ReplyNavigationType.BOTTOM_NAVIGATION
+            navigationType = ReplyNavigationType.BOTTOM_NAVIGATION
+            contentType = ReplyContentType.LIST_ONLY
         }
     }
+
 
     ReplyHomeScreen(
         replyUiState = replyUiState,
@@ -63,6 +71,7 @@ fun ReplyApp(
             viewModel.resetHomeScreenStates()
         },
         navigationType = navigationType,
+        contentType = contentType,
         modifier = modifier
     )
 }
