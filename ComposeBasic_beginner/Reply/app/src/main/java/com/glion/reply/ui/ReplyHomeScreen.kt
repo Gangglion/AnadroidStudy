@@ -15,15 +15,19 @@
  */
 package com.glion.reply.ui
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Drafts
 import androidx.compose.material.icons.filled.Inbox
@@ -38,6 +42,8 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRail
 import androidx.compose.material3.NavigationRailItem
+import androidx.compose.material3.PermanentDrawerSheet
+import androidx.compose.material3.PermanentNavigationDrawer
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -52,6 +58,8 @@ import com.glion.reply.R
 import com.glion.reply.data.Email
 import com.glion.reply.data.MailboxType
 import com.glion.reply.data.local.LocalAccountsDataProvider
+import com.glion.reply.ui.util.ReplyNavigationType
+import java.lang.Thread.sleep
 
 @Composable
 fun ReplyHomeScreen(
@@ -59,6 +67,7 @@ fun ReplyHomeScreen(
     onTabPressed: (MailboxType) -> Unit,
     onEmailCardPressed: (Email) -> Unit,
     onDetailScreenBackPressed: () -> Unit,
+    navigationType: ReplyNavigationType,
     modifier: Modifier = Modifier
 ) {
     val navigationItemContentList = listOf(
@@ -83,21 +92,49 @@ fun ReplyHomeScreen(
             text = stringResource(id = R.string.tab_spam)
         )
     )
-    // isShowingHomepage 는 객체 상태이므로, 변경되면 컴포저블을 다시 그린다. flag에 따라 화면을 다시 그리게 하였으므로 NavHost없이 화면 전환이 가능하지만, 백스택에 저장이 안되므로 뒤로버튼을 수동으로 처리해야한다.
-    if(replyUiState.isShowingHomepage){ // 사용자가 홈 화면일때 ReplyAppContent를 그림
-        ReplyAppContent(
-            replyUiState = replyUiState,
-            onTabPressed = onTabPressed,
-            onEmailCardPressed = onEmailCardPressed,
-            navigationItemContentList = navigationItemContentList,
-            modifier = modifier
-        )
-    } else{ // 사용자가 홈 화면에 있지 않을때
-        ReplyDetailsScreen(
-            replyUiState = replyUiState,
-            onBackPressed = onDetailScreenBackPressed,
-            modifier = modifier
-        )
+    // MEMO : 대형화면일때의 조건 추가, 대형화면일때는 좌측에 고정된 Navigation 탐색창이 생성된다.
+    if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER && replyUiState.isShowingHomepage) {
+        PermanentNavigationDrawer(drawerContent = {
+            PermanentDrawerSheet(Modifier.width(dimensionResource(id = R.dimen.drawer_width))) {
+                NavigationDrawerContent(
+                    selectedDestination = replyUiState.currentMailbox,
+                    onTabPressed = onTabPressed,
+                    navigationItemContentList = navigationItemContentList,
+                    modifier = Modifier
+                        .wrapContentWidth()
+                        .fillMaxHeight()
+                        .background(MaterialTheme.colorScheme.inverseOnSurface)
+                        .padding(dimensionResource(R.dimen.drawer_padding_content))
+                )
+            }
+        }) {
+            ReplyAppContent(
+                replyUiState = replyUiState,
+                onTabPressed = onTabPressed,
+                onEmailCardPressed = onEmailCardPressed,
+                navigationItemContentList = navigationItemContentList,
+                navigationType = navigationType,
+                modifier = modifier
+            )
+        }
+    } else{ // MEMO : 대형화면이 아닐때 그리는 부분
+        // isShowingHomepage 는 객체 상태이므로, 변경되면 컴포저블을 다시 그린다. flag에 따라 화면을 다시 그리게 하였으므로 NavHost없이 화면 전환이 가능하지만, 백스택에 저장이 안되므로 뒤로버튼을 수동으로 처리해야한다.
+        if(replyUiState.isShowingHomepage){ // 사용자가 홈 화면일때 ReplyAppContent를 그림
+            ReplyAppContent(
+                replyUiState = replyUiState,
+                onTabPressed = onTabPressed,
+                onEmailCardPressed = onEmailCardPressed,
+                navigationItemContentList = navigationItemContentList,
+                navigationType = navigationType,
+                modifier = modifier
+            )
+        } else{ // 사용자가 홈 화면에 있지 않을때
+            ReplyDetailsScreen(
+                replyUiState = replyUiState,
+                onBackPressed = onDetailScreenBackPressed,
+                modifier = modifier
+            )
+        }
     }
 }
 
@@ -107,39 +144,46 @@ private fun ReplyAppContent(
     onTabPressed: ((MailboxType) -> Unit),
     onEmailCardPressed: (Email) -> Unit,
     navigationItemContentList: List<NavigationItemContent>,
+    navigationType: ReplyNavigationType,
     modifier: Modifier = Modifier,
 ) {
     Box(modifier = modifier) {
         val navigationRailContentDescription = stringResource(R.string.navigation_rail)
-        ReplyNavigationRail(
-            currentTab = replyUiState.currentMailbox,
-            onTabPressed = onTabPressed,
-            navigationItemContentList = navigationItemContentList,
-            modifier = Modifier
-                .testTag(navigationRailContentDescription)
-        )
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.inverseOnSurface)
-        ) {
-            ReplyListOnlyContent(
-                replyUiState = replyUiState,
-                onEmailCardPressed = onEmailCardPressed,
+        Row(modifier = modifier.fillMaxSize()){
+            AnimatedVisibility(visible = navigationType == ReplyNavigationType.NAVIGATION_RAIL) {
+                ReplyNavigationRail(
+                    currentTab = replyUiState.currentMailbox,
+                    onTabPressed = onTabPressed,
+                    navigationItemContentList = navigationItemContentList,
+                    modifier = Modifier
+                        .testTag(navigationRailContentDescription)
+                )
+            }
+            Column(
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(
-                        horizontal = dimensionResource(R.dimen.email_list_only_horizontal_padding)
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.inverseOnSurface)
+            ) {
+                ReplyListOnlyContent(
+                    replyUiState = replyUiState,
+                    onEmailCardPressed = onEmailCardPressed,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(
+                            horizontal = dimensionResource(R.dimen.email_list_only_horizontal_padding)
+                        )
+                )
+                val bottomNavigationContentDescription = stringResource(R.string.navigation_bottom)
+                AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
+                    ReplyBottomNavigationBar(
+                        currentTab = replyUiState.currentMailbox,
+                        onTabPressed = onTabPressed,
+                        navigationItemContentList = navigationItemContentList,
+                        modifier = Modifier
+                            .fillMaxWidth()
                     )
-            )
-            val bottomNavigationContentDescription = stringResource(R.string.navigation_bottom)
-            ReplyBottomNavigationBar(
-                currentTab = replyUiState.currentMailbox,
-                onTabPressed = onTabPressed,
-                navigationItemContentList = navigationItemContentList,
-                modifier = Modifier
-                    .fillMaxWidth()
-            )
+                }
+            }
         }
     }
 }
