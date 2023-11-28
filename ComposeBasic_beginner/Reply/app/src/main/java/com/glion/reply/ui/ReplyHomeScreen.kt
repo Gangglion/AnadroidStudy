@@ -96,6 +96,7 @@ fun ReplyHomeScreen(
     )
     // MEMO : 대형화면일때의 조건 추가, 대형화면일때는 좌측에 고정된 Navigation 탐색창이 생성된다.
     if (navigationType == ReplyNavigationType.PERMANENT_NAVIGATION_DRAWER) {
+        val navigationDrawerDescription = stringResource(id = R.string.navigation_drawer)
         PermanentNavigationDrawer(drawerContent = {
             PermanentDrawerSheet(Modifier.width(dimensionResource(id = R.dimen.drawer_width))) {
                 NavigationDrawerContent(
@@ -107,6 +108,7 @@ fun ReplyHomeScreen(
                         .fillMaxHeight()
                         .background(MaterialTheme.colorScheme.inverseOnSurface)
                         .padding(dimensionResource(R.dimen.drawer_padding_content))
+                        .testTag(navigationDrawerDescription)
                 )
             }
         }) {
@@ -185,6 +187,7 @@ private fun ReplyAppContent(
                             .padding(horizontal = dimensionResource(R.dimen.email_list_only_horizontal_padding))
                     )
                 }
+                // MEMO : BottomNavigation 을 테스트코드에서 확인하기 위한 testTag
                 val bottomNavigationContentDescription = stringResource(R.string.navigation_bottom)
                 AnimatedVisibility(visible = navigationType == ReplyNavigationType.BOTTOM_NAVIGATION) {
                     ReplyBottomNavigationBar(
@@ -193,6 +196,7 @@ private fun ReplyAppContent(
                         navigationItemContentList = navigationItemContentList,
                         modifier = Modifier
                             .fillMaxWidth()
+                            .testTag(bottomNavigationContentDescription)
                     )
                 }
             }

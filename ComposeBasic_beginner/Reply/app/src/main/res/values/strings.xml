@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Reply</string>
 
+    <!-- MEMO : 화면에서 탐색 요소를 구분하기 위한 testTag -->
     <string name="navigation_drawer">Navigation Drawer</string>
     <string name="navigation_rail">Navigation Rail</string>
     <string name="navigation_bottom">Navigation Bottom</string>
+
     <string name="navigation_back">Back</string>
     <string name="details_screen">Details Screen</string>
     <string name="tab_inbox">Inbox</string>
