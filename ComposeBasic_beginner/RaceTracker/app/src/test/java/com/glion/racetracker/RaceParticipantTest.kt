@@ -56,6 +56,7 @@ class RaceParticipantTest {
         val job = launch { raceParticipant.run() }
         advanceTimeBy(raceParticipant.progressDelayMillis * expectedProgress)
         runCurrent()
+//        job.cancelAndJoin() // 코루틴을 종료하라는 신호를 보내고, 정상적으로 종료될때까지 기다린다. 실제 RaceParticipant 에서는 종료 시 throw를 던지고 있기 때문에, 해당 코드는 에러가 난다. 테스트를 위해서 주석처리하거나, 예외를 던지지 말자.
         assertEquals(expectedProgress, raceParticipant.currentProgress)
     }
 
