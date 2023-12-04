@@ -1,3 +1,45 @@
 <resources>
     <string name="app_name">MyCity</string>
+
+    <string name="food">음식점</string>
+    <string name="food_name_1">탕화쿵푸</string>
+    <string name="food_address_1">경기 광명시 디지털로 17 2층 201호</string>
+    <string name="food_number_1">02-855-7080</string>
+    <string name="food_description_1">철산 상업지구 마라탕집</string>
+    <string name="food_name_2">동대문 엽기떡볶이</string>
+    <string name="food_address_2">경기 광명시 철산로30번길 20 1층</string>
+    <string name="food_number_2">0507-1486-8593</string>
+    <string name="food_description_2">철산 상업지구 엽기떡볶이</string>
+    <string name="food_name_3">하남돼지집</string>
+    <string name="food_address_3">경기 광명시 오리로854번길 12 1층 102호</string>
+    <string name="food_number_3">0507-1431-3429</string>
+    <string name="food_description_3">철산 상업지구 삼겹살집</string>
+
+    <string name="drink">술집</string>
+    <string name="drink_name_1">온더문포차</string>
+    <string name="drink_address_1">경기 광명시 오리로856번길 11 301호, 302호 아싸빌딩</string>
+    <string name="drink_number_1">02-2066-1645</string>
+    <string name="drink_description_1">철산 상업지구 룸 술집 온더문포차</string>
+    <string name="drink_name_2">포차천국</string>
+    <string name="drink_address_2">철산동 421</string>
+    <string name="drink_number_2">02-2614-1009</string>
+    <string name="drink_description_2">철산 상업지구 가성비술집 포차천국</string>
+    <string name="drink_name_3">역전할머니맥주</string>
+    <string name="drink_address_3">경기 광명시 오리로854번길 22 조흥빌딩 1층</string>
+    <string name="drink_number_3">02-2612-4727</string>
+    <string name="drink_description_3">철산 상업지구 맥주집 역전할머니맥주</string>
+
+    <string name="coffee">카페</string>
+    <string name="coffee_name_1">메가커피</string>
+    <string name="coffee_address_1">경기 광명시 오리로856번길 8 1층 102호</string>
+    <string name="coffee_number_1">02-2066-5144</string>
+    <string name="coffee_description_1">철산 상업지구 메가커피</string>
+    <string name="coffee_name_2">컴포즈커피</string>
+    <string name="coffee_address_2">경기 광명시 철산로30번길 5 1층 106호</string>
+    <string name="coffee_number_2">02-2625-1179</string>
+    <string name="coffee_description_2">철산 상업지구 컴포즈커피</string>
+    <string name="coffee_name_3">이디야커피</string>
+    <string name="coffee_address_3">경기 광명시 오리로856번길 6 1층 이디야커피</string>
+    <string name="coffee_number_3">0507-1357-8938</string>
+    <string name="coffee_description_3">철산 상업지구 이디야커피</string>
 </resources>
