@@ -2,6 +2,7 @@
 1. [단원 1 정리](#단원-1-정리)
 2. [단원 2 정리](#단원-2-정리)
 3. [단원 3 정리](#단원-3-정리)
+4. [단원 4 정리](#단원-4-정리)
 
 ## 단원 1 정리
 
@@ -379,7 +380,7 @@ Column 컴포저블은 화면 가로 전체를 차지하게끔 Modifier.fillMaxW
   * 계측테스트(UI 테스트) 에 대해 좀더 자세히
     * 앱과 UI 의 실제 인스턴스를 테스트 하기 때문에 MainActivity의 onCreate메소드에서 콘텐츠를 설정하는 방식과 유사해야 한다.
     * UI와 상호작용 하는 명령을 작성하여 UI를 통해 테스트 되도록 한다.
-      ``` 
+      ```asgl
       @get:Rule
       val composeTestRule = createComposeRule() // Compose로 빌드된 앱의 모든 계측테스트를 작성하기 전에 무조건 해야함. 이걸 사용해서 UI구성요소에 액세스 할 수 있다
       
@@ -396,6 +397,103 @@ Column 컴포저블은 화면 가로 전체를 차지하게끔 Modifier.fillMaxW
       ```
       
 ## 단원 3 정리
-  
+### 단원 3을 학습한 뒤 내용 정리하는 부분
+* #### ContentScale 
+  * [참고링크](https://sonseungha.tistory.com/654)
+  * 경계가 Painter 의 고유 크기와 다른 경우 사용할 가로, 세로 스케일링을 결정하는데 사용되는 선택적 스케일 매개변수(추가하려는 이미지가 Layout 과 맞지 않는 경우 Scale을 맞출 수 있도록 사용하는 매개변수)
+  * ##### 종류 
+    * Crop - 이미지의 너비나 높이가 대상의 해당 치수 이하가 되도록 소스를 균일하게 조정(소스의 종횡비 유지)
+    * Fit - 이미지 소스의 두 치수(너비 및 높이) 가 대상의 해당 치수 이하가 되도록 소스를 균일하게 조정(소스의 종횡비 유지)
+    * FillBounds - 대상 범위를 채우기 위해 수평 및 수직으로 뷸균형하게 크기를 조절
+    * FillHeight - 범위가 대상 높이와 일치하도록 너비, 높이 비율을 유지하면서 소스의 크기 조정
+    * FillWidth - 범위가 대상 너비와 이치하도록 너비, 높이 비율을 유지하면서 소스의 크기 조정
+    * Inside - 소스가 대상보다 큰 경우 종횡비가 대상 경계 내에 있도록 소스의 크기를 조절
+    * None - 소스에 배율을 적용하지 않는다.
+* #### Lazy Composable
+  * [참고링크]("https://velog.io/@wonseok/Jetpack-Compose-Lazy-Layouts")
+  * xml을 사용하는 View 방식의 ListView, RecyclerView 에 상응하는 개념. 보일러플레이트 코드가 줄어든다.
+  * 한 항목에 대한 아이템을 @Composable 로 만들어두고, 데이터 리스트 항목만큼의 아이템을 생성하여 리스트형태로 나타난다.
+  * LazyColumn, LazyRow, LazyVerticalGrid 가 존재한다.
+  * 만일, 네트워크 통신을 이용하여 받은 데이터에 대해 리스트 형태로 뿌려준다고 하면
+    1. Retrofit 통신 성공, 미리 정의한 Model타입의 List를 만든다.
+    2. 하나의 항목에 대한 UI 를 작성한다(TempItem 이라 하자)
+    3. LazyColumn 을 사용한다는 가정하에 LazyColumn 람다에 items(List){ item -> TempItem(item) } 를 넣어, 리스트의 요소 하나당 UI를 반복해서 그린다.
+  * 코드는 아래와 같다.
+  * ```asgl
+    LazyColumn(){
+        items(List<T>) { item ->
+            TempItem(item)
+        }
+    }
+    ```
+* #### Scaffold : 다양한 구성요소와 화면요소의 슬롯을 제공하는 레이아웃이다.
+  * TopAppBar : center, small, medium, large 4가지의 유형이 존재한다.
+  * contentWidowInsets 매개변수 : Scaffold 콘텐츠의 인셋을 지정하는데 도움이 된다. WindowInsets는 화면에서 앱이 시스템 UI와 교차할 수 있는 부분으로 PaddingValues 매개변수를 통해 전달된다.(Scaffold 람다의 매개변수이다.)
+    ```asgl
+    fun WoofApp(dogList: List<Dog>){
+    Scaffold(
+        topBar = {
+            WoofTopAppBar()
+        }
+    ) {paddingValues ->
+          LazyColumn(contentPadding = paddingValues){
+              items(dogList){dog ->
+                  DogItem(
+                      dog = dog,
+                      modifier = Modifier.padding(8.dp)
+                  )
+              }
+          }
+    }
+    ```
+  * @OptIn(ExperimentalMaterial3Api::class)
+      * CenterAlignedtopAppBar나 Scaffold 를 추가할 때 위의 어노테이션을 붙인다. 이유는 일부 Material3 API가 실험용으로 간주되기 때문이다.
+      * import androidx.compose.material3.ExperimentalMaterial3Api 해주고 @OptIn(ExperimentalMaterial3Api::class) 를 붙여준다.
+* #### Style 관련
+  * Material Design Builder : 주요색상을 정해주면, 그에 맞춰서 컬러 팔레트를 Material Theme 에 따라 색상을 자동으로 만들어주고, 파일도 뽑아준다.
+  * theme 의 colorScheme
+    * primary : UI 주요 구성요소에 사용됨
+    * secondary : UI 에서 눈에 덜 띄는 구성요소에 사용됨
+    * tetiary : 기본 색상과 보조 색상의 균형을 맞추고, 입력란과 같은 특정 요소로 관심을 유됴하는데 사용할 수 있음.
+    * on : 팔레트의 색상 위에 나타나며, 텍스트, 아이콘, 획 에 적용된다. Surface 색상 위에 나타나는 onSurface 색상과 primary 색상 위에 올라오는 onPrimary가 이 예시이다.
+  * Material 구성요소는 색상 슬롯에 자동 매핑된다. 상태 표시줄이 코드 변경 없이도 Primary 색상으로 적용되는데, 이는 자동으로 매핑되었기 때문이다. 명시적으로 색상을 할당할 필요가 없으며, 또한 명시적으로 할당하여 자동매핑에 대한 재정의도 가능하다.
+  * 동적색상(theme의 dynamicColor 속성) : 사용자의 배경화면을 기반으로 앱 내의 테마를 생성하는 Material3 의 새로운 기능. Android12 이후 버전 기기만 적용되며, false로 세팅하면 사용자가 정의한 색상으로 적용된다.
+  * Text Style(typography)
+    * Display : 화면에서 가장 큰 텍스트에 적용됨. 짧고 중요한 텍스트 또는 숫자에 사용되며, 대형화면에서 가장 잘 작동함.
+    * Headline : 작은 화면에 표시되는 강조 문구에 적합함. 텍스트의 주요 구저이나 콘텐츠의 중요한 부분을 표시함.
+    * title : 헤드라인 스타일보다 작다. 상대적으로 짧게 유지되는 중간 강조 텍스트를 사용한다.
+    * body : 앱의 긴 텍스트 문구에 사용된다.
+    * label : 구성요소 내부의 텍스트 또는 콘텐츠 본문의 매우 작은 텍스트(캡션...)에 사용됨.
+    * 각각 Large, Medium, small 가 존재한다.
+* #### 요약
+  * Material Themeing 을 사용하면 색상, 서체, 도형, 사용자 지정에 관한 안내에 따라 Material Design 을 사용할 수 있다.
+  * Theme.kt 파일의 경우 [앱이름 + Theme()] 라는 Theme 컴포저블이 자동으로 생성되고, 이를 통해 테마가 정의된다. 여기서 MaterialTheme 객체가 앱의 color, typography, shapes, content를 설정한다.
+  * Color.kt 는 앱에서 사용할 색상을 나열한다. 그 뒤 Theme.kt 에서 LightColorPalette 및 DarkColorPalette 의 색상을 특정 슬롯에 할당한다. 모든 슬롯을 할당할 필요는 없다.
+  * 강제로 어두운 테마를 적용할 수 있다. 시스템이 자동으로 구현하지만 개발자가 직접 구현하는 것이 사용자 환경성에 더 좋다.
+  * Shape.kt 에는 앱의 도형 상태를 정의한다. 도형에는 소, 중, 대 3가지 크기가 있고, 도형의 곡률을 지정할 수 있다. 기존 view 방식에서는 곡률이 있는 버튼을 만든다거나 할때 drawable을 따로 만들어주어야 했지만, 그럴 필요성이 사라졌다.
+  * Type.kt 에는 글꼴을 초기화하고 Material Design 서체 스케일의 fontFamily, fontWeight, fontSize 를 할당한다.
+  * Material Design 의 서체 스케일에는 앱과 앱 콘텐츠의 요구사항을 지원하는 다양한 스타일이 있으며 15가지 스타일로 구성된다.
+* #### Animation [참고링크]("https://developer.android.com/jetpack/compose/animation?hl=ko")
+  * 콘텐츠의 높낮이가 특정 조건에 따라 달라질 경우 애니메이션 사용이 가능하다 - animateContentSize
+  * animateContentSize 의 인자로 animationSpec 을 주어 애니메이션 맞춤 설정이 가능하다.
+    ```agsl
+        Column(
+            modifier = Modifier
+                .animateContentSize( // MEMO : animationSpec을 사용해서 애니메이션 맞춤설정 가능. 그냥 사용하면 반동없이 애니메이션 효과로 생겼다 사라지기만 한다.
+                    animationSpec = spring(
+                        dampingRatio = Spring.DampingRatioNoBouncy, // MEMO : 스프링의 반동 정도
+                        stiffness = Spring.StiffnessMedium // MEMO : 스프링의 강성 정도
+                    )
+                )
+        )
+    ```
+  * animate*AsState : Compose에서 단일 값에 대해 애니메이션 처리하는 가장 간단한 애니메이션 API 이다.
+    * Float, Color, DP, Size, Offset, Int의 함수를 제공한다.
+    * animateValueAsState를 사용하여 다른 데이터 유형도 추가 가능하다.
+  * AnimatedVisibility 는 내부 콘텐츠에 대해 나타남과 사라짐을 애니메이션으로 처리할 수 있게 된다. 즉 항목이 나타나는것에 대한 애니메이션 처리가 가능해진다.
+* #### 추가
+  * Modifier.weight 를 잘 사용하면 영역 크기를 지정해 줄 수 있어 유용하다.
+  * 예를들어, Row에 3개의 컴포저블 Text, Text, Image가 존재할때 첫번째 Text에 modifier.weight(1f) 를 지정해주게 되면, 나머지 2개 Text과 Image가 차지하는 영역 외 나머지 영역을 첫번째 Text가 차지하게 된다.
 
-
+## 단원 4 정리
+### 단원 4를 학습한 뒤 내용 정리하는 부분
