@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MVVMActivity</string>
+
+    <string name="test2">Test2 - Realm과 RecyclerView</string>
 </resources>
