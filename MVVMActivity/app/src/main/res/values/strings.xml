@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">MVVMActivity</string>
 
-    <string name="test2">Test2 - Realm과 RecyclerView</string>
+    <string name="test2" translatable="false">Test2 - Realm과 RecyclerView</string>
+
+    <string name="monday">월요일</string>
+    <string name="tuesday">화요일</string>
+    <string name="wednesday">수요일</string>
+    <string name="thursday">목요일</string>
+    <string name="friday">금요일</string>
+    <string name="saturday">토요일</string>
+    <string name="sunday">일요일</string>
 </resources>

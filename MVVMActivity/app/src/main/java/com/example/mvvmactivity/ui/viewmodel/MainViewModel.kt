@@ -1,12 +1,11 @@
-package com.example.mvvmactivity.ui.test1.viewModel
+package com.example.mvvmactivity.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.mvvmactivity.data.local.repository.RealmRepository
+import com.example.mvvmactivity.ui.base.BaseViewModel
 
 class MainViewModel(
     private val realmRepository: RealmRepository
-) : ViewModel() {
+) : BaseViewModel() {
 
 }
