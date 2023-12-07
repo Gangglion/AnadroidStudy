@@ -1,4 +1,4 @@
-package com.example.mvvmactivity.ui
+package com.example.mvvmactivity.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mvvmactivity.R
 import com.example.mvvmactivity.databinding.ActivityMainBinding
 import com.example.mvvmactivity.di.ViewModelFactory
-import com.example.mvvmactivity.ui.viewmodel.MainViewModel
 
 class MainActivity : AppCompatActivity() {
     private lateinit var mainViewModel : MainViewModel
@@ -21,5 +20,6 @@ class MainActivity : AppCompatActivity() {
         mainViewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         mBinding.mainViewModel = mainViewModel
 
+        // TODO : 리사이클러 뷰 보이고, 누르면 색 변경, 누르는 항목마다 Realm 에 저장. 하단 버튼 누르면 Fragment 전환되고, Realm 조회한 결과를 TestView 에 뿌려줌
     }
 }

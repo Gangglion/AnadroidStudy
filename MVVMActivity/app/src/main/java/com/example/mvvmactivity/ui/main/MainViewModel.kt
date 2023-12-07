@@ -1,4 +1,4 @@
-package com.example.mvvmactivity.ui.viewmodel
+package com.example.mvvmactivity.ui.main
 
 import androidx.lifecycle.ViewModel
 import com.example.mvvmactivity.data.local.repository.RealmRepository
