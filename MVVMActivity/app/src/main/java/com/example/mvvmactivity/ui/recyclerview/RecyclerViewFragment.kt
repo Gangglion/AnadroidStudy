@@ -1,6 +1,7 @@
 package com.example.mvvmactivity.ui.recyclerview
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ import com.example.mvvmactivity.R
 import com.example.mvvmactivity.data.local.repository.RealmRepository
 import com.example.mvvmactivity.databinding.FragmentRecyclerViewBinding
 import com.example.mvvmactivity.di.ViewModelFactory
+import com.example.mvvmactivity.ui.recyclerview.adapter.OnItemClickListener
 import com.example.mvvmactivity.ui.recyclerview.adapter.TempAdapter
 import com.example.mvvmactivity.ui.recyclerview.model.TempData
 import com.example.mvvmactivity.ui.recyclerview.viewmodel.RecyclerViewModel
@@ -42,6 +44,7 @@ class RecyclerViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false)
+        mBinding.lifecycleOwner = this.viewLifecycleOwner
         mBinding.recyclerViewModel = mViewModel
         return mBinding.root
     }
@@ -54,7 +57,12 @@ class RecyclerViewFragment : Fragment() {
             mBinding.rcList.apply{
                 layoutManager = LinearLayoutManager(mContext)
                 hasFixedSize()
-                this.adapter = TempAdapter(items)
+                this.adapter = TempAdapter(items, object : OnItemClickListener{
+                    override fun onClick(view: View, tempData: TempData) {
+                        mViewModel.changeItem(tempData)
+                        // TODO : tempData 의 title Realm 에 저장
+                    }
+                })
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.example.mvvmactivity.ui.recyclerview.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
@@ -17,19 +18,36 @@ class RecyclerViewModel(
 
     val tempList: LiveData<List<TempData>> = _tempList
 
-    fun getItemList(){
-        val tempArray = application.resources.getStringArray(R.array.temp_list)
-        val list: MutableList<TempData> = mutableListOf()
-        for(i in tempArray.indices) list.add(TempData(title = tempArray[i]))
-        _tempList.value = list
-    }
-
+    /**
+     * NavController 초기화
+     */
     fun initController(controller: NavController){
         setNavController(controller)
     }
 
-    // 화면 이동 - RealmFragment로
+    /**
+     *  화면 이동 - RealmFragment로
+     */
     fun goRealmFragment(){
         mNavController.navigate(R.id.action_recyclerViewFragment_to_realmFragment)
+    }
+
+
+    fun getItemList(){
+        val tempArray = application.resources.getStringArray(R.array.temp_list)
+        val list: MutableList<TempData> = mutableListOf()
+        for(i in tempArray.indices) list.add(TempData(title = tempArray[i], isClick = false))
+        _tempList.value = list
+    }
+
+    fun changeItem(tempData: TempData){
+        val clickIndex = _tempList.value!!.indexOf(tempData)
+        _tempList.value!![clickIndex].isClick = true
+        for(idx in _tempList.value!!.indices){
+            if(idx != clickIndex){
+                _tempList.value!![idx].isClick = false
+            }
+        }
+        Log.d("shhan", _tempList.value.toString())
     }
 }

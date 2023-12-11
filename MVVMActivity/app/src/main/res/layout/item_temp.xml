@@ -5,12 +5,19 @@
         <variable
             name="item"
             type="com.example.mvvmactivity.ui.recyclerview.model.TempData" />
+
+        <variable
+            name="listener"
+            type="com.example.mvvmactivity.ui.recyclerview.adapter.OnItemClickListener"/>
     </data>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/ll_item"
+        android:onClick="@{(view)->listener.onClick(view, item)}"
+        android:background="@{item.isClick ? @color/teal_200 : @android:color/transparent}"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
         <TextView
             android:id="@+id/tv_item"
@@ -18,7 +25,9 @@
             android:layout_height="wrap_content"
             android:padding="8dp"
             android:textAlignment="center"
+            android:textColor="@{item.isClick ? @color/white : @color/black }"
             android:text="@{item.title}" />
+
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>
