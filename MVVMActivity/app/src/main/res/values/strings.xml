@@ -1,15 +1,32 @@
 <resources>
     <string name="app_name">MVVMActivity</string>
 
-    <string name="test2" translatable="false">Test2 - Realm과 RecyclerView</string>
-
-    <string name="monday">월요일</string>
-    <string name="tuesday">화요일</string>
-    <string name="wednesday">수요일</string>
-    <string name="thursday">목요일</string>
-    <string name="friday">금요일</string>
-    <string name="saturday">토요일</string>
-    <string name="sunday">일요일</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="item1">랜덤아이템 1</string>
+    <string name="item2">랜덤아이템 2</string>
+    <string name="item3">랜덤아이템 3</string>
+    <string name="item4">랜덤아이템 4</string>
+    <string name="item5">랜덤아이템 5</string>
+    <string name="item6">랜덤아이템 6</string>
+    <string name="item7">랜덤아이템 7</string>
+    <string name="item8">랜덤아이템 8</string>
+    <string name="item9">랜덤아이템 9</string>
+    <string name="item10">랜덤아이템 10</string>
+    <string name="item11">랜덤아이템 11</string>
+    <string name="item12">랜덤아이템 12</string>
+    <string name="item13">랜덤아이템 13</string>
+    <string name="item14">랜덤아이템 14</string>
+    <string name="item15">랜덤아이템 15</string>
+    <string name="item16">랜덤아이템 16</string>
+    <string name="item17">랜덤아이템 17</string>
+    <string name="item18">랜덤아이템 18</string>
+    <string name="item19">랜덤아이템 19</string>
+    <string name="item20">랜덤아이템 20</string>
+    <string name="item21">랜덤아이템 21</string>
+    <string name="item22">랜덤아이템 22</string>
+    <string name="item23">랜덤아이템 23</string>
+    <string name="item24">랜덤아이템 24</string>
+    <string name="item25">랜덤아이템 25</string>
+    <string name="item26">랜덤아이템 26</string>
+    <string name="item27">랜덤아이템 27</string>
+    <string name="item28">랜덤아이템 28</string>
 </resources>

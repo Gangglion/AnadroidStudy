@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="age_list">
-        <item>@string/monday</item>
-        <item>@string/tuesday</item>
-        <item>@string/wednesday</item>
-        <item>@string/thursday</item>
-        <item>@string/friday</item>
-        <item>@string/saturday</item>
-        <item>@string/sunday</item>
+    <string-array name="temp_list">
+        <item>@string/item1</item>
+        <item>@string/item2</item>
+        <item>@string/item3</item>
+        <item>@string/item4</item>
+        <item>@string/item5</item>
+        <item>@string/item6</item>
+        <item>@string/item7</item>
+        <item>@string/item8</item>
+        <item>@string/item9</item>
+        <item>@string/item10</item>
+        <item>@string/item11</item>
+        <item>@string/item12</item>
+        <item>@string/item13</item>
+        <item>@string/item14</item>
+        <item>@string/item15</item>
+        <item>@string/item16</item>
+        <item>@string/item17</item>
+        <item>@string/item18</item>
+        <item>@string/item19</item>
+        <item>@string/item20</item>
+        <item>@string/item21</item>
+        <item>@string/item22</item>
+        <item>@string/item23</item>
+        <item>@string/item24</item>
+        <item>@string/item25</item>
+        <item>@string/item26</item>
+        <item>@string/item27</item>
+        <item>@string/item28</item>
     </string-array>
 </resources>

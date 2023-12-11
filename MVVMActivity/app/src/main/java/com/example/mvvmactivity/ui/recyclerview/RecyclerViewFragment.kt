@@ -1,60 +1,61 @@
 package com.example.mvvmactivity.ui.recyclerview
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.example.mvvmactivity.R
+import com.example.mvvmactivity.data.local.repository.RealmRepository
+import com.example.mvvmactivity.databinding.FragmentRecyclerViewBinding
+import com.example.mvvmactivity.di.ViewModelFactory
+import com.example.mvvmactivity.ui.recyclerview.adapter.TempAdapter
+import com.example.mvvmactivity.ui.recyclerview.model.TempData
+import com.example.mvvmactivity.ui.recyclerview.viewmodel.RecyclerViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [RecyclerViewFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class RecyclerViewFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    private lateinit var mBinding: FragmentRecyclerViewBinding
+    private lateinit var mViewModel: RecyclerViewModel
+    private lateinit var mContext: Context
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        mContext = context
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+        // ViewModel에 Repository 와 같은 인자를 전달할때는 ViewModelFactory가 필요함 -> di 폴더 ViewModelFactory 생성
+        val viewModelFactory = ViewModelFactory(RealmRepository(), requireActivity().application)
+        mViewModel = ViewModelProvider(this, viewModelFactory)[RecyclerViewModel::class.java]
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recycler_view, container, false)
+    ): View {
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false)
+        mBinding.recyclerViewModel = mViewModel
+        return mBinding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment RecyclerViewFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            RecyclerViewFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mViewModel.initController(Navigation.findNavController(view))
+        mViewModel.getItemList()
+        mViewModel.tempList.observe(viewLifecycleOwner){ items ->
+            mBinding.rcList.apply{
+                layoutManager = LinearLayoutManager(mContext)
+                hasFixedSize()
+                this.adapter = TempAdapter(items)
             }
+        }
     }
 }

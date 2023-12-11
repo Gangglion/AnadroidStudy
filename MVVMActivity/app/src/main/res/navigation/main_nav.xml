@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/recyclerViewFragment">
+
+    <fragment
+        android:id="@+id/recyclerViewFragment"
+        android:name="com.example.mvvmactivity.ui.recyclerview.RecyclerViewFragment"
+        android:label="RecyclerViewFragment"
+        tools:layout="@layout/fragment_recycler_view">
+        <action
+            android:id="@+id/action_recyclerViewFragment_to_realmFragment"
+            app:destination="@id/realmFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/realmFragment"
+        android:name="com.example.mvvmactivity.ui.realm.RealmFragment"
+        android:label="fragment_realm"
+        tools:layout="@layout/fragment_realm" />
+</navigation>
