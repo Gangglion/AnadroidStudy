@@ -39,7 +39,8 @@ class RecyclerViewModel(
         // MEMO
         //  Adapter 에서 DiffUtil로 리스트를 갱신하기 위해서는 list 자체를 수정해주는 것이 아니라,
         //  deep copy를 한 수정된 리스트를 전달해 주어야 한다.
-        //  따라서 _tempList를 업데이트 할때 새로운 리스트를 만들어서, 갱신시켜주어야 diffUtil 에서 변화를 감지할 수 있다.
+        //  따라서 _tempList를 업데이트 할때 새로운 리스트를 만들어서, 새로운 주소값을 가진 리스트를 라이브데이터에
+        //  갱신시켜주어야 diffUtil 에서 변화를 감지할 수 있다.
 
         val clickIndex = _tempList.value!!.indexOf(tempData)
         val newList = _tempList.value?.mapIndexed { index, item ->
