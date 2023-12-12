@@ -14,7 +14,7 @@ abstract class BaseAndroidViewModel(application: Application) : AndroidViewModel
         Log.e("glion", "Coroutine Exception : $throwable")
     }
 
-    protected fun setNavController(controller: NavController){
+    fun setNavController(controller: NavController){
         mNavController = controller
     }
 }

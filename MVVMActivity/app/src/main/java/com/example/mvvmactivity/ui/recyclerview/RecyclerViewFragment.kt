@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -51,19 +52,22 @@ class RecyclerViewFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewModel.initController(Navigation.findNavController(view))
+        mViewModel.setNavController(Navigation.findNavController(view))
         mViewModel.getItemList()
-        mViewModel.tempList.observe(viewLifecycleOwner){ items ->
-            mBinding.rcList.apply{
-                layoutManager = LinearLayoutManager(mContext)
-                hasFixedSize()
-                this.adapter = TempAdapter(items, object : OnItemClickListener{
-                    override fun onClick(view: View, tempData: TempData) {
-                        mViewModel.changeItem(tempData)
-                        // TODO : tempData 의 title Realm 에 저장
-                    }
-                })
+        val adapter = TempAdapter(mViewModel.tempList.value!!, object : OnItemClickListener{
+            override fun onClick(view: View, tempData: TempData) {
+                mViewModel.changeClickFlag(tempData)
+                // TODO : tempData 의 title Realm 에 저장
             }
+        })
+        mBinding.rcList.apply{
+            layoutManager = LinearLayoutManager(mContext)
+            hasFixedSize()
+            this.adapter = adapter
+            itemAnimator = null // 리스트 변화 시 애니매이션 효과 제거
+        }
+        mViewModel.tempList.observe(viewLifecycleOwner){ items ->
+            adapter.updateData(items)
         }
     }
 }

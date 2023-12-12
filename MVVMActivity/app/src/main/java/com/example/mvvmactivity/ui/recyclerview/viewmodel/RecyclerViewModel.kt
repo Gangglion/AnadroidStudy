@@ -4,7 +4,6 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.NavController
 import com.example.mvvmactivity.R
 import com.example.mvvmactivity.data.local.repository.RealmRepository
 import com.example.mvvmactivity.ui.base.BaseAndroidViewModel
@@ -17,13 +16,6 @@ class RecyclerViewModel(
     private val _tempList: MutableLiveData<List<TempData>> = MutableLiveData()
 
     val tempList: LiveData<List<TempData>> = _tempList
-
-    /**
-     * NavController 초기화
-     */
-    fun initController(controller: NavController){
-        setNavController(controller)
-    }
 
     /**
      *  화면 이동 - RealmFragment로
@@ -40,14 +32,25 @@ class RecyclerViewModel(
         _tempList.value = list
     }
 
-    fun changeItem(tempData: TempData){
+    /**
+     * 클릭한 아이템일때 flag true로 변경
+     */
+    fun changeClickFlag(tempData: TempData){
+        // MEMO
+        //  Adapter 에서 DiffUtil로 리스트를 갱신하기 위해서는 list 자체를 수정해주는 것이 아니라,
+        //  deep copy를 한 수정된 리스트를 전달해 주어야 한다.
+        //  따라서 _tempList를 업데이트 할때 새로운 리스트를 만들어서, 갱신시켜주어야 diffUtil 에서 변화를 감지할 수 있다.
+
         val clickIndex = _tempList.value!!.indexOf(tempData)
-        _tempList.value!![clickIndex].isClick = true
-        for(idx in _tempList.value!!.indices){
-            if(idx != clickIndex){
-                _tempList.value!![idx].isClick = false
+        val newList = _tempList.value?.mapIndexed { index, item ->
+            if(index == clickIndex){
+                item.copy(title = item.title, isClick = true)
+            } else{
+                item.copy(title = item.title, isClick = false)
             }
         }
-        Log.d("shhan", _tempList.value.toString())
+
+        _tempList.value = newList?: throw NullPointerException("newList is Null")
+        Log.d("shhan", _tempList.value!!.toString())
     }
 }
