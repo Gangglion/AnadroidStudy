@@ -18,5 +18,9 @@
         android:id="@+id/realmFragment"
         android:name="com.example.mvvmactivity.ui.realm.RealmFragment"
         android:label="fragment_realm"
-        tools:layout="@layout/fragment_realm" />
+        tools:layout="@layout/fragment_realm" >
+        <action
+            android:id="@+id/action_realmFragment_to_recyclerViewFragment"
+            app:destination="@id/recyclerViewFragment" />
+    </fragment>
 </navigation>

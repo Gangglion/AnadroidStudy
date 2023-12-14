@@ -4,10 +4,14 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.mvvmactivity.R
+import com.example.mvvmactivity.data.local.model.RealmData
 import com.example.mvvmactivity.data.local.repository.RealmRepository
 import com.example.mvvmactivity.ui.base.BaseAndroidViewModel
 import com.example.mvvmactivity.ui.recyclerview.model.TempData
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class RecyclerViewModel(
     private val repository: RealmRepository,
@@ -28,7 +32,7 @@ class RecyclerViewModel(
     fun getItemList(){
         val tempArray = application.resources.getStringArray(R.array.temp_list)
         val list: MutableList<TempData> = mutableListOf()
-        for(i in tempArray.indices) list.add(TempData(title = tempArray[i], isClick = false))
+        for(i in tempArray.indices) list.add(TempData(index = i, title = tempArray[i], isClick = false))
         _tempList.value = list
     }
 
@@ -50,8 +54,19 @@ class RecyclerViewModel(
                 item.copy(title = item.title, isClick = false)
             }
         }
+        val realmData = RealmData(index = tempData.index, title = tempData.title)
+        insertData(realmData)
 
         _tempList.value = newList?: throw NullPointerException("newList is Null")
         Log.d("shhan", _tempList.value!!.toString())
+    }
+
+    private fun insertData(data: RealmData){
+        viewModelScope.launch(exceptionHandler){
+            val deferredResult = async{
+                repository.write(data)
+            }
+            val result = deferredResult.await()
+        }
     }
 }
