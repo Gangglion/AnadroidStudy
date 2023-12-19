@@ -11,10 +11,6 @@ class MVVMApplication : Application() {
         Realm.init(this)
         val config = RealmConfiguration.Builder()
             .name("temp_realm")
-            .allowQueriesOnUiThread(true)
-            .allowWritesOnUiThread(true)
-            .compactOnLaunch()
-            .inMemory()
             .build()
         Realm.setDefaultConfiguration(config)
     }

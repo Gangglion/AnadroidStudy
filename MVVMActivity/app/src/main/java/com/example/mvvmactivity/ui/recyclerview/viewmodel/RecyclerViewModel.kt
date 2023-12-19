@@ -10,8 +10,10 @@ import com.example.mvvmactivity.data.local.model.RealmData
 import com.example.mvvmactivity.data.local.repository.RealmRepository
 import com.example.mvvmactivity.ui.base.BaseAndroidViewModel
 import com.example.mvvmactivity.ui.recyclerview.model.TempData
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class RecyclerViewModel(
     private val repository: RealmRepository,
@@ -58,15 +60,15 @@ class RecyclerViewModel(
         insertData(realmData)
 
         _tempList.value = newList?: throw NullPointerException("newList is Null")
-        Log.d("shhan", _tempList.value!!.toString())
     }
 
     private fun insertData(data: RealmData){
-        viewModelScope.launch(exceptionHandler){
+        viewModelScope.launch(exceptionHandler + Dispatchers.Main){
             val deferredResult = async{
                 repository.write(data)
             }
-            val result = deferredResult.await()
+            // 완료될때까지 대기
+            deferredResult.await()
         }
     }
 }
