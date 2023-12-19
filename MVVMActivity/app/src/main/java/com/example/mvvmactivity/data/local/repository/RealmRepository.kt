@@ -10,33 +10,38 @@ class RealmRepository {
     /**
      * Realm Data Read
      */
-    suspend fun read(): List<RealmData> = withContext(Dispatchers.IO){
-        val realm = Realm.getDefaultInstance()
-        val result = realm?.where(RealmData::class.java)!!.findAll()
-        return@withContext result
+    suspend fun getAllData(): List<RealmData>{
+        return withContext(Dispatchers.IO){
+            val realm = Realm.getDefaultInstance()
+            val data = realm.where(RealmData::class.java).findAll()
+            val result = realm.copyFromRealm(data)
+            realm.close()
+            result
+        }
     }
     /**
      * Realm Data Write
      */
-    suspend fun write(realmData: RealmData) = withContext(Dispatchers.IO){
-        val realm = Realm.getDefaultInstance()
-        try{
-            realm?.executeTransaction {
-                it.insertOrUpdate(realmData)
+    suspend fun insertOrUpdateData(data: RealmData){
+        return withContext(Dispatchers.IO) {
+            val realm = Realm.getDefaultInstance()
+            realm.executeTransaction{
+                it.copyToRealmOrUpdate(data) // Realm 데이터 객체 RealmData에 적용시킴.
             }
-        } catch(e: Exception){
-            e.printStackTrace()
-        } finally{
-            realm?.close()
+            realm.close()
         }
     }
     /**
      * Realm Data Delete
      */
-    suspend fun delete() = withContext(Dispatchers.IO){
-        val realm = Realm.getDefaultInstance()
-        realm?.executeTransaction {
-            it.deleteAll()
+    suspend fun deleteAllData(){
+        return withContext(Dispatchers.IO){
+            val realm = Realm.getDefaultInstance()
+            realm.executeTransaction {
+                val willDeleteData = realm.where(RealmData::class.java).findAll()
+                willDeleteData.deleteAllFromRealm()
+            }
+            realm.close()
         }
     }
 }

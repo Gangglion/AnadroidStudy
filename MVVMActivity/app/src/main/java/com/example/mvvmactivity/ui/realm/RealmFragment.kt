@@ -32,7 +32,7 @@ class RealmFragment : Fragment() {
         mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_realm, container, false)
         mBinding.realmViewModel = mViewModel
         mBinding.lifecycleOwner = viewLifecycleOwner
-        mViewModel.readData()
+        mViewModel.getAllData()
         return mBinding.root
     }
 

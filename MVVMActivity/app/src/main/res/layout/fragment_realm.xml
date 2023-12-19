@@ -21,7 +21,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/ll_btn_area"
-            android:text="@{realmViewModel.realmData}"
+            android:text="@{realmViewModel.dataList}"
             android:padding="8dp"/>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/ll_btn_area"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:layout_margin="8dp"
-                android:onClick="@{()->realmViewModel.deleteData()}"
+                android:onClick="@{()->realmViewModel.deleteAllData()}"
                 android:text="Data 삭제"/>
         </androidx.appcompat.widget.LinearLayoutCompat>
 

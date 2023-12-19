@@ -63,12 +63,8 @@ class RecyclerViewModel(
     }
 
     private fun insertData(data: RealmData){
-        viewModelScope.launch(exceptionHandler + Dispatchers.Main){
-            val deferredResult = async{
-                repository.write(data)
-            }
-            // 완료될때까지 대기
-            deferredResult.await()
+        viewModelScope.launch(exceptionHandler){
+            repository.insertOrUpdateData(data)
         }
     }
 }
