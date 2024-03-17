@@ -1,6 +1,8 @@
 package com.example.mvvmactivity.ui.realm
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +40,20 @@ class RealmFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        mViewModel.setNavController(Navigation.findNavController(view))
+
+        mViewModel.setNavController(Navigation.findNavController(mBinding.root))
+
+        // 에러 처리
+        mBinding.inputEt.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            override fun afterTextChanged(p0: Editable?) {
+                if(mBinding.inputEt.text!!.isEmpty()){
+                    mBinding.inputLayout.error = "Title을 입력하세요"
+                } else{
+                    mBinding.inputLayout.error = null
+                }
+            }
+        })
     }
 }
