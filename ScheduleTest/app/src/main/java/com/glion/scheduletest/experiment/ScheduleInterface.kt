@@ -1,4 +1,4 @@
-package com.glion.scheduletest
+package com.glion.scheduletest.experiment
 
 interface ScheduleInterface {
     fun clickContent()

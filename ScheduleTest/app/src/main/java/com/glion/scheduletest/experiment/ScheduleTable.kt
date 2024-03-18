@@ -1,13 +1,14 @@
-package com.glion.scheduletest
+package com.glion.scheduletest.experiment
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.glion.scheduletest.R
 
+// NotUse
 class ScheduleTable : LinearLayout {
     private lateinit var mTime00: LinearLayout
     private lateinit var mTime01: LinearLayout

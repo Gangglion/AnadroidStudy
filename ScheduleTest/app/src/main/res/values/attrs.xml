@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CollegeTimeTableLayout">
-        <attr name="cellTextColor" format="color" />
-        <attr name="cellColor" format="color" />
-        <attr name="cellMarginRight" format="integer"/>
-        <attr name="cellMarginTop" format="integer"/>
-        <attr name="cellMarginBottom" format="integer"/>
-        <attr name="cellMarginLeft" format="integer"/>
+    <declare-styleable name="ScheduleGridLayout">
+        <attr name="itemTextColor" format="color" />
+        <attr name="itemColor" format="color" />
+        <attr name="itemMarginRight" format="integer"/>
+        <attr name="itemMarginTop" format="integer"/>
+        <attr name="itemMarginBottom" format="integer"/>
+        <attr name="itemMarginLeft" format="integer"/>
 
     </declare-styleable>
 </resources>

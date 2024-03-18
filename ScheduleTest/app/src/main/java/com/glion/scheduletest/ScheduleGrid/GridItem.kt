@@ -1,4 +1,4 @@
-package com.glion.scheduletest
+package com.glion.scheduletest.ScheduleGrid
 
 import android.content.Context
 import android.util.AttributeSet
@@ -7,12 +7,12 @@ import android.widget.FrameLayout
 import android.widget.TextView
 
 
-class Cell : FrameLayout {
+class GridItem : FrameLayout {
     private lateinit var mTextView: TextView
     private var row = 0
     private var column = 0
     // MEMO: 스케쥴 합치면서 사라진 cell 보관용 - 복구하기 위함
-    private var spannedCells: ArrayList<Cell> = arrayListOf()
+    private var spannedCells: ArrayList<GridItem> = arrayListOf()
     constructor(context: Context?) : super(context!!) {
         initView(context, null)
     }
@@ -36,8 +36,10 @@ class Cell : FrameLayout {
         addView(mTextView)
 
         val layoutParams = mTextView.layoutParams as LayoutParams
-        layoutParams.width = LayoutParams.MATCH_PARENT
-        layoutParams.height = LayoutParams.MATCH_PARENT
+        layoutParams.apply{
+            width = LayoutParams.MATCH_PARENT
+            height = LayoutParams.MATCH_PARENT
+        }
         mTextView.layoutParams = layoutParams
     }
 
@@ -73,7 +75,7 @@ class Cell : FrameLayout {
     fun setText(text: String){
         mTextView.text = text
     }
-    fun addSpannedCells(cell: Cell?) {
-        spannedCells.add(cell!!)
+    fun addSpannedCells(gridItem: GridItem?) {
+        spannedCells.add(gridItem!!)
     }
 }

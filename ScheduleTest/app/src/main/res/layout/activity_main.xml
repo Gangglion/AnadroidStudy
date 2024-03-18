@@ -5,17 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!--    <com.glion.scheduletest.ScheduleTable-->
+<!--    <com.glion.scheduletest.experiment.ScheduleTable-->
 <!--        android:id="@+id/sc_table"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:visibility="gone"/>-->
 
-    <com.glion.scheduletest.ScheduleGridLayout
+    <com.glion.scheduletest.ScheduleGrid.ScheduleGridLayout
         android:id="@+id/sc_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:rowCount="48"
         android:columnCount="2"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 </ScrollView>
