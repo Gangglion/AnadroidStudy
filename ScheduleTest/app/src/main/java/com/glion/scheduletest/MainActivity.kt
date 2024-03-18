@@ -1,10 +1,18 @@
 package com.glion.scheduletest
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.TextView
+import java.time.LocalDateTime
+import java.time.LocalTime
 
 // 라이브러리 화 해서 사용하면 편하지 않을까?
 class MainActivity : AppCompatActivity() {
+    private lateinit var mContext: Context
+    private lateinit var mScTable: ScheduleTable
     // 일어나는 시간, 자는 시간 예시 세팅
     private var wakeUp = "0"
     private var sleepDown = "0"
@@ -13,12 +21,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        mContext = this
         wakeUp = "08:00"
-        sleepDown = "23:00"
-        // 08시부터 23시까지 보여줘야 함 - 간격 16개 -> (sleepDown - wakeUp + 1)
-        for(i in 0 until 16){
+        sleepDown = "05:00"
+        init()
+//        mScTable.changeColor()
+    }
 
-        }
+    private fun init(){
+//        mScTable = findViewById(R.id.sc_table)
+//        mScTable.initTable(wakeUp, sleepDown)
     }
 }
