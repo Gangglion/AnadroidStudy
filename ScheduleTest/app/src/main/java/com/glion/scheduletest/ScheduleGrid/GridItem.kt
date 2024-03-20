@@ -13,6 +13,8 @@ class GridItem : FrameLayout {
     private var column = 0
     // MEMO: 스케쥴 합치면서 사라진 cell 보관용 - 복구하기 위함
     private var spannedCells: ArrayList<GridItem> = arrayListOf()
+
+    private var isScheduled = false
     constructor(context: Context?) : super(context!!) {
         initView(context, null)
     }
@@ -43,8 +45,11 @@ class GridItem : FrameLayout {
         mTextView.layoutParams = layoutParams
     }
 
+    override fun setClickable(clickable: Boolean) {
+        super.setClickable(clickable)
+        mTextView.isClickable = clickable
+    }
     override fun setOnClickListener(l: OnClickListener?) {
-        super.setOnClickListener(l)
         isClickable = true
         mTextView.setOnClickListener(l)
     }
@@ -77,5 +82,13 @@ class GridItem : FrameLayout {
     }
     fun addSpannedCells(gridItem: GridItem?) {
         spannedCells.add(gridItem!!)
+    }
+
+    fun isScheduled(): Boolean{
+        return isScheduled
+    }
+
+    fun setScheduled(isScheduled: Boolean){
+        this.isScheduled = isScheduled
     }
 }

@@ -8,9 +8,12 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.GridLayout
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import com.glion.scheduletest.R
 import com.glion.scheduletest.Utility
+import java.util.Arrays
+
 
 class ScheduleGridLayout : GridLayout {
     private var mContext: Context
@@ -80,7 +83,7 @@ class ScheduleGridLayout : GridLayout {
 
         initRowColumnNames(startHour) //행,열 이름 초기화
         addCells() //cell추가
-        mergeTimeCell() // 시간 셀 병합
+//        mergeTimeCell() // 시간 셀 병합
     }
 
     private fun initRowColumnNames(startTime: Int){
@@ -119,20 +122,21 @@ class ScheduleGridLayout : GridLayout {
 
                 // MEMO : 캘린더/시간표 부분의 왼쪽 시간Item 속성 설정
                 if(rowIdx % 2 == 0 && columnIdx == 0) {
+                    // temp : D-STOP 예시
                     gridItem.setText(displayRowNames[rowIdxForTime]!!)
-                    gridItem.background = AppCompatResources.getDrawable(mContext,
-                        R.drawable.bottom_line
-                    )
                 }
                 // MEMO : 캘린더/시간표 부분의 오른쪽 일정Item 항목 설정
                 if(columnIdx == 1) {
-                    if(rowIdx % 2 == 0){
-                        gridItem.background = AppCompatResources.getDrawable(mContext,
-                            R.drawable.bottom_line
-                        )
-                    }
+                    // temp : D-STOP 예시
                     gridItem.setText("")
                 }
+                if (rowIdx % 2 == 1 && columnIdx == 1) {
+                    gridItem.background = AppCompatResources.getDrawable(
+                        mContext,
+                        R.drawable.bottom_line
+                    )
+                }
+//                gridItem.setText("${rowNames[rowIdx]}/${columnNames[columnIdx]}")
 
                 if(columnIdx == 0){
                     val layoutParams = LayoutParams(spec(rowIdx, 1.0f), spec(columnIdx, 0.4f))
@@ -174,5 +178,38 @@ class ScheduleGridLayout : GridLayout {
 
     fun findCell(rowName: String, columnName: String) : GridItem?{
         return findViewWithTag("$rowName/$columnName")
+    }
+
+    /**
+     * 스케쥴 등록
+     */
+    fun addSchedule(item: String, startTime: String, blocks: Int){
+        // TODO : 시작시간과 끝 시간에 맞는 셀 찾기 - Column 은 1로 고정됨
+        val newCell = findCell(startTime, "1")
+        // 스케쥴 있는지 확인
+        if(newCell?.visibility == View.GONE || newCell?.isScheduled() == true ){ // 넣고자 하는 시간표에 스케쥴이 들어가 있는지 확인
+            Toast.makeText(mContext, "해당 시간에 스케쥴이 존재함!", Toast.LENGTH_SHORT).show()
+            return
+        }
+        val rowArrayList: List<Array<String?>> = listOf(rowNames)
+        val originIndex = rowArrayList.indexOf(rowNames)
+        val startIndex = rowNames.indexOf(startTime)
+        // 해당하는 칸만큼 삭제
+        for(i in 1 until blocks){
+            val cell = findCell(rowNames[startIndex + i]!!, "1")
+            cell?.visibility = View.GONE
+            newCell?.addSpannedCells(cell)
+        }
+
+        newCell?.apply{
+            setText(item)
+            setScheduled(true)
+            isClickable = true
+        }
+        val layoutParams = newCell?.layoutParams as GridLayout.LayoutParams
+        layoutParams.apply{
+            rowSpec = spec(startIndex, blocks, 1.0f)
+        }
+        newCell.layoutParams = layoutParams
     }
 }

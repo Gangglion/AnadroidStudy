@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     private var wakeUp = "0"
     private var sleepDown = "0"
 
-    // TODO : layout_time 미리 선언 24개
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,6 +23,8 @@ class MainActivity : AppCompatActivity() {
 
         val scheduleGridLayout = findViewById<ScheduleGridLayout>(R.id.sc_layout)
         scheduleGridLayout.setStartEndTime(wakeUp, sleepDown)
+
+//        scheduleGridLayout.addSchedule("테스트 일정", "2", 2)
 
 //        init()
 //        mScTable.changeColor()
