@@ -225,7 +225,7 @@ class ScheduleGridLayout : GridLayout {
         }
         val startIndex = newGridItem!!.getRow()
         // 해당하는 칸만큼 삭제
-        for(i in 1 until blocks * 2){
+        for(i in 1 until blocks){
             val cell = findCell(rowNames[startIndex + i]!!, "1")
             cell?.visibility = View.GONE
             newGridItem?.addSpannedCells(cell)
@@ -252,7 +252,7 @@ class ScheduleGridLayout : GridLayout {
         }
         val layoutParams = newGridItem?.layoutParams as GridLayout.LayoutParams
         layoutParams.apply{
-            rowSpec = spec(startIndex, blocks * 2, 1.0f)
+            rowSpec = spec(startIndex, blocks, 1.0f)
         }
         newGridItem.layoutParams = layoutParams
     }

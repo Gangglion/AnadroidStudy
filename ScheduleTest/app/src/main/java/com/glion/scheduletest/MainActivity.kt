@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.View
+import android.view.View.OnLayoutChangeListener
 import android.widget.ScrollView
 import android.widget.Toast
 import com.glion.scheduletest.Define.calculateRectOnScreen
@@ -31,6 +33,10 @@ class MainActivity : AppCompatActivity(), GridItemInterface {
         setContentView(R.layout.activity_main)
         mContext = this
         mScrollView = findViewById(R.id.sc_view)
+
+        mScrollView.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
+            scrollToNowTime()
+        }
         // 스케쥴 시작시간과 종료시간 세팅
         wakeUp = "06:00"
         sleepDown = "23:00"
@@ -44,9 +50,11 @@ class MainActivity : AppCompatActivity(), GridItemInterface {
 
 
         // MEMO : 추가 예시
-        mScheduleGridLayout.addSchedule("치료 일정", "07:00", 2, Define.CURE)
-        mScheduleGridLayout.addSchedule("회고활동 일정", "11:00", 1, Define.REVIEW)
-        mScheduleGridLayout.addSchedule("개인 일정", "15:00", 3, Define.PRIVATE)
+        mScheduleGridLayout.addSchedule("치료 일정", "07:00", 4, Define.CURE)
+        mScheduleGridLayout.addSchedule("회고활동 일정", "11:00", 2, Define.REVIEW)
+        mScheduleGridLayout.addSchedule("회고활동 일정", "14:00", 2, Define.REVIEW)
+        mScheduleGridLayout.addSchedule("회고활동 일정", "18:00", 2, Define.REVIEW)
+        mScheduleGridLayout.addSchedule("개인 일정", "23:00", 1, Define.PRIVATE)
 
 //        init()
 //        mScTable.changeColor()
