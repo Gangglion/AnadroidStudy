@@ -2,11 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <shape android:shape="rectangle">
-            <solid android:color="#000000" />
+            <solid android:color="#ffffff" />
             <stroke
                 android:width="2dp"
                 android:dashGap="8dp"
-                android:color="#ffffff"
+                android:color="#000000"
                 android:dashWidth="6dp"/>
         </shape>
     </item>

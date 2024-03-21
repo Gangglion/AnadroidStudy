@@ -1,7 +1,8 @@
-package com.glion.scheduletest.ScheduleGrid
+package com.glion.scheduletest.schedule_grid
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Rect
 import android.util.AttributeSet
 import android.util.Log
 import android.view.Gravity
@@ -10,9 +11,10 @@ import android.view.View
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import com.glion.scheduletest.Define
+import com.glion.scheduletest.Define.calculateRectOnScreen
 import com.glion.scheduletest.R
 import com.glion.scheduletest.Utility
-import java.util.Arrays
 
 
 class ScheduleGridLayout : GridLayout {
@@ -28,6 +30,8 @@ class ScheduleGridLayout : GridLayout {
     private lateinit var columnNames: Array<String?> // GridItem 의 Tag 에 사용되는 배열 - columnCount 까지 순서대로 이루어져있음
 
     private var rowIdxForTime = 0
+
+    private var mListener: GridItemInterface? = null
 
     constructor(context: Context?) : super(context!!) {
         mContext = context
@@ -62,6 +66,10 @@ class ScheduleGridLayout : GridLayout {
             cellMarginEnd = styles.getInt(R.styleable.ScheduleGridLayout_itemMarginRight, 0)
             styles.recycle()
         }
+    }
+
+    fun setListener(listener: GridItemInterface){
+        mListener = listener
     }
 
     /**
@@ -176,40 +184,90 @@ class ScheduleGridLayout : GridLayout {
         }
     }
 
+    /**
+     * 현재 시간에 일치하는 GridItem 의 좌표가 있는 Rect 리턴
+     */
+    fun getNowTimeItemLocation(nowTime: String): Rect {
+        val nowTimeItem = findCell(nowTime)
+        return calculateRectOnScreen(nowTimeItem!!)
+    }
+
     fun findCell(rowName: String, columnName: String) : GridItem?{
         return findViewWithTag("$rowName/$columnName")
+    }
+    fun findCell(row: Int, column: Int){
+
+    }
+
+    /**
+     * 시간을 클릭했을때, 해당 시간대의 gridItem 을 리턴해줌
+     */
+    fun findCell(time: String): GridItem?{
+        for(rowIdx in 0 until rowCount){
+            val gridItem = findCell(rowNames[rowIdx]!!, "0")
+            if(gridItem?.getText() == time){
+                return findCell(rowNames[rowIdx]!!, "1")
+            }
+        }
+        return null
     }
 
     /**
      * 스케쥴 등록
+     * @param blocks 30분 단위로 1 / 1시간 등록 2, 2시간 등록 4 ...
      */
-    fun addSchedule(item: String, startTime: String, blocks: Int){
-        // TODO : 시작시간과 끝 시간에 맞는 셀 찾기 - Column 은 1로 고정됨
-        val newCell = findCell(startTime, "1")
+    fun addSchedule(item: String, startTime: String, blocks: Int, type: Int){
+        val newGridItem = findCell(startTime)
         // 스케쥴 있는지 확인
-        if(newCell?.visibility == View.GONE || newCell?.isScheduled() == true ){ // 넣고자 하는 시간표에 스케쥴이 들어가 있는지 확인
+        if(newGridItem?.visibility == View.GONE || newGridItem?.isScheduled() == true ){ // 넣고자 하는 시간표에 스케쥴이 들어가 있는지 확인
             Toast.makeText(mContext, "해당 시간에 스케쥴이 존재함!", Toast.LENGTH_SHORT).show()
             return
         }
-        val rowArrayList: List<Array<String?>> = listOf(rowNames)
-        val originIndex = rowArrayList.indexOf(rowNames)
-        val startIndex = rowNames.indexOf(startTime)
+        val startIndex = newGridItem!!.getRow()
         // 해당하는 칸만큼 삭제
-        for(i in 1 until blocks){
+        for(i in 1 until blocks * 2){
             val cell = findCell(rowNames[startIndex + i]!!, "1")
             cell?.visibility = View.GONE
-            newCell?.addSpannedCells(cell)
+            newGridItem?.addSpannedCells(cell)
         }
 
-        newCell?.apply{
+        newGridItem?.apply{
             setText(item)
             setScheduled(true)
             isClickable = true
+            // 롱 클릭 이벤트
+            setOnLongClickListener{
+                mListener?.itemLongClick(this)
+                return@setOnLongClickListener true
+            }
+
+            // 활동 종류 따라서 색이 바뀜
+            if(type == Define.CURE){ // 치료활동
+                setBackgroundColor(mContext.getColor(R.color.blue))
+            } else if(type == Define.REVIEW){ // 회고활동 일때
+                setBackgroundColor(mContext.getColor(R.color.red))
+            } else if(type == Define.PRIVATE){ // 개인/고정일정 일때
+                setBackgroundColor(mContext.getColor(R.color.purple))
+            }
         }
-        val layoutParams = newCell?.layoutParams as GridLayout.LayoutParams
+        val layoutParams = newGridItem?.layoutParams as GridLayout.LayoutParams
         layoutParams.apply{
-            rowSpec = spec(startIndex, blocks, 1.0f)
+            rowSpec = spec(startIndex, blocks * 2, 1.0f)
         }
-        newCell.layoutParams = layoutParams
+        newGridItem.layoutParams = layoutParams
+    }
+
+    /**
+     * 스케쥴 삭제
+     */
+    fun deleteSchedule(){
+
+    }
+
+    /**
+     * 스케쥴 수정
+     */
+    fun updateSchedule(){
+
     }
 }
