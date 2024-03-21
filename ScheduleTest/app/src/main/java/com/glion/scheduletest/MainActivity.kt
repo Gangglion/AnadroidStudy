@@ -26,38 +26,20 @@ class MainActivity : AppCompatActivity(), GridItemInterface {
     private var wakeUp = "0"
     private var sleepDown = "0"
 
-    var isScroll = true
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mContext = this
         mScrollView = findViewById(R.id.sc_view)
-
-        mScrollView.addOnLayoutChangeListener { _, _, _, _, _, _, _, _, _ ->
-            scrollToNowTime()
-        }
         // 스케쥴 시작시간과 종료시간 세팅
         wakeUp = "06:00"
         sleepDown = "23:00"
+
         initSchedule()
-//        Handler(mainLooper).postDelayed({
-//            scrollToNowTime()
-//        }, 1000)
-
-
-
-
-
         // MEMO : 추가 예시
-        mScheduleGridLayout.addSchedule("치료 일정", "07:00", 4, Define.CURE)
-        mScheduleGridLayout.addSchedule("회고활동 일정", "11:00", 2, Define.REVIEW)
-        mScheduleGridLayout.addSchedule("회고활동 일정", "14:00", 2, Define.REVIEW)
-        mScheduleGridLayout.addSchedule("회고활동 일정", "18:00", 2, Define.REVIEW)
+//        mScheduleGridLayout.addSchedule("치료 일정", "07:00", 4, Define.CURE)
+//        mScheduleGridLayout.addSchedule("회고활동 일정", "11:00", 2, Define.REVIEW)
         mScheduleGridLayout.addSchedule("개인 일정", "23:00", 1, Define.PRIVATE)
-
-//        init()
-//        mScTable.changeColor()
     }
 
     override fun onResume() {
@@ -75,20 +57,22 @@ class MainActivity : AppCompatActivity(), GridItemInterface {
         Log.d("shhan", "수정 : ${item.getText()}")
         Toast.makeText(mContext, "길게 누르면 수정 다이어로그 뜸", Toast.LENGTH_SHORT).show()
         startActivity(Intent(mContext, MainActivity2::class.java))
-        isScroll = true
     }
 
-    fun scrollToNowTime(){
-        if(isScroll){
-            val rect = mScheduleGridLayout.getNowTimeItemLocation("18:00")
-            val y = abs(calculateRectOnScreen(mScrollView).top - (mScrollView.scrollY + rect.top)) / 2
-            mScrollView.smoothScrollTo(0, y)
+    // onWindowFocusChanged : 현재 Activity의 포커스 여부를 확인(hasFocus true - Activity에 포커스 존재, false - Activity 에 포커스 없음)
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        super.onWindowFocusChanged(hasFocus)
+        if(hasFocus){ // 현재 액티비티에 포커스가 존재할때, 스크롤 동작
+            scrollToNowTime()
         }
     }
 
-
-//    private fun init(){
-//        mScTable = findViewById(R.id.sc_table)
-//        mScTable.initTable(wakeUp, sleepDown)
-//    }
+    // 화면에서의 ScrollView Top 좌표에서 ScrollView의 현재 스크롤상태인 Y좌표와 대상 뷰의 Top 좌표만큼 더한것을 뺀다 -> 스크롤해야할 만큼의 y좌표
+    // 2로 나누어주어, 대상 뷰가 화면 중간쯤에 오도록 함.
+    // 사용되는 getLocationOnScreen 은 onCreate 에서 호출 시 뷰가 완전히 그려지기 이전에 좌표값을 구하려고 하기 때문에 0을 리턴한다.
+    private fun scrollToNowTime() {
+        val rect = mScheduleGridLayout.getNowTimeItemLocation("18:00")
+        val y = abs(calculateRectOnScreen(mScrollView).top - (mScrollView.scrollY + rect.top)) / 2
+        mScrollView.smoothScrollTo(0, y)
+    }
 }
