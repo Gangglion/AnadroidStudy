@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.GridLayout
 import android.widget.Toast
+import androidx.annotation.ColorRes
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.get
 import com.glion.scheduletest.Define
@@ -132,12 +133,10 @@ class ScheduleGridLayout : GridLayout {
 
                 // MEMO : 캘린더/시간표 부분의 왼쪽 시간Item 속성 설정
                 if(rowIdx % 2 == 0 && columnIdx == 0) {
-                    // temp : D-STOP 예시
                     gridItem.setText(displayRowNames[rowIdxForTime]!!)
                 }
                 // MEMO : 캘린더/시간표 부분의 오른쪽 일정Item 항목 설정
                 if(columnIdx == 1) {
-                    // temp : D-STOP 예시
                     gridItem.setText("")
                 }
                 if (rowIdx % 2 == 0 && columnIdx == 1) {
@@ -146,7 +145,6 @@ class ScheduleGridLayout : GridLayout {
                         R.drawable.top_line
                     )
                 }
-//                gridItem.setText("${rowNames[rowIdx]}/${columnNames[columnIdx]}")
 
                 if(columnIdx == 0){
                     val layoutParams = LayoutParams(spec(rowIdx, 1.0f), spec(columnIdx, 0.4f))
@@ -173,33 +171,46 @@ class ScheduleGridLayout : GridLayout {
     }
 
     /**
-     * 현재 시간에 일치하는 GridItem 의 좌표가 있는 Rect 리턴
+     * 열이름/행이름 의 태그를 가진 gridItem 리턴
+     * @param rowName 열이름(0,1,2,3...)
+     * @param columnName 행이름(0,1)
      */
-    fun getNowTimeItemLocation(nowTime: String): Rect {
-        val nowTimeItem = findItem(nowTime)
-        return calculateRectOnScreen(nowTimeItem!!)
-    }
-
     fun findItem(rowName: String, columnName: String) : GridItem?{
         return findViewWithTag("$rowName/$columnName")
     }
-    fun findItem(row: Int, column: Int){
 
+    /**
+     * 내용이 들어가는 전체 GridItem List 리턴
+     */
+    fun findAllContentItem(): List<GridItem>{
+        val gridItemList: MutableList<GridItem> = mutableListOf()
+        for(rowIdx in 0 until rowCount){
+            val item = findItem(rowNames[rowIdx]!!, "1")
+            gridItemList.add(item!!)
+        }
+        return gridItemList
     }
 
     /**
      * 시간을 클릭했을때, 해당 시간대의 gridItem 을 리턴해줌
      */
-    fun findItem(time: String): GridItem?{
+    fun findItem(time: String, isLeft: Boolean): GridItem?{
         for(rowIdx in 0 until rowCount){
             val gridItem = findItem(rowNames[rowIdx]!!, "0")
             if(gridItem?.getText() == time){
-                return findItem(rowNames[rowIdx]!!, "1")
+                return if(isLeft){
+                    findItem(rowNames[rowIdx]!!, "0")
+                } else{
+                    findItem(rowNames[rowIdx]!!, "1")
+                }
             }
         }
         return null
     }
 
+    /**
+     * 일치하는 text를 가진 특정 gridItem 리턴
+     */
     fun findItemWithContentName(name: String): GridItem?{
         for(rowIdx in 0 until rowCount){
             val gridItem = findItem(rowNames[rowIdx]!!, "1")
@@ -212,11 +223,13 @@ class ScheduleGridLayout : GridLayout {
 
     /**
      * 스케쥴 등록
-     * @param blocks 30분 단위로 1 / 1시간 등록 2, 2시간 등록 4 ...
+     * @param title 스케쥴 이름
+     * @param startTime 스케쥴 시작시간
+     * @param endTime 스케쥴 종료시간
      */
-    fun addSchedule(item: String, startTime: String, endTime: String, type: Int){
+    fun addSchedule(title: String, startTime: String, endTime: String){
         val blocks = getTimeDifferenceToBlocks(startTime, endTime) // 시간 차이로 블럭 계산
-        val newGridItem = findItem(startTime)
+        val newGridItem = findItem(startTime, false)
         // 스케쥴 있는지 확인
         if(newGridItem?.visibility == View.GONE || newGridItem?.isScheduled() == true ){ // 넣고자 하는 시간표에 스케쥴이 들어가 있는지 확인
             Toast.makeText(mContext, "해당 시간에 스케쥴이 존재함!", Toast.LENGTH_SHORT).show()
@@ -230,23 +243,14 @@ class ScheduleGridLayout : GridLayout {
             newGridItem?.addSpannedCells(cell)
         }
 
-        newGridItem?.apply{
-            setText(item)
+        newGridItem.apply{
+            setText(title)
             setScheduled(true)
             isClickable = true
             // 롱 클릭 이벤트
             setOnLongClickListener{
                 mListener?.itemLongClick(this)
                 return@setOnLongClickListener true
-            }
-
-            // 활동 종류 따라서 색이 바뀜
-            if(type == Define.CURE){ // 치료활동
-                setBackgroundColor(mContext.getColor(R.color.blue))
-            } else if(type == Define.REVIEW){ // 회고활동 일때
-                setBackgroundColor(mContext.getColor(R.color.red))
-            } else if(type == Define.PRIVATE){ // 개인/고정일정 일때
-                setBackgroundColor(mContext.getColor(R.color.purple))
             }
         }
         val layoutParams = newGridItem?.layoutParams as LayoutParams
@@ -258,10 +262,10 @@ class ScheduleGridLayout : GridLayout {
 
     /**
      * 스케쥴 삭제
-     * @param item 삭제할 item 이름
+     * @param title 삭제할 title
      */
-    fun deleteSchedule(item: String){
-        val targetItem = findItemWithContentName(item)
+    fun deleteSchedule(title: String){
+        val targetItem = findItemWithContentName(title)
         val row = targetItem?.getRow()
         // 셀 삭제
         targetItem?.apply{
@@ -286,10 +290,23 @@ class ScheduleGridLayout : GridLayout {
 
     /**
      * 스케쥴 수정
+     * @param originName 수정 전 원래이름
+     * @param changedName 수정하려는 이름
+     * @param changedStartTime 수정하려는 시작 시간
+     * @param changedEndTime 수정하려는 종료 시간
      */
-    fun updateSchedule(originName: String, changedName: String, changedStartTime: String, changedEndTime: String, type: Int){
+    fun updateSchedule(originName: String, changedName: String, changedStartTime: String, changedEndTime: String){
         deleteSchedule(originName)
-        addSchedule(changedName, changedStartTime, changedEndTime, type)
+        addSchedule(changedName, changedStartTime, changedEndTime)
+    }
+
+    /**
+     * 특정 item의 배경색 변경
+     * @param item 배경색을 변경할 gridItem
+     * @param bgColor 컬러 ID
+     */
+    fun changeBackground(item: GridItem, @ColorRes bgColor: Int){
+        item.setBackgroundColor(mContext.getColor(bgColor))
     }
 
     private fun dpToPx(context: Context, dp: Int): Int{
@@ -297,6 +314,10 @@ class ScheduleGridLayout : GridLayout {
         return (dp.toFloat() * density).roundToInt()
     }
 
+    /**
+     * view의 절대위치
+     * @param 대상 view
+     */
     fun calculateRectOnScreen(view: View): Rect {
         val location = IntArray(2)
         view.getLocationInWindow(location) // MEMO : onCreate 에서 호출 시, getLocationOnScreen 을 계산하기 너무 이른 시점이기 때문에 0이 리턴되는 문제가 존재한다.
@@ -308,11 +329,6 @@ class ScheduleGridLayout : GridLayout {
         )
     }
 
-    /**
-     * 시작시간과 종료시간으로 병합해야 하는 칸 수 리턴
-     * @param startTime 시작시간(HH:mm)
-     * @param endTime 종료시간(HH:MM)
-     */
     private fun getTimeDifferenceToBlocks(startTime: String, endTime: String): Int{
         val formatter = DateTimeFormatter.ofPattern("HH:mm")
         val start = LocalTime.parse(startTime, formatter)
