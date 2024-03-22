@@ -94,6 +94,10 @@ class GridItem : FrameLayout {
         spannedCells.add(gridItem!!)
     }
 
+    fun getSpannedCells(): ArrayList<GridItem>{
+        return spannedCells
+    }
+
     fun isScheduled(): Boolean{
         return isScheduled
     }

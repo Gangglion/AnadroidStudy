@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".MainApplication"
+        android:name=".Applilcation"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +14,7 @@
         android:theme="@style/Theme.ScheduleTest"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity2"
+            android:name=".ScheduleEditActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

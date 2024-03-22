@@ -11,10 +11,13 @@ import android.view.View
 import android.widget.GridLayout
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.get
 import com.glion.scheduletest.Define
-import com.glion.scheduletest.Define.calculateRectOnScreen
 import com.glion.scheduletest.R
-import com.glion.scheduletest.Utility
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoUnit
+import kotlin.math.roundToInt
 
 
 class ScheduleGridLayout : GridLayout {
@@ -91,7 +94,6 @@ class ScheduleGridLayout : GridLayout {
 
         initRowColumnNames(startHour) //행,열 이름 초기화
         addCells() //cell추가
-//        mergeTimeCell() // 시간 셀 병합
     }
 
     private fun initRowColumnNames(startTime: Int){
@@ -138,10 +140,10 @@ class ScheduleGridLayout : GridLayout {
                     // temp : D-STOP 예시
                     gridItem.setText("")
                 }
-                if (rowIdx % 2 == 1 && columnIdx == 1) {
+                if (rowIdx % 2 == 0 && columnIdx == 1) {
                     gridItem.background = AppCompatResources.getDrawable(
                         mContext,
-                        R.drawable.bottom_line
+                        R.drawable.top_line
                     )
                 }
 //                gridItem.setText("${rowNames[rowIdx]}/${columnNames[columnIdx]}")
@@ -151,7 +153,7 @@ class ScheduleGridLayout : GridLayout {
                     layoutParams.apply{
                         setGravity(Gravity.FILL)
                         width = 0
-                        height = Utility.dpToPx(mContext, 32)
+                        height = dpToPx(mContext, 32)
                         setMargins(cellMarginStart, cellMarginTop, cellMarginEnd, cellMarginBottom)
                     }
                     gridItem.layoutParams = layoutParams
@@ -160,7 +162,7 @@ class ScheduleGridLayout : GridLayout {
                     layoutParams.apply{
                         setGravity(Gravity.FILL)
                         width = 0
-                        height = Utility.dpToPx(mContext, 32)
+                        height = dpToPx(mContext, 32)
                         setMargins(cellMarginStart, cellMarginTop, cellMarginEnd, cellMarginBottom)
                     }
                     gridItem.layoutParams = layoutParams
@@ -170,43 +172,39 @@ class ScheduleGridLayout : GridLayout {
         }
     }
 
-    private fun mergeTimeCell(){
-        for(rowIdx in 0 until rowCount){
-            if(rowIdx % 2 == 0){ // 짝수일때
-                val mergeCell = findCell("${rowNames[rowIdx]}", "0")
-                val deletedCell = findCell("${rowNames[rowIdx+1]}", "0")
-                Log.d("shhan", "breakPoint")
-                deletedCell!!.visibility = View.GONE
-                val layoutParams = mergeCell!!.layoutParams as LayoutParams
-                layoutParams.rowSpec = spec(mergeCell.getRow(), 2, 1.0f)
-                mergeCell.layoutParams = layoutParams
-            }
-        }
-    }
-
     /**
      * 현재 시간에 일치하는 GridItem 의 좌표가 있는 Rect 리턴
      */
     fun getNowTimeItemLocation(nowTime: String): Rect {
-        val nowTimeItem = findCell(nowTime)
+        val nowTimeItem = findItem(nowTime)
         return calculateRectOnScreen(nowTimeItem!!)
     }
 
-    fun findCell(rowName: String, columnName: String) : GridItem?{
+    fun findItem(rowName: String, columnName: String) : GridItem?{
         return findViewWithTag("$rowName/$columnName")
     }
-    fun findCell(row: Int, column: Int){
+    fun findItem(row: Int, column: Int){
 
     }
 
     /**
      * 시간을 클릭했을때, 해당 시간대의 gridItem 을 리턴해줌
      */
-    fun findCell(time: String): GridItem?{
+    fun findItem(time: String): GridItem?{
         for(rowIdx in 0 until rowCount){
-            val gridItem = findCell(rowNames[rowIdx]!!, "0")
+            val gridItem = findItem(rowNames[rowIdx]!!, "0")
             if(gridItem?.getText() == time){
-                return findCell(rowNames[rowIdx]!!, "1")
+                return findItem(rowNames[rowIdx]!!, "1")
+            }
+        }
+        return null
+    }
+
+    fun findItemWithContentName(name: String): GridItem?{
+        for(rowIdx in 0 until rowCount){
+            val gridItem = findItem(rowNames[rowIdx]!!, "1")
+            if(gridItem?.getText() == name){
+                return gridItem
             }
         }
         return null
@@ -216,8 +214,9 @@ class ScheduleGridLayout : GridLayout {
      * 스케쥴 등록
      * @param blocks 30분 단위로 1 / 1시간 등록 2, 2시간 등록 4 ...
      */
-    fun addSchedule(item: String, startTime: String, blocks: Int, type: Int){
-        val newGridItem = findCell(startTime)
+    fun addSchedule(item: String, startTime: String, endTime: String, type: Int){
+        val blocks = getTimeDifferenceToBlocks(startTime, endTime) // 시간 차이로 블럭 계산
+        val newGridItem = findItem(startTime)
         // 스케쥴 있는지 확인
         if(newGridItem?.visibility == View.GONE || newGridItem?.isScheduled() == true ){ // 넣고자 하는 시간표에 스케쥴이 들어가 있는지 확인
             Toast.makeText(mContext, "해당 시간에 스케쥴이 존재함!", Toast.LENGTH_SHORT).show()
@@ -226,7 +225,7 @@ class ScheduleGridLayout : GridLayout {
         val startIndex = newGridItem!!.getRow()
         // 해당하는 칸만큼 삭제
         for(i in 1 until blocks){
-            val cell = findCell(rowNames[startIndex + i]!!, "1")
+            val cell = findItem(rowNames[startIndex + i]!!, "1")
             cell?.visibility = View.GONE
             newGridItem?.addSpannedCells(cell)
         }
@@ -250,7 +249,7 @@ class ScheduleGridLayout : GridLayout {
                 setBackgroundColor(mContext.getColor(R.color.purple))
             }
         }
-        val layoutParams = newGridItem?.layoutParams as GridLayout.LayoutParams
+        val layoutParams = newGridItem?.layoutParams as LayoutParams
         layoutParams.apply{
             rowSpec = spec(startIndex, blocks, 1.0f)
         }
@@ -259,15 +258,67 @@ class ScheduleGridLayout : GridLayout {
 
     /**
      * 스케쥴 삭제
+     * @param item 삭제할 item 이름
      */
-    fun deleteSchedule(){
+    fun deleteSchedule(item: String){
+        val targetItem = findItemWithContentName(item)
+        val row = targetItem?.getRow()
+        // 셀 삭제
+        targetItem?.apply{
+            setText("")
+            setScheduled(false)
+            isClickable = false
+            setBackgroundColor(mContext.getColor(R.color.white))
+            background = AppCompatResources.getDrawable(mContext, R.drawable.top_line)
+        }
+        // 병합된 item 복구
+        val layoutParams: LayoutParams = targetItem?.layoutParams as LayoutParams
+        layoutParams.rowSpec = spec(row!!, 1, 1.0f)
+        targetItem.layoutParams = layoutParams
 
+        // 삭제된 셀 visibility 변경
+        val deletedItems = targetItem.getSpannedCells()
+        for(i in deletedItems.indices){
+            deletedItems[i].visibility = View.VISIBLE
+        }
+        deletedItems.clear()
     }
 
     /**
      * 스케쥴 수정
      */
-    fun updateSchedule(){
+    fun updateSchedule(originName: String, changedName: String, changedStartTime: String, changedEndTime: String, type: Int){
+        deleteSchedule(originName)
+        addSchedule(changedName, changedStartTime, changedEndTime, type)
+    }
 
+    private fun dpToPx(context: Context, dp: Int): Int{
+        val density = context.resources.displayMetrics.density
+        return (dp.toFloat() * density).roundToInt()
+    }
+
+    fun calculateRectOnScreen(view: View): Rect {
+        val location = IntArray(2)
+        view.getLocationInWindow(location) // MEMO : onCreate 에서 호출 시, getLocationOnScreen 을 계산하기 너무 이른 시점이기 때문에 0이 리턴되는 문제가 존재한다.
+        return Rect(
+            location[0],
+            location[1],
+            location[0] + view.measuredWidth,
+            location[1] + view.measuredHeight
+        )
+    }
+
+    /**
+     * 시작시간과 종료시간으로 병합해야 하는 칸 수 리턴
+     * @param startTime 시작시간(HH:mm)
+     * @param endTime 종료시간(HH:MM)
+     */
+    private fun getTimeDifferenceToBlocks(startTime: String, endTime: String): Int{
+        val formatter = DateTimeFormatter.ofPattern("HH:mm")
+        val start = LocalTime.parse(startTime, formatter)
+        val end = LocalTime.parse(endTime, formatter)
+        val difference = ChronoUnit.MINUTES.between(start, end) // 시간 차이가 분 단위로 계산된다(13:00 - 12:00 = 60)
+        Log.d("shhan", "blocks : ${(difference / 30).toInt()}")
+        return (difference / 30).toInt()
     }
 }

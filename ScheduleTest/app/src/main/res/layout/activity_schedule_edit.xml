@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ScheduleEditActivity"
+    android:padding="8dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="무엇을 할 건지"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/type_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:text="대안활동"
+            android:layout_alignParentStart="true"/>
+        <TextView
+            android:id="@+id/type_private_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_toEndOf="@+id/type_review"
+            android:text="일상활동"/>
+        <TextView
+            android:id="@+id/type_private_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_toEndOf="@+id/type_private_1"
+            android:text="약속(사적활동)"/>
+        <TextView
+            android:id="@+id/type_cure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_below="@+id/type_review"
+            android:text="치료활동(외래, 검사, 상담, 집단상담)"/>
+        <TextView
+            android:id="@+id/type_private_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:layout_below="@+id/type_cure"
+            android:text="위에 분류되지 않은 활동"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="활동 상세 항목 지정"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/et_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="오후 HH:mm"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="  ~  "/>
+        <EditText
+            android:id="@+id/et_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:hint="오후 HH:mm"/>
+    </LinearLayout>
+
+
+</LinearLayout>
