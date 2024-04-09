@@ -254,6 +254,15 @@
                     app:layout_constraintStart_toStartOf="@+id/btn_viewmodel"
                     app:layout_constraintTop_toBottomOf="@+id/btn_viewmodel" />
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_tree_map"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/tree_map"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_saveinstance"
+                    app:layout_constraintStart_toStartOf="@+id/btn_saveinstance"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_saveinstance" />
                 <!-- 공간차지용 비어있는 레이아웃 -->
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
