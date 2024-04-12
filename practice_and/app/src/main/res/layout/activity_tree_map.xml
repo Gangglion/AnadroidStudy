@@ -7,6 +7,7 @@
     tools:context=".tree_map.AnyChartTreeMapActivity"
     android:orientation="vertical">
     <com.example.practice_and.tree_map.TreeMapGridLayout
+        android:id="@+id/v_tree_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:rowCount="10"

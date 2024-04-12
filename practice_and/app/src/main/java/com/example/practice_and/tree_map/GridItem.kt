@@ -15,6 +15,10 @@ class GridItem  : LinearLayoutCompat{
     private lateinit var mLlRoot: LinearLayoutCompat
     private lateinit var mTvTitle: AppCompatTextView
     private lateinit var mTvValue: AppCompatTextView
+    private lateinit var mTvTag: AppCompatTextView
+
+    // MEMO: 사라진 item 보관용 - 복구하기 위함
+    private var spannedItems: ArrayList<GridItem> = arrayListOf()
 
     constructor(context: Context?) : super(context!!) {
         initView(context, null)
@@ -36,12 +40,18 @@ class GridItem  : LinearLayoutCompat{
             mLlRoot = findViewById(R.id.ll_root)
             mTvTitle = findViewById(R.id.tv_title)
             mTvValue = findViewById(R.id.tv_value)
+            mTvTag = findViewById(R.id.tv_tag)
         }
         addView(view)
     }
 
-    fun setValue(title: String, content: String){
+    fun setValue(title: String, content: String, tag: String){
         mTvTitle.text = title
         mTvValue.text = content
+        mTvTag.text = tag
+    }
+
+    fun addSpannedItems(gridItem: GridItem?) {
+        spannedItems.add(gridItem!!)
     }
 }
