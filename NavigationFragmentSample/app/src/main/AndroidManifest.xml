@@ -13,12 +13,6 @@
         android:theme="@style/Theme.NavigationFragmentSample"
         tools:targetApi="31">
         <activity
-            android:name=".dsl.DSLActivity"
-            android:exported="false" />
-        <activity
-            android:name=".graph.GraphActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

@@ -9,11 +9,11 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.navigationfragmentsample.R
+import com.example.navigationfragmentsample.databinding.FragmentGraphResultBinding
 import com.example.navigationfragmentsample.graph.data.ResultData
-import com.example.navigationfragmentsample.databinding.FragmentResultBinding
 
-class FragmentResult : Fragment() {
-    private lateinit var binding: FragmentResultBinding
+class FragmentGraphResult : Fragment() {
+    private lateinit var binding: FragmentGraphResultBinding
     private var mGetTitle: String = ""
     private var mGetValue: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +31,7 @@ class FragmentResult : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_result, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_graph_result, container, false)
         return binding.root
     }
 

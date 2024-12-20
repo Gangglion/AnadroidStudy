@@ -12,45 +12,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:id="@+id/ll_fragment_navigation"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/nav_main"
+            android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="8dp"
+            android:layout_height="0dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_main"/>
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.BottomNavigationView.Colored"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nav_main"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:orientation="vertical"
-            android:gravity="center">
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:layout_marginBottom="16dp"
-                android:text="Navigation Fragment"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center">
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_graph"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="Graph 방식"/>
-                <Space
-                    android:layout_width="16dp"
-                    android:layout_height="wrap_content"/>
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_dsl"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="DSL 방식"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
+            app:itemBackground="@drawable/selector_bottom_menu_active"
+            android:background="@color/white"
+            app:elevation="0dp"
+            app:itemTextAppearanceActiveBoldEnabled="true"
+            app:itemIconTint="@color/selector_bottom_menu"
+            app:itemTextColor="@color/selector_bottom_menu"
+            app:menu="@menu/bottom_navigation_menu"
+            app:labelVisibilityMode="labeled" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
+
+<!-- note : BottomNavigationView 의 속성 설명
+<com.google.android.material.bottomnavigation.BottomNavigationView
+    android:id="@+id/bottom_nav"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    style="@style/Widget.MaterialComponents.BottomNavigationView.Colored" => BottomNavigationView 의 스타일 지정. 기본 스타일로 지정함
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/nav_main"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:itemBackground="@drawable/selector_bottom_menu_active" => 아이템의 배경 지정. selector 를 사용하여 활성화 됐을때의 효과를 지정할 수 있음
+    android:background="@color/white" => BottomNavigationView 의 컨테이너 배경 색
+    app:elevation="0dp"
+    app:itemTextAppearanceActiveBoldEnabled="true" => 선택된 아이템의 Text 에 Bold 효과를 줄 것인지 지정
+    app:itemIconTint="@color/selector_bottom_menu" => 선택된 아이템 아이콘의 색상. selector 를 사용하여 활성화 됐을때의 색상 지정
+    app:itemTextColor="@color/selector_bottom_menu" => 선택된 아이템 label 의 색상. selector 를 사용하여 활성화 됐을때의 색상 지정
+    app:menu="@menu/bottom_navigation_menu" => menu 아이템 지정
+    app:labelVisibilityMode="labeled" /> => 항상 label 을 띄울것인지, label 을 표시하는 모드 지정
+-->

@@ -1,21 +1,18 @@
 package com.example.navigationfragmentsample.dsl
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.annotation.AnimRes
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
-import androidx.navigation.NavOptions
+import androidx.fragment.app.Fragment
 import androidx.navigation.createGraph
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.fragment
 import com.example.navigationfragmentsample.R
+import com.example.navigationfragmentsample.databinding.FragmentDslMainBinding
 import com.example.navigationfragmentsample.dsl.data.DslResultData
 import com.example.navigationfragmentsample.dsl.data.ResultDataParametersType
-import com.example.navigationfragmentsample.databinding.ActivityDslactivityBinding
 import com.example.navigationfragmentsample.dsl.route.AppRoute
 import kotlin.reflect.typeOf
 
@@ -23,19 +20,25 @@ import kotlin.reflect.typeOf
  * Kotlin DSL 을 사용하여 Programmatically 하게 Fragment 전환
  * DSL : Domain Specific Language dml 약자로 특정 도메인에 대한 목적으로 만들어진 언어를 의미, Kotlin 으로 작성된 도메인 특화 언어
  */
-class DSLActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityDslactivityBinding
+class FragmentDslMain : Fragment() {
+    private lateinit var binding: FragmentDslMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_dslactivity)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
-        }
 
-        val navHostFragment = supportFragmentManager.findFragmentById(binding.navHostDsl.id) as NavHostFragment
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_dsl_main, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val navHostFragment = childFragmentManager.findFragmentById(binding.navHostDsl.id) as NavHostFragment
         val navController = navHostFragment.navController
         // note : nav_graph 를 컴파일 시 아래처럼 생성한다(compose 의 navigation 과 유사한 느낌)
         navController.graph = navController.createGraph(
@@ -65,5 +68,6 @@ class DSLActivity : AppCompatActivity() {
                 label = AppRoute.Find.route
             }
         }
+
     }
 }

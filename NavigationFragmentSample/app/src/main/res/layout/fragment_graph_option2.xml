@@ -9,20 +9,19 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".graph.FragmentOption_2_1">
+        tools:context=".graph.FragmentGraphOption2">
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:textSize="30sp"
-            android:text="Option2-1Fragment"/>
+            android:text="Option2Fragment"/>
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_result"
+            android:id="@+id/btn_option2dash1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_gravity="center"
-            android:text="Result"/>
-
+            android:gravity="center"
+            android:text="Option 2-1"/>
     </FrameLayout>
 </layout>

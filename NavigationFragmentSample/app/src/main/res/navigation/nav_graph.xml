@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/fragmentHome"
-        android:name="com.example.navigationfragmentsample.graph.FragmentHome"
+        android:name="com.example.navigationfragmentsample.graph.FragmentGraphHome"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_graph_home" >
         <action
             android:id="@+id/action_fragmentHome_to_fragmentOption1"
             app:destination="@id/fragmentOption1"
@@ -27,9 +27,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentOption1"
-        android:name="com.example.navigationfragmentsample.graph.FragmentOption1"
+        android:name="com.example.navigationfragmentsample.graph.FragmentGraphOption1"
         android:label="fragment_option1"
-        tools:layout="@layout/fragment_option1" >
+        tools:layout="@layout/fragment_graph_option1" >
         <action
             android:id="@+id/action_fragmentOption1_to_fragmentResult"
             app:destination="@id/fragmentResult"
@@ -40,9 +40,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentOption2"
-        android:name="com.example.navigationfragmentsample.graph.FragmentOption2"
+        android:name="com.example.navigationfragmentsample.graph.FragmentGraphOption2"
         android:label="fragment_option2"
-        tools:layout="@layout/fragment_option2" >
+        tools:layout="@layout/fragment_graph_option2" >
         <action
             android:id="@+id/action_fragmentOption2_to_fragmentOption_2_1"
             app:destination="@id/fragmentOption_2_1"
@@ -53,9 +53,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentOption_2_1"
-        android:name="com.example.navigationfragmentsample.graph.FragmentOption_2_1"
+        android:name="com.example.navigationfragmentsample.graph.FragmentGraphOption_2_1"
         android:label="fragment_option_2_1"
-        tools:layout="@layout/fragment_option_2_1" >
+        tools:layout="@layout/fragment_graph_option_2_1" >
         <action
             android:id="@+id/action_fragmentOption_2_1_to_fragmentResult"
             app:destination="@id/fragmentResult"
@@ -66,9 +66,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentResult"
-        android:name="com.example.navigationfragmentsample.graph.FragmentResult"
+        android:name="com.example.navigationfragmentsample.graph.FragmentGraphResult"
         android:label="fragment_result"
-        tools:layout="@layout/fragment_result" >
+        tools:layout="@layout/fragment_graph_result" >
         <action
             android:id="@+id/action_fragmentResult_to_fragmentFind"
             app:destination="@id/fragmentFind"
@@ -92,9 +92,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentFind"
-        android:name="com.example.navigationfragmentsample.graph.FragmentFind"
+        android:name="com.example.navigationfragmentsample.graph.FragmentGraphFind"
         android:label="fragment_find"
-        tools:layout="@layout/fragment_find" >
+        tools:layout="@layout/fragment_graph_find" >
         <action
             android:id="@+id/action_fragmentFind_to_fragmentHome"
             app:destination="@id/fragmentHome"

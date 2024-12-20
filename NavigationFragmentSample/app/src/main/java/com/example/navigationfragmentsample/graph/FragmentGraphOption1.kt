@@ -1,19 +1,19 @@
 package com.example.navigationfragmentsample.graph
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.NavController
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.navigationfragmentsample.R
-import com.example.navigationfragmentsample.databinding.FragmentHomeBinding
+import com.example.navigationfragmentsample.databinding.FragmentGraphOption1Binding
+import com.example.navigationfragmentsample.graph.data.ResultData
+import kotlin.random.Random
 
-class FragmentHome : Fragment() {
-    lateinit var binding: FragmentHomeBinding
-
+class FragmentGraphOption1 : Fragment() {
+    lateinit var binding: FragmentGraphOption1Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -22,20 +22,16 @@ class FragmentHome : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_graph_option1, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        with(binding) {
-            btnOption1.setOnClickListener {
-                findNavController().navigate(R.id.action_fragmentHome_to_fragmentOption1)
-            }
-            btnOption2.setOnClickListener {
-                findNavController().navigate(R.id.action_fragmentHome_to_fragmentOption2)
-            }
+        binding.btnResult.setOnClickListener {
+            val resultData = ResultData("Option1 에서 옴", Random.nextInt(1, 100))
+            val action = FragmentGraphOption1Directions.actionFragmentOption1ToFragmentResult(resultData)
+            findNavController().navigate(action)
         }
     }
 }
