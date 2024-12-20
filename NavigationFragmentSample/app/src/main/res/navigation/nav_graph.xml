@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.example.navigationfragmentsample.graph.FragmentHome"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentOption1"
+            app:destination="@id/fragmentOption1"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_fragmentHome_to_fragmentOption2"
+            app:destination="@id/fragmentOption2"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentOption1"
+        android:name="com.example.navigationfragmentsample.graph.FragmentOption1"
+        android:label="fragment_option1"
+        tools:layout="@layout/fragment_option1" >
+        <action
+            android:id="@+id/action_fragmentOption1_to_fragmentResult"
+            app:destination="@id/fragmentResult"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentOption2"
+        android:name="com.example.navigationfragmentsample.graph.FragmentOption2"
+        android:label="fragment_option2"
+        tools:layout="@layout/fragment_option2" >
+        <action
+            android:id="@+id/action_fragmentOption2_to_fragmentOption_2_1"
+            app:destination="@id/fragmentOption_2_1"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentOption_2_1"
+        android:name="com.example.navigationfragmentsample.graph.FragmentOption_2_1"
+        android:label="fragment_option_2_1"
+        tools:layout="@layout/fragment_option_2_1" >
+        <action
+            android:id="@+id/action_fragmentOption_2_1_to_fragmentResult"
+            app:destination="@id/fragmentResult"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentResult"
+        android:name="com.example.navigationfragmentsample.graph.FragmentResult"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" >
+        <action
+            android:id="@+id/action_fragmentResult_to_fragmentFind"
+            app:destination="@id/fragmentFind"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_fragmentResult_to_fragmentHome"
+            app:destination="@id/fragmentHome"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_out"
+            app:popUpTo="@id/fragmentHome"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="ResultData"
+            app:argType="com.example.navigationfragmentsample.graph.data.ResultData"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFind"
+        android:name="com.example.navigationfragmentsample.graph.FragmentFind"
+        android:label="fragment_find"
+        tools:layout="@layout/fragment_find" >
+        <action
+            android:id="@+id/action_fragmentFind_to_fragmentHome"
+            app:destination="@id/fragmentHome"
+            app:popUpTo="@id/fragmentHome"
+            app:popUpToInclusive="true"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+</navigation>
