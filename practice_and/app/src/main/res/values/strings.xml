@@ -48,6 +48,7 @@
     <string name="null_safety">Null-Safety</string>
     <string name="view_binding">ViewBinding</string>
     <string name="tree_map">TreeMap\nAnyChart-Trial</string>
+    <string name="circular_progress">원형 Progress</string>
 
 
     <string name="close_main_ready">한번 더 누르시면 앱을 종료합니다.</string>

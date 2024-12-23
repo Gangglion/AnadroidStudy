@@ -36,6 +36,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
+            android:name=".circular_progress.CircularProgressActivity"
+            android:exported="false" />
+        <activity
             android:name=".tree_map.AnyChartTreeMapActivity"
             android:exported="false" />
         <activity

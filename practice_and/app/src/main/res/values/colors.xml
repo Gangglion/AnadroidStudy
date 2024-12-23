@@ -55,4 +55,8 @@
     <color name="light_blue_700">#FF0288D1</color>
     <color name="red_700">#FFD32F2F</color>
     <color name="red_400">#FFEF5350</color>
+
+    <color name="gradient_start">#26A6CC</color>
+    <color name="gradient_end">#37197D</color>
+    <color name="pg_background">#EEF9FB</color>
 </resources>

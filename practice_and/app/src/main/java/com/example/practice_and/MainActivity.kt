@@ -30,6 +30,7 @@ import com.example.practice_and.googlefitness.FitnessFragment
 import com.example.practice_and.hidekeyboard.InputProcessFragment
 import com.example.practice_and.null_safety.NullSafetyActivity
 import com.example.practice_and.asynchronism.ThreadFragment
+import com.example.practice_and.circular_progress.CircularProgressActivity
 import com.example.practice_and.pedometer_and_chart.StepActivity
 import com.example.practice_and.qrzxing.QrZxingActivity
 import com.example.practice_and.recorder.RecorderActivity
@@ -110,6 +111,7 @@ class MainActivity : BaseActivity(), OnClickListener {
         findViewById<AppCompatButton>(R.id.btn_null).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_viewbinding).setOnClickListener(this)
         findViewById<AppCompatButton>(R.id.btn_tree_map).setOnClickListener(this)
+        findViewById<AppCompatButton>(R.id.btn_circlular_progress).setOnClickListener(this)
 
         // Enum Class 사용 테스트
         Log.d(App.TAG, "Enum parameter : ${AppTempData.FIRST.parameter} / Enum name : ${AppTempData.FIRST.name} / Enum constant : ${AppTempData.FIRST}")
@@ -225,6 +227,9 @@ class MainActivity : BaseActivity(), OnClickListener {
             }
             R.id.btn_tree_map ->{
                 startActivity(Intent(mContext, AnyChartTreeMapActivity::class.java))
+            }
+            R.id.btn_circlular_progress ->{
+                startActivity(Intent(mContext, CircularProgressActivity::class.java))
             }
 
             // Floating Action Button
