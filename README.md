@@ -15,8 +15,8 @@
 
 ### MVVMActivity - MVVM패턴 이해를 위한 예제 프로젝트
 
-### [안드로이드 SAA 와 Navigation](https://github.com/Gangglion/AndroidStudy/tree/main/NavigationFragmentSample)
-프로젝트명 - NavigationFragmentSample
+### [안드로이드 SAA 와 Navigation](https://github.com/Gangglion/AndroidStudy/tree/main/NavigationFragmentSample)  
+프로젝트명 - NavigationFragmentSample  
 [Navigation Graph README](https://github.com/Gangglion/AndroidStudy/blob/main/NavigationFragmentSample/app/src/main/java/com/example/navigationfragmentsample/graph/README.md) - Navigation Graph 방식 내용 정리
 
 ### [Android TextSize DP 지정 시 사이즈가 고정안되는 버그 구현](https://github.com/Gangglion/AndroidStudy/tree/main/NotFixDPBug)
