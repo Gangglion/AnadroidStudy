@@ -18,7 +18,7 @@ import kotlin.reflect.typeOf
 
 /**
  * Kotlin DSL 을 사용하여 Programmatically 하게 Fragment 전환
- * DSL : Domain Specific Language dml 약자로 특정 도메인에 대한 목적으로 만들어진 언어를 의미, Kotlin 으로 작성된 도메인 특화 언어
+ * DSL : Domain Specific Language 의 약자로 특정 도메인에 대한 목적으로 만들어진 언어를 의미, Kotlin 으로 작성된 도메인 특화 언어
  */
 class FragmentDslMain : Fragment() {
     private lateinit var binding: FragmentDslMainBinding
@@ -45,16 +45,16 @@ class FragmentDslMain : Fragment() {
             startDestination = AppRoute.Home
         ) {
             fragment<FragmentDslHome, AppRoute.Home> {
-                label = AppRoute.Home.route
+                label = AppRoute.Home.label
             }
             fragment<FragmentDslOption1, AppRoute.Option1> {
-                label = AppRoute.Option1.route
+                label = AppRoute.Option1.label
             }
             fragment<FragmentDslOption2, AppRoute.Option2> {
-                label = AppRoute.Option2.route
+                label = AppRoute.Option2.label
             }
             fragment<FragmentDslOption2_1, AppRoute.Option2_1> {
-                label = AppRoute.Option2_1.route
+                label = AppRoute.Option2_1.label
             }
             fragment<FragmentDslResult, AppRoute.Result>(
                 // 인자 전달 - 원시타입이 아닌 데이터의 경우, 아래의 방식으로 전달한다.
@@ -62,12 +62,11 @@ class FragmentDslMain : Fragment() {
                 // 따라서, 전달을 위해선 전달할 data class(@Serialize, @Parcelize 선언된) 와 이를 NavType 으로 만들어 주는 코드 2가지가 필요하다 - DslResultData 참고
                 typeMap = mapOf(typeOf<DslResultData>() to ResultDataParametersType)
             ) {
-                label = AppRoute.Result.route
+                label = AppRoute.Result.label
             }
             fragment<FragmentDslFind, AppRoute.Find> {
-                label = AppRoute.Find.route
+                label = AppRoute.Find.label
             }
         }
-
     }
 }

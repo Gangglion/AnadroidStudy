@@ -33,7 +33,7 @@ class FragmentDslHome : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         with(binding) {
             btnOption1.setOnClickListener {
-                findNavController().navigateWithAnim(AppRoute.Option1)
+                findNavController().navigateWithAnim(AppRoute.Option1(sendValue = 100))
             }
             btnOption2.setOnClickListener {
                 findNavController().navigateWithAnim(AppRoute.Option2)

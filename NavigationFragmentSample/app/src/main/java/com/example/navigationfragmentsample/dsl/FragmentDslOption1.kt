@@ -1,6 +1,7 @@
 package com.example.navigationfragmentsample.dsl
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,8 @@ class FragmentDslOption1 : Fragment() {
     lateinit var binding: FragmentDslOption1Binding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val sendValue = arguments?.getInt("sendValue")
+        Log.d("glion", "원시타입 데이터 전달 :: $sendValue")
     }
 
     override fun onCreateView(

@@ -9,16 +9,20 @@ import kotlinx.serialization.Serializable
 //  (그렇기 때문에 Navigation DSL 방식은 nav_graph 가 필요없다.)
 //  이를 위해, build.gradle 에서 "org.jetbrains.kotlinx:kotlinx-serialization-json:$latest" 를 추가하여 사용해야 한다.
 @Serializable
-sealed class AppRoute(val route: String) {
-    @Serializable data object Home : AppRoute(route = "home")
-    @Serializable data object Option1 : AppRoute(route = "option1")
-    @Serializable data object Option2 : AppRoute(route = "option2")
-    @Serializable data object Option2_1 : AppRoute(route = "option2_1")
-    // note : Route 의 인수는 직렬화 가능해야 한다. primitive 타입일 경우 직렬화가 바로 가능하지만, List 이거나 Custom Class 인 경우 NavType 을 별도로 생성해주어야 한다. DslResultData.kt 참고
-    @Serializable data class Result(val resultData: DslResultData) : AppRoute(Companion.route) {
+sealed class AppRoute(val label: String) {
+    @Serializable data object Home : AppRoute(label = "home")
+    @Serializable data class Option1(val sendValue: Int) : AppRoute(Companion.label) {
         companion object {
-            const val route = "result"
+            const val label = "option1"
         }
     }
-    @Serializable data object Find : AppRoute(route = "find")
+    @Serializable data object Option2 : AppRoute(label = "option2")
+    @Serializable data object Option2_1 : AppRoute(label = "option2_1")
+    // note : Route 의 인수는 직렬화 가능해야 한다. primitive 타입일 경우 직렬화가 바로 가능하지만, List 이거나 Custom Class 인 경우 NavType 을 별도로 생성해주어야 한다. DslResultData.kt 참고
+    @Serializable data class Result(val resultData: DslResultData) : AppRoute(Companion.label) {
+        companion object {
+            const val label = "result"
+        }
+    }
+    @Serializable data object Find : AppRoute(label = "find")
 }
