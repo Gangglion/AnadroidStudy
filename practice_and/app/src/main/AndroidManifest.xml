@@ -36,6 +36,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="26">
         <activity
+            android:name=".custom_button.CustomButtonActivity"
+            android:exported="false" />
+        <activity
             android:name=".circular_progress.CircularProgressActivity"
             android:exported="false" />
         <activity

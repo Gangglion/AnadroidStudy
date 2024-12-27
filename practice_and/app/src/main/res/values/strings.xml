@@ -49,6 +49,7 @@
     <string name="view_binding">ViewBinding</string>
     <string name="tree_map">TreeMap\nAnyChart-Trial</string>
     <string name="circular_progress">원형 Progress</string>
+    <string name="custom_button">커스텀 버튼</string>
 
 
     <string name="close_main_ready">한번 더 누르시면 앱을 종료합니다.</string>
@@ -96,7 +97,7 @@
     <string name="score">Score: %d</string>
     <string name="word_count">%d of %d words</string>
     <string name="enter_your_word">Enter your word</string>
-    <string name="congratulations">Congratulations!</string>
+    <string name="congratulations" formatted="false">Congratulations!</string>
     <string name="you_scored">"You scored: %d"</string>
     <string name="exit">Exit</string>
     <string name="play_again">Play Again</string>

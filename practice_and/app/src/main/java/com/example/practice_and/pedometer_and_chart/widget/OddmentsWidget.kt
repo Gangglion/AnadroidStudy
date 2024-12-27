@@ -57,7 +57,7 @@ class OddmentsWidget : AppWidgetProvider() {
             pendingIntent = null
         }
         if(alarmManager != null){
-            alarmManager!!.cancel(pendingIntent)
+            alarmManager!!.cancel(pendingIntent!!)
             alarmManager = null
         }
     }
@@ -69,13 +69,13 @@ class OddmentsWidget : AppWidgetProvider() {
             val nextTime = System.currentTimeMillis() + WIDGET_ALARM_INTERVAL
 
             if(pendingIntent != null){
-                alarmManager!!.cancel(pendingIntent)
+                alarmManager!!.cancel(pendingIntent!!)
                 alarmManager = null
             }
             pendingIntent = PendingIntent.getBroadcast(context,0,intent, PendingIntent.FLAG_IMMUTABLE)
 
             alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
-            alarmManager!!.set(AlarmManager.RTC, nextTime, pendingIntent)
+            alarmManager!!.set(AlarmManager.RTC, nextTime, pendingIntent!!)
         }
     }
 }

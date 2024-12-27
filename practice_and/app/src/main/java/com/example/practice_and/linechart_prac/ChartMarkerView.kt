@@ -15,10 +15,9 @@ class ChartMarkerView(context: Context?, layoutResource: Int, private val dateMa
     private var mTvDate: TextView = findViewById(R.id.tv_date)
     private var mTvContent: TextView = findViewById(R.id.tv_marker)
 
-    override fun draw(canvas: Canvas?) {
+    override fun onDraw(canvas: Canvas) {
         canvas!!.translate(-(width/2).toFloat(), -height.toFloat()-20) // 점의 상단 중앙
-
-        super.draw(canvas)
+        super.onDraw(canvas)
     }
 
     override fun refreshContent(e: Entry?, highlight: Highlight?) {

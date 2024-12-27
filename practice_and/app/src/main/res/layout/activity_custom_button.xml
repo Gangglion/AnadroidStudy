@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".custom_button.CustomButtonActivity">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_primary_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                android:paddingHorizontal="16dp">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ll_primary_large"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ll_primary_middle"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:id="@+id/btn_primary_none_disable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="large"
+                        app:enabled="false"
+                        app:customButtonText="Large" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:id="@+id/btn_primary_none"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="large"
+                        app:customButtonText="Large" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:id="@+id/btn_primary_none_left_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="large"
+                        app:customButtonText="Large"
+                        app:customButtonIconStyle="left_icon"
+                        app:customButtonIconSrc="@drawable/left_icon"/>
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:id="@+id/btn_primary_right_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="large"
+                        app:customButtonText="Large"
+                        app:customButtonIconStyle="right_icon"
+                        app:customButtonIconSrc="@drawable/right_icon"/>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ll_primary_middle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/ll_primary_large"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/ll_primary_small"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="middle"
+                        app:enabled="false"
+                        app:customButtonText="Middle" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="middle"
+                        app:customButtonText="Middle" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="middle"
+                        app:customButtonIconStyle="left_icon"
+                        app:customButtonIconSrc="@drawable/left_icon"
+                        app:customButtonText="Middle" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="middle"
+                        app:customButtonIconStyle="right_icon"
+                        app:customButtonIconSrc="@drawable/right_icon"
+                        app:customButtonText="Middle" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/ll_primary_small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toEndOf="@+id/ll_primary_middle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="small"
+                        app:enabled="false"
+                        app:customButtonText="Small" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="small"
+                        app:customButtonText="Small" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="small"
+                        app:customButtonIconStyle="left_icon"
+                        app:customButtonIconSrc="@drawable/left_icon"
+                        app:customButtonText="Small" />
+
+                    <Space
+                        android:layout_width="wrap_content"
+                        android:layout_height="16dp" />
+
+                    <com.example.practice_and.custom_button.component.CustomButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:customButtonStyle="primary"
+                        app:customButtonSize="small"
+                        app:customButtonIconStyle="right_icon"
+                        app:customButtonIconSrc="@drawable/right_icon"
+                        app:customButtonText="Small" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

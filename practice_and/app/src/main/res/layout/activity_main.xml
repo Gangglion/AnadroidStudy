@@ -273,12 +273,22 @@
                     app:layout_constraintEnd_toEndOf="@+id/btn_null"
                     app:layout_constraintStart_toStartOf="@+id/btn_null"
                     app:layout_constraintTop_toBottomOf="@+id/btn_null" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_custom_button"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="15dp"
+                    android:text="@string/custom_button"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_viewbinding"
+                    app:layout_constraintStart_toStartOf="@+id/btn_viewbinding"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_viewbinding" />
                 <!-- 공간차지용 비어있는 레이아웃 -->
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/btn_saveinstance"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_custom_button"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:visibility="invisible"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
