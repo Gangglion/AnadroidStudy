@@ -1,8 +1,8 @@
 package com.example.navigationfragmentsample
 
+import android.app.ComponentCaller
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -16,27 +16,7 @@ import com.example.navigationfragmentsample.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    private var lastBackPressed: Long? = null
 
-    private var backPressedCallback = object : OnBackPressedCallback(true) {
-        override fun handleOnBackPressed() {
-            if(navController.currentDestination!!.id != R.id.fragmentGraphMain) {
-                navController.navigateUp()
-            } else {
-                if(lastBackPressed == null) {
-                    lastBackPressed = System.currentTimeMillis()
-                    Toast.makeText(this@MainActivity, "뒤로 버튼을 한번 더 누르시면 앱을 종료합니다", Toast.LENGTH_SHORT).show()
-                } else {
-                    if(System.currentTimeMillis() - lastBackPressed!! < 2000) {
-                        finish()
-                    } else {
-                        Toast.makeText(this@MainActivity, "뒤로 버튼을 한번 더 누르시면 앱을 종료합니다", Toast.LENGTH_SHORT).show()
-                        lastBackPressed = System.currentTimeMillis()
-                    }
-                }
-            }
-        }
-    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -46,9 +26,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0) // note : BottomNavigation 에 패딩이 적용되는 것을 막기 위해 systemBars.bottom 대신 0dp 로 지정
             insets
         }
-        onBackPressedDispatcher.addCallback(backPressedCallback)
         setMainNav()
         setBottomNavigation()
+
+        intent?.let {
+            navController.handleDeepLink(it)
+        }
     }
 
     private fun setMainNav() {

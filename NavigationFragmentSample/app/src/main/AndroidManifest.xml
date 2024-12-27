@@ -15,12 +15,28 @@
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <!-- 앱을 실행할 때 기본적인 MAIN 액션과 LAUNCHER 설정 -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- 딥링크를 처리하는 intent-filter 추가 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="app"
+                    android:host="graph"
+                    android:pathPrefix="/deepLink"/>
+            </intent-filter>
+            <!-- Navigation Graph 연결 -->
+            <nav-graph android:value="@navigation/nav_graph"/>
         </activity>
     </application>
 
 </manifest>
+
+<!--
+<action android:name="android.intent.action.VIEW"/>
+                <
+-->

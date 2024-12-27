@@ -105,4 +105,13 @@
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/slide_out" />
     </fragment>
+    <fragment
+        android:id="@+id/deeplinkFragment2"
+        android:name="com.example.navigationfragmentsample.deeplink.DeeplinkFragment"
+        android:label="DeeplinkFragment">
+        <deepLink
+            android:id="@+id/deepLink"
+            app:action="VIEW"
+            app:uri="app://graph/deepLink" />
+    </fragment>
 </navigation>
