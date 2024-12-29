@@ -14,7 +14,7 @@ class CustomButtonActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCustomButtonBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_custom_button)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())

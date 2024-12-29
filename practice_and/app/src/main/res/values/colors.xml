@@ -60,7 +60,13 @@
     <color name="gradient_end">#37197D</color>
     <color name="pg_background">#EEF9FB</color>
 
-    <color name="custom_button_primary_normal">#2A81B7</color>
-    <color name="custom_button_primary_support">#37197D</color>
-    <color name="custom_button_primary_alternative">#C4E9F5</color>
+    <color name="custom_button_primary_default">#2A81B7</color>
+    <color name="custom_button_primary_pressed">#37197D</color>
+    <color name="custom_button_primary_disabled">#C4E9F5</color>
+    <color name="custom_button_clicked">#EEFBFB</color>
+    <color name="custom_button_gray_default">#101219</color>
+    <color name="custom_button_gray_pressed">#535968</color>
+    <color name="custom_button_gray_disabled">#BDBDBD</color>
+    <color name="custom_button_gray_clicked">#E8E8EB</color>
+    <color name="custom_button_only_text_disabled">#C4C7CE</color>
 </resources>
