@@ -113,6 +113,16 @@ class WebviewFragment : Fragment(), View.OnClickListener,
                     mWebviewActivity.callErrorFragment()
                 }
             }
+
+            // 웹뷰 최하단 도달 확인
+            mBinding.wvNaver.setOnScrollChangeListener { _, _, _, _, _ ->
+                with(mBinding.wvNaver) {
+                    val isDownDirectionPossible = this.canScrollVertically(1)
+                    if(!isDownDirectionPossible) {
+                        Log.d("glion", "Reached Bottom")
+                    }
+                }
+            }
         }
 
         return view
