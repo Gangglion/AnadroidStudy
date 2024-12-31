@@ -1062,6 +1062,15 @@
                         app:customButtonText="Small" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.constraintlayout.widget.ConstraintLayout>
+            <com.example.practice_and.custom_button.component.CustomButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:customButtonText="Match Parent 테스트"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_text_only_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:customButtonIconStyle="right_icon"
+                app:customButtonIconSrc="@drawable/right_icon"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
